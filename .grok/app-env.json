@@ -1,0 +1,8 @@
+{
+  "VITE_AUTH_ENABLED": "false",
+  "VITE_SHOPIFY_STORE_DOMAIN": "",
+  "VITE_SHOPIFY_STOREFRONT_TOKEN": "",
+  "deploy": {
+    "database": false
+  }
+}
