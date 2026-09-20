@@ -46,8 +46,8 @@ function ShopPage() {
       <p className="text-sm font-semibold tracking-widest text-terra uppercase">Shop</p>
       <h1 className="mt-1 font-display text-4xl font-medium tracking-tight">{title}</h1>
       <p className="mt-2 max-w-xl text-muted">
-        {PRODUCTS.length} pieces. Checkout runs on Shopify when a SKU is matched and in stock —
-        otherwise notify us on the pieces you want first.
+        {PRODUCTS.length} pieces. Add any of them to the cart. Pay on Stripe — US shipping and
+        state tax are calculated from your address before you pay.
       </p>
 
       <div className="mt-6 max-w-md">

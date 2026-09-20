@@ -39,7 +39,7 @@ export const PRODUCTS: Product[] = [
     details: [
       "Quiet stainless fountain (2 L) plus a multi-pack of replacement filters",
       "Best first purchase for cats, small dogs, and apartment kitchens",
-      "Checkout opens when both components are in stock",
+      "Ships as one kit — fountain and filters together",
     ],
     price: 52,
     category: "kits",
@@ -138,7 +138,7 @@ export const PRODUCTS: Product[] = [
     details: [
       "Quiet fountain path with a Slow Meal Lick Mat",
       "For cats and dogs who gulp, pace, or need a longer meal",
-      "Ships as a kit once both pieces are locked",
+      "Ships as one kit",
     ],
     price: 56,
     category: "kits",

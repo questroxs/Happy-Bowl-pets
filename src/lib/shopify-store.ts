@@ -2,14 +2,13 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { toast } from "sonner";
 import { PRODUCTS, getProduct } from "@/lib/catalog";
+import { createCheckoutSession } from "@/lib/create-checkout";
 import {
   assertStorefrontToken,
-  createShopifyCheckout,
   envShopifyConfig,
   fetchShopifyCatalog,
   matchCatalogToShopify,
   normalizeShopDomain,
-  ShopifyError,
   type ShopifyConfig,
   type ShopifyVariantMatch,
 } from "@/lib/shopify";
@@ -35,6 +34,7 @@ type ShopifyState = {
   addToCart: (slug: string) => void;
   setQuantity: (slug: string, quantity: number) => void;
   removeFromCart: (slug: string) => void;
+  clearCart: () => void;
   setCartOpen: (open: boolean) => void;
   checkout: () => Promise<void>;
 };
@@ -89,8 +89,6 @@ export const useShopifyStore = create<ShopifyState>()(
           matches: {},
           status: "idle",
           error: null,
-          cart: [],
-          cartOpen: false,
         });
       },
       refresh: async () => {
@@ -118,9 +116,8 @@ export const useShopifyStore = create<ShopifyState>()(
         }
       },
       addToCart: (slug) => {
-        const match = get().matches[slug];
-        if (!match?.available) {
-          toast.error("That piece is not in Shopify stock yet.");
+        if (!getProduct(slug)) {
+          toast.error("That piece is not in the catalog.");
           return;
         }
         const cart = get().cart;
@@ -148,28 +145,18 @@ export const useShopifyStore = create<ShopifyState>()(
       removeFromCart: (slug) => {
         set({ cart: get().cart.filter((line) => line.slug !== slug) });
       },
+      clearCart: () => set({ cart: [], cartOpen: false }),
       setCartOpen: (cartOpen) => set({ cartOpen }),
       checkout: async () => {
-        const config = resolvedConfig(get().config);
-        if (!config) {
-          throw new ShopifyError("Connect Shopify before checkout.");
-        }
-        const lines = get()
-          .cart.map((line) => {
-            const match = get().matches[line.slug];
-            if (!match) return null;
-            return { variantId: match.variantId, quantity: line.quantity };
-          })
-          .filter((line): line is { variantId: string; quantity: number } => Boolean(line));
-
+        const lines = get().cart;
         if (lines.length === 0) {
-          throw new ShopifyError("Nothing in the cart is live in Shopify yet.");
+          throw new Error("Cart is empty.");
         }
 
         set({ checkingOut: true });
         try {
-          const url = await createShopifyCheckout(config, lines);
-          window.open(url, "_blank", "noopener,noreferrer");
+          const { url } = await createCheckoutSession({ data: { lines } });
+          window.location.assign(url);
         } finally {
           set({ checkingOut: false });
         }
@@ -187,6 +174,13 @@ export const useShopifyStore = create<ShopifyState>()(
 
 export function cartCount(cart: CartLine[]) {
   return cart.reduce((sum, line) => sum + line.quantity, 0);
+}
+
+export function cartSubtotal(cart: CartLine[]) {
+  return cart.reduce((sum, line) => {
+    const product = getProduct(line.slug);
+    return product ? sum + product.price * line.quantity : sum;
+  }, 0);
 }
 
 export function isShopifyLive(state: Pick<ShopifyState, "status" | "matches">) {

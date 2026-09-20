@@ -16,11 +16,7 @@ function ProductPage() {
   const { slug } = Route.useParams();
   const product = getProduct(slug);
   const savedSlugs = useShopStore((s) => s.saved);
-  const notifiedSlugs = useShopStore((s) => s.notified);
   const toggleSaved = useShopStore((s) => s.toggleSaved);
-  const openNotify = useShopStore((s) => s.openNotify);
-  const match = useShopifyStore((s) => (product ? s.matches[product.slug] : undefined));
-  const shopifyStatus = useShopifyStore((s) => s.status);
   const addToCart = useShopifyStore((s) => s.addToCart);
 
   if (!product) {
@@ -38,10 +34,7 @@ function ProductPage() {
   }
 
   const saved = savedSlugs.includes(product.slug);
-  const notified = notifiedSlugs.includes(product.slug);
   const related = relatedProducts(product);
-  const available = Boolean(match?.available);
-  const connected = shopifyStatus === "connected";
 
   return (
     <main className="mx-auto w-[min(100%-2rem,70rem)] py-10">
@@ -66,9 +59,7 @@ function ProductPage() {
         <div>
           <div className="flex flex-wrap gap-2">
             <Badge>{speciesLabel(product.species)}</Badge>
-            <Badge tone={available ? "sage" : "muted"}>
-              {available ? "In stock on Shopify" : connected && match ? "Out of stock" : "Preview · not for sale yet"}
-            </Badge>
+            <Badge tone="sage">Ready to ship</Badge>
           </div>
           <h1 className="mt-3 font-display text-4xl leading-tight font-medium tracking-tight">
             {product.name}
@@ -76,9 +67,8 @@ function ProductPage() {
           <p className="mt-2 text-lg text-muted">{product.tagline}</p>
           <p className="mt-5 text-2xl font-medium text-sage-dark">{formatPrice(product.price)}</p>
           <p className="mt-1 text-sm text-muted">
-            {available
-              ? "Price on this catalog. Tax and shipping are calculated on Shopify checkout."
-              : "Preview price — checkout opens when this SKU is live in Shopify."}
+            Price before tax. US shipping from $6.95 (free at $75). State sales tax is calculated
+            from your shipping address on Stripe, before you pay.
           </p>
           <p className="mt-5 text-base">{product.description}</p>
           <ul className="mt-5 space-y-2 text-sm text-ink">
@@ -106,30 +96,15 @@ function ProductPage() {
             </dl>
           )}
           <div className="mt-8 flex flex-wrap gap-3">
-            {available ? (
-              <Button size="lg" onClick={() => addToCart(product.slug)}>
-                <ShoppingBag className="size-4" />
-                Add to cart
-              </Button>
-            ) : (
-              <Button size="lg" onClick={() => openNotify(product.slug)}>
-                {notified ? "You’re on the list" : "Notify me"}
-              </Button>
-            )}
+            <Button size="lg" onClick={() => addToCart(product.slug)}>
+              <ShoppingBag className="size-4" />
+              Add to cart
+            </Button>
             <Button size="lg" variant="outline" onClick={() => toggleSaved(product.slug)}>
               {saved ? <BookmarkCheck className="size-4" /> : <Bookmark className="size-4" />}
               {saved ? "Saved" : "Save for later"}
             </Button>
           </div>
-          {connected && !match ? (
-            <p className="mt-4 text-sm text-muted">
-              This SKU is not in Shopify yet. Import the catalog CSV on the{" "}
-              <Link to="/shopify" className="text-sage-dark">
-                Shopify page
-              </Link>
-              .
-            </p>
-          ) : null}
           <p className="mt-4 font-mono text-xs text-muted">{product.sku}</p>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useShopStore } from "@/lib/store";
-import { cartCount, isShopifyLive, useShopifyStore } from "@/lib/shopify-store";
+import { cartCount, useShopifyStore } from "@/lib/shopify-store";
 
 export function SiteHeader() {
   const navigate = useNavigate();
@@ -14,9 +14,6 @@ export function SiteHeader() {
   const setSheetOpen = useShopStore((s) => s.setSheetOpen);
   const cart = useShopifyStore((s) => s.cart);
   const setCartOpen = useShopifyStore((s) => s.setCartOpen);
-  const shopifyStatus = useShopifyStore((s) => s.status);
-  const matches = useShopifyStore((s) => s.matches);
-  const shopifyLive = isShopifyLive({ status: shopifyStatus, matches });
   const bagCount = cartCount(cart);
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -105,22 +102,20 @@ export function SiteHeader() {
               <Search className="size-4" />
             </Button>
           )}
-          {shopifyLive ? (
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="Cart"
-              className="relative"
-              onClick={() => setCartOpen(true)}
-            >
-              <ShoppingBag className="size-4" />
-              {mounted && bagCount > 0 ? (
-                <span className="absolute top-1.5 right-1.5 grid size-4 place-items-center rounded-full bg-terra text-xs font-semibold text-paper">
-                  {bagCount}
-                </span>
-              ) : null}
-            </Button>
-          ) : null}
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Cart"
+            className="relative"
+            onClick={() => setCartOpen(true)}
+          >
+            <ShoppingBag className="size-4" />
+            {mounted && bagCount > 0 ? (
+              <span className="absolute top-1.5 right-1.5 grid size-4 place-items-center rounded-full bg-terra text-xs font-semibold text-paper">
+                {bagCount}
+              </span>
+            ) : null}
+          </Button>
           <Button
             variant="ghost"
             size="icon"

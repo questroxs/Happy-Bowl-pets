@@ -4,43 +4,43 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { getProduct } from "@/lib/catalog";
-import { cartCount, useShopifyStore } from "@/lib/shopify-store";
-import { formatPrice } from "@/lib/utils";
+import { remainingToFreeShipping, shippingOptions } from "@/lib/shipping";
+import { cartCount, cartSubtotal, useShopifyStore } from "@/lib/shopify-store";
+import { formatMoney, formatPrice } from "@/lib/utils";
 
 export function CartSheet() {
   const open = useShopifyStore((state) => state.cartOpen);
   const setCartOpen = useShopifyStore((state) => state.setCartOpen);
   const cart = useShopifyStore((state) => state.cart);
-  const matches = useShopifyStore((state) => state.matches);
   const setQuantity = useShopifyStore((state) => state.setQuantity);
   const removeFromCart = useShopifyStore((state) => state.removeFromCart);
   const checkout = useShopifyStore((state) => state.checkout);
   const checkingOut = useShopifyStore((state) => state.checkingOut);
-  const shopName = useShopifyStore((state) => state.shopName);
 
   const items = cart
     .map((line) => {
       const product = getProduct(line.slug);
       if (!product) return null;
-      return { ...line, product, match: matches[line.slug] };
+      return { ...line, product };
     })
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  const subtotal = cartSubtotal(cart);
+  const [standard, expedited] = shippingOptions(subtotal);
+  const remaining = remainingToFreeShipping(subtotal);
 
   return (
     <Sheet open={open} onOpenChange={setCartOpen}>
       <SheetContent className="px-5 pt-6 pb-8">
         <SheetTitle>Cart</SheetTitle>
         <SheetDescription className="mt-1">
-          {shopName
-            ? `Pay on Shopify — ${shopName}. This site only builds the cart.`
-            : "Pay on Shopify when the store is connected."}
+          Pay on Stripe. US shipping and state tax are calculated from the address you enter — you
+          and Happy Bowl Co. both get the receipt by email.
         </SheetDescription>
         <div className="mt-6 flex flex-1 flex-col gap-3 overflow-y-auto pr-1">
           {items.length === 0 ? (
             <p className="rounded-lg bg-sand px-4 py-6 text-sm text-muted">
-              Cart is empty. Add a piece that is live in Shopify.
+              Cart is empty. Add a fountain, filter, or extra from the catalog.
             </p>
           ) : (
             items.map((item) => (
@@ -59,14 +59,11 @@ export function CartSheet() {
                   >
                     {item.product.name}
                   </Link>
-                  <p className="text-sm text-sage-dark">
-                    {formatPrice(item.product.price)}
-                    {item.match ? "" : " · not matched"}
-                  </p>
+                  <p className="text-sm text-sage-dark">{formatPrice(item.product.price)}</p>
                   <div className="mt-2 flex items-center gap-2">
                     <button
                       type="button"
-                      className="grid size-8 place-items-center rounded-full bg-paper text-ink"
+                      className="grid size-11 place-items-center rounded-full bg-paper text-ink"
                       aria-label="Decrease quantity"
                       onClick={() => setQuantity(item.slug, item.quantity - 1)}
                     >
@@ -75,7 +72,7 @@ export function CartSheet() {
                     <span className="w-4 text-center text-sm font-medium">{item.quantity}</span>
                     <button
                       type="button"
-                      className="grid size-8 place-items-center rounded-full bg-paper text-ink"
+                      className="grid size-11 place-items-center rounded-full bg-paper text-ink"
                       aria-label="Increase quantity"
                       onClick={() => setQuantity(item.slug, item.quantity + 1)}
                     >
@@ -95,12 +92,39 @@ export function CartSheet() {
           )}
         </div>
         <div className="mt-4 border-t border-line pt-4">
-          <div className="mb-3 flex items-center justify-between text-sm">
-            <span className="text-muted">{cartCount(cart)} in cart</span>
-            <span className="font-medium">{formatPrice(total)}</span>
-          </div>
+          <dl className="space-y-1.5 text-sm">
+            <div className="flex items-center justify-between">
+              <dt className="text-muted">{cartCount(cart)} in cart</dt>
+              <dd className="font-medium">{formatMoney(subtotal)}</dd>
+            </div>
+            <div className="flex items-center justify-between">
+              <dt className="text-muted">{standard?.name ?? "Standard shipping"}</dt>
+              <dd className="font-medium">
+                {standard && standard.amount === 0 ? "Free" : formatMoney(standard?.amount ?? 0)}
+              </dd>
+            </div>
+            <div className="flex items-center justify-between">
+              <dt className="text-muted">{expedited?.name ?? "Expedited shipping"}</dt>
+              <dd className="text-muted">{formatMoney(expedited?.amount ?? 0)}</dd>
+            </div>
+            <div className="flex items-center justify-between">
+              <dt className="text-muted">State sales tax</dt>
+              <dd className="text-muted">At checkout</dd>
+            </div>
+          </dl>
+          {remaining > 0 ? (
+            <p className="mt-3 text-xs text-sage-dark">
+              Add {formatMoney(remaining)} more for free standard shipping.
+            </p>
+          ) : items.length > 0 ? (
+            <p className="mt-3 text-xs text-sage-dark">Standard shipping is free on this cart.</p>
+          ) : null}
+          <p className="mt-2 text-xs text-muted">
+            Choose Standard or Expedited on Stripe. Tax is calculated from your US shipping address
+            and shown before you pay. We receive the same order, tax, and shipping in Stripe.
+          </p>
           <Button
-            className="w-full"
+            className="mt-4 w-full"
             disabled={items.length === 0 || checkingOut}
             onClick={() => {
               void checkout().catch((error: unknown) => {
@@ -108,7 +132,7 @@ export function CartSheet() {
               });
             }}
           >
-            {checkingOut ? "Opening Shopify…" : "Checkout on Shopify"}
+            {checkingOut ? "Opening Stripe…" : "Checkout with Stripe"}
           </Button>
         </div>
       </SheetContent>

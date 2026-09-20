@@ -50,10 +50,8 @@ function ShopifyPage() {
       <p className="text-sm font-semibold tracking-widest text-terra uppercase">Store owner</p>
       <h1 className="mt-2 font-display text-4xl font-medium tracking-tight">Connect Shopify</h1>
       <p className="mt-4 text-lg text-muted">
-        This catalog stays here. Shopify takes payment and tax. Doba (or you) fulfills. Shopify is
-        not free — it bills its own monthly plan. Connecting on this page tests checkout in your
-        browser. To open checkout for every visitor, send the store domain and Storefront token in
-        this chat after it works.
+        Checkout already runs on Stripe from the cart. This page is optional: connect Shopify if you
+        also want a Shopify storefront or Doba fulfillment later. Shopify bills its own monthly plan.
       </p>
 
       <section className="mt-8 rounded-xl bg-paper px-5 py-5 shadow-[var(--shadow-card)]">
@@ -66,12 +64,12 @@ function ShopifyPage() {
         ) : status === "connecting" ? (
           <p className="mt-2 text-sm text-muted">Checking the storefront…</p>
         ) : (
-          <p className="mt-2 text-sm text-muted">Not connected. Checkout stays on the waitlist.</p>
+          <p className="mt-2 text-sm text-muted">Not connected. Cart checkout still runs on Stripe.</p>
         )}
         {error ? <p className="mt-2 text-sm text-destructive">{error}</p> : null}
         {live ? (
           <p className="mt-2 text-sm text-sage-dark">
-            Add to cart is on. Pay opens Shopify checkout in a new tab.
+            Add to cart is on. Pay still opens Stripe Checkout, not Shopify.
           </p>
         ) : null}
       </section>

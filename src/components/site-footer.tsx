@@ -12,7 +12,7 @@ export function SiteFooter() {
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted">
             Hydration-led shop for dogs and cats. Quiet stainless fountains, calmer mealtimes, and
-            a few thoughtful extras. Checkout runs on Shopify when the store is connected.
+            a few thoughtful extras. Pay on Stripe — US shipping and state tax on every order.
           </p>
         </div>
         <div>
@@ -43,23 +43,18 @@ export function SiteFooter() {
         <div>
           <p className="text-sm font-semibold tracking-wide text-ink uppercase">House notes</p>
           <ul className="mt-3 space-y-2 text-sm text-muted">
-            <li>Dogs and cats only</li>
-            <li>No food, CBD, or shampoo on this shop</li>
+            <li>US shipping from $6.95 — free standard at $75</li>
+            <li>State tax calculated at Stripe checkout</li>
             <li>
               <Link to="/about" className="text-sage-dark no-underline">
                 How we choose pieces
-              </Link>
-            </li>
-            <li>
-              <Link to="/shopify" className="text-sage-dark no-underline">
-                Connect Shopify
               </Link>
             </li>
           </ul>
         </div>
       </div>
       <p className="border-t border-line py-5 text-center text-sm text-muted">
-        Preview catalog. Checkout opens on Shopify once the store is connected.
+        Checkout on Stripe. You and Happy Bowl Co. both receive the receipt.
       </p>
     </footer>
   );

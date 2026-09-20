@@ -34,11 +34,12 @@ function AboutPage() {
       </section>
 
       <section className="mt-10 space-y-4">
-        <h2 className="font-display text-2xl font-medium">When you can buy</h2>
+        <h2 className="font-display text-2xl font-medium">How you buy</h2>
         <p>
-          This catalog is the front of house. Prices are the bands we expect to hold. Checkout runs
-          on Shopify once the store is connected and each SKU is imported. Until then, join a waitlist
-          on anything you want first — we keep that list on this device.
+          This catalog is the front of house. Add anything to the cart and pay on Stripe. US
+          shipping starts at $6.95 (free standard at $75). State sales tax is calculated from the
+          address you enter, shown before you pay. You get a receipt by email; we receive the same
+          paid order in Stripe.
         </p>
       </section>
 

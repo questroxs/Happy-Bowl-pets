@@ -3,7 +3,6 @@ import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts } from "@/lib/catalog";
-import { isShopifyLive, useShopifyStore } from "@/lib/shopify-store";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -37,17 +36,12 @@ const COLLECTIONS = [
 function Home() {
   const featured = featuredProducts();
   const exploring = exploringProducts();
-  const status = useShopifyStore((state) => state.status);
-  const matches = useShopifyStore((state) => state.matches);
-  const shopName = useShopifyStore((state) => state.shopName);
-  const live = isShopifyLive({ status, matches });
 
   return (
     <main>
       <p className="border-b border-sage/40 bg-cream px-4 py-3 text-center text-sm text-ink">
-        {live
-          ? `Checkout is open${shopName ? ` on ${shopName}` : " on Shopify"}. Add to cart here — pay there.`
-          : "Catalog preview. Buy is gated until Shopify is connected and stock is live."}
+        Checkout is open. US shipping from $6.95 (free at $75). State tax is calculated on Stripe
+        from your address — you and we both get the receipt.
       </p>
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
