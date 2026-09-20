@@ -22,11 +22,11 @@ export function ProductCard({
         params={{ slug: product.slug }}
         className="flex h-full flex-col text-inherit no-underline"
       >
-        <div className="aspect-4/3 overflow-hidden bg-sand-deep">
+        <div className="flex aspect-4/3 items-center justify-center overflow-hidden bg-cream">
           <img
             src={product.image}
             alt={product.name}
-            className="product-photo h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+            className="product-photo h-full w-full object-contain p-2 transition-transform duration-300 ease-out group-hover:scale-[1.02]"
             width={640}
             height={480}
           />

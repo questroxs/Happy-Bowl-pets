@@ -48,7 +48,7 @@ export function CartSheet() {
                 <img
                   src={item.product.image}
                   alt=""
-                  className="product-photo size-16 rounded-md object-cover"
+                  className="product-photo size-16 rounded-md bg-cream object-contain"
                 />
                 <div className="min-w-0 flex-1">
                   <Link

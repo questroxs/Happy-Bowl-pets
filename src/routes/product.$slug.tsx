@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bookmark, BookmarkCheck, ShoppingBag } from "lucide-react";
+import { Bookmark, BookmarkCheck, ExternalLink, ShoppingBag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
@@ -47,11 +47,11 @@ function ProductPage() {
       </p>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="overflow-hidden rounded-xl bg-sand-deep">
+        <div className="overflow-hidden rounded-xl bg-cream">
           <img
             src={product.image}
             alt={product.name}
-            className="product-photo w-full object-cover"
+            className="product-photo w-full object-contain"
             width={960}
             height={720}
           />
@@ -59,7 +59,7 @@ function ProductPage() {
         <div>
           <div className="flex flex-wrap gap-2">
             <Badge>{speciesLabel(product.species)}</Badge>
-            <Badge tone="sage">Ready to ship</Badge>
+            <Badge tone="sage">Warehouse photo</Badge>
           </div>
           <h1 className="mt-3 font-display text-4xl leading-tight font-medium tracking-tight">
             {product.name}
@@ -71,6 +71,18 @@ function ProductPage() {
             from your shipping address on Stripe, before you pay.
           </p>
           <p className="mt-5 text-base">{product.description}</p>
+          <p className="mt-3 rounded-lg bg-sage-soft px-3 py-2 text-sm text-ink">
+            The photo is the warehouse item. What you see is what we send.
+          </p>
+          <a
+            href={product.warehouseUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-sage-dark"
+          >
+            Warehouse listing
+            <ExternalLink className="size-3.5" />
+          </a>
           <ul className="mt-5 space-y-2 text-sm text-ink">
             {product.details.map((detail) => (
               <li key={detail} className="flex gap-2">

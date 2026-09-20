@@ -24,12 +24,15 @@ function AboutPage() {
         <h2 className="font-display text-2xl font-medium">What we put on the floor</h2>
         <p>
           Stainless fountains as the hero. Filters as the restock. Lick mats and a puzzle feeder
-          for slower meals. A short play aisle for dogs who need a job. Travel bowls so water
+          for slower meals. A short play aisle for dogs who need a job. A walk bottle so water
           doesn’t stop at the door.
         </p>
         <p>
           We do not sell food, treats meant to be eaten as meals, CBD, or shampoo. Those belong to
-          specialists. If a listing photo doesn’t match the thing we named, it does not go live.
+          specialists. If a listing photo doesn’t match the box the warehouse will send, it does
+          not go on the floor. The turkey chew, antler chew, and XL filter pack are gone — replaced
+          by the Cheerble Elfin fountain, the PawHut oak feeding station, and the Pet Life Tri-Chew,
+          each with a live Doba listing.
         </p>
       </section>
 
@@ -47,9 +50,9 @@ function AboutPage() {
         <h2 className="font-display text-2xl font-medium">A few house rules</h2>
         <ul className="space-y-2 text-base">
           <li>Dogs and cats only.</li>
-          <li>Quiet stainless is the fountain path — plastic is not a substitute.</li>
-          <li>XL tanks take XL filters. Don’t mix the packs.</li>
-          <li>Chews and dispensers are enrichment. Supervise them.</li>
+          <li>Quiet stainless is the fountain path.</li>
+          <li>The 2 L filter pack does not fit the 7 L tank.</li>
+          <li>Dispensers are enrichment. Supervise them.</li>
         </ul>
       </section>
 

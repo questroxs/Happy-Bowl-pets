@@ -9,25 +9,25 @@ export const Route = createFileRoute("/")({ component: Home });
 const COLLECTIONS = [
   {
     title: "Hydration",
-    copy: "Quiet stainless fountains and the filters that keep them tasting like water.",
+    copy: "The 2 L and 7 L stainless fountains — warehouse photos, warehouse boxes.",
     cat: "hydration" as const,
     image: "/products/fountain-2l.jpg",
   },
   {
     title: "Mealtime",
-    copy: "Lick mats and puzzle feeders for homes that want dinner to take a minute.",
+    copy: "The silicone lick mat, Roto Paw feeder, and PawHut oak station.",
     cat: "mealtime" as const,
     image: "/products/lick-mat.jpg",
   },
   {
     title: "Play",
-    copy: "Chews, dispensers, and a launcher — extras, never the hero of the shop.",
+    copy: "SodaPup frog, Pet Life Tri-Chew, PawHut launcher. Extras, never the hero.",
     cat: "play" as const,
     image: "/products/frog.jpg",
   },
   {
     title: "On the go",
-    copy: "Collapsible bowls and a bottle that clip onto a walk.",
+    copy: "The 4-in-1 300 ml walk bottle the warehouse actually ships.",
     cat: "accessories" as const,
     image: "/products/travel.jpg",
   },
@@ -136,9 +136,9 @@ function Home() {
               <img
                 src={collection.image}
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                className="absolute inset-0 h-full w-full object-contain bg-cream p-6 transition-transform duration-300 group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 bg-ink/45" />
+              <div className="absolute inset-0 bg-ink/50" />
               <div className="relative flex h-full flex-col justify-end p-5 text-paper">
                 <h3 className="font-display text-2xl font-medium">{collection.title}</h3>
                 <p className="mt-1 max-w-sm text-sm text-paper/90">{collection.copy}</p>

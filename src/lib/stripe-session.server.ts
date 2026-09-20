@@ -111,6 +111,7 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
         product_data: {
           name: item.product.name,
           description: `${item.product.sku} — ${item.product.tagline}`,
+          images: [`${origin}${item.product.image}`],
           metadata: { sku: item.product.sku, slug: item.product.slug },
         },
       },

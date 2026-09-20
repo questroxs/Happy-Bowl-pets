@@ -46,15 +46,15 @@ function ShopPage() {
       <p className="text-sm font-semibold tracking-widest text-terra uppercase">Shop</p>
       <h1 className="mt-1 font-display text-4xl font-medium tracking-tight">{title}</h1>
       <p className="mt-2 max-w-xl text-muted">
-        {PRODUCTS.length} pieces. Add any of them to the cart. Pay on Stripe — US shipping and
-        state tax are calculated from your address before you pay.
+        {PRODUCTS.length} warehouse-matched pieces. The photo is the item we ship. Pay on Stripe —
+        US shipping and state tax are calculated from your address before you pay.
       </p>
 
       <div className="mt-6 max-w-md">
         <Input
           value={query}
           name="q"
-          placeholder="Search fountains, mats, chews…"
+          placeholder="Search fountains, mats, filters…"
           aria-label="Search products"
           onChange={(event) => setQuery(event.target.value)}
         />
