@@ -11,26 +11,31 @@ export function SiteFooter() {
             <p className="font-display text-lg font-medium">Happy Bowl Co.</p>
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted">
-            Hydration-led shop for dogs and cats. Quiet stainless fountains, calmer mealtimes, and
-            a few thoughtful extras. Pay on Stripe — US shipping and state tax on every order.
+            Wellness shop for dogs and cats. Fountains, beds, treats, toys, and care — warehouse
+            pieces, photographed on cream. Pay on Stripe.
           </p>
         </div>
         <div>
           <p className="text-sm font-semibold tracking-wide text-ink uppercase">Catalog</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
-              <Link to="/shop" search={{ cat: "hydration" }} className="text-sage-dark no-underline">
-                Hydration
+              <Link to="/shop" search={{ cat: "beds" }} className="text-sage-dark no-underline">
+                Beds
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ cat: "mealtime" }} className="text-sage-dark no-underline">
-                Mealtime
+              <Link to="/shop" search={{ cat: "treats" }} className="text-sage-dark no-underline">
+                Treats
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ cat: "play" }} className="text-sage-dark no-underline">
-                Play
+              <Link to="/shop" search={{ cat: "wellness" }} className="text-sage-dark no-underline">
+                Wellness
+              </Link>
+            </li>
+            <li>
+              <Link to="/shop" search={{ cat: "care" }} className="text-sage-dark no-underline">
+                Care
               </Link>
             </li>
             <li>
@@ -48,6 +53,11 @@ export function SiteFooter() {
             <li>
               <Link to="/about" className="text-sage-dark no-underline">
                 How we choose pieces
+              </Link>
+            </li>
+            <li>
+              <Link to="/compare" className="text-sage-dark no-underline">
+                Warehouse vs our prices
               </Link>
             </li>
           </ul>

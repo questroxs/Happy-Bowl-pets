@@ -74,6 +74,13 @@ function ProductPage() {
           <p className="mt-3 rounded-lg bg-sage-soft px-3 py-2 text-sm text-ink">
             The photo is the warehouse item. What you see is what we send.
           </p>
+          {product.category === "wellness" ||
+          /cbd|hemp|calming/.test(product.slug) ? (
+            <p className="mt-3 rounded-lg bg-sand px-3 py-2 text-sm text-muted">
+              Not a substitute for veterinary care. These statements have not been evaluated by the
+              FDA.
+            </p>
+          ) : null}
           <a
             href={product.warehouseUrl}
             target="_blank"

@@ -8,28 +8,28 @@ export const Route = createFileRoute("/")({ component: Home });
 
 const COLLECTIONS = [
   {
-    title: "Hydration",
-    copy: "The 2 L and 7 L stainless fountains — warehouse photos, warehouse boxes.",
-    cat: "hydration" as const,
-    image: "/products/fountain-2l.jpg",
+    title: "Beds",
+    copy: "Mesh cots, lounge beds, and the Travel-Nest — the beds the warehouse can ship today.",
+    cat: "beds" as const,
+    image: "/products/elevated-mesh.jpg",
   },
   {
-    title: "Mealtime",
-    copy: "The silicone lick mat, Roto Paw feeder, and PawHut oak station.",
-    cat: "mealtime" as const,
-    image: "/products/lick-mat.jpg",
+    title: "Treats",
+    copy: "Calming chews the US warehouse still has in stock. Nothing discontinued.",
+    cat: "treats" as const,
+    image: "/products/calming-chews.jpg",
   },
   {
-    title: "Play",
-    copy: "SodaPup frog, Pet Life Tri-Chew, PawHut launcher. Extras, never the hero.",
-    cat: "play" as const,
-    image: "/products/frog.jpg",
+    title: "Wellness",
+    copy: "Joint oil, joint chews, and skin-and-coat chews. No medical claims.",
+    cat: "wellness" as const,
+    image: "/products/joint-liquid.jpg",
   },
   {
-    title: "On the go",
-    copy: "The 4-in-1 300 ml walk bottle the warehouse actually ships.",
-    cat: "accessories" as const,
-    image: "/products/travel.jpg",
+    title: "Care",
+    copy: "BeNat oat shampoo bar, the 3-pack, paw cream, and the steam brush.",
+    cat: "care" as const,
+    image: "/products/oat-shampoo.jpg",
   },
 ];
 
@@ -41,13 +41,16 @@ function Home() {
     <main>
       <p className="border-b border-sage/40 bg-cream px-4 py-3 text-center text-sm text-ink">
         Checkout is open. US shipping from $6.95 (free at $75). State tax is calculated on Stripe
-        from your address — you and we both get the receipt.
+        from your address — you and we both get the receipt.{" "}
+        <Link to="/compare" className="font-medium text-sage-dark">
+          Warehouse vs our prices
+        </Link>
       </p>
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
         <img
           src="/products/hero.jpg"
-          alt="A cat and a golden retriever sharing a quiet stainless fountain in a sunlit kitchen"
+          alt="An orange cat drinking from the quiet stainless fountain"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="hero-scrim absolute inset-0" />
@@ -59,8 +62,7 @@ function Home() {
             Fresher water. Calmer days.
           </h1>
           <p className="mt-3 max-w-lg text-base text-paper/90">
-            Quiet stainless fountains, mealtime enrichment, and a few thoughtful extras. Nothing
-            edible, no CBD, no shampoo — just the daily kit.
+            Quiet stainless fountains, raised beds, treats, toys, and everyday care. The photo is the warehouse item — the one that is actually in stock.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -83,7 +85,7 @@ function Home() {
             <Droplets className="size-5 text-sage-dark" />
             <h2 className="mt-3 font-display text-xl font-medium">Hydration first</h2>
             <p className="mt-1 text-sm text-muted">
-              Stainless, quiet, and sized for real kitchens. Filters as a restock, not an afterthought.
+              Stainless, quiet, and sized for real kitchens. The fountain in the photo is the one we ship.
             </p>
           </div>
           <div className="rounded-xl bg-paper px-5 py-6 shadow-[var(--shadow-card)]">
@@ -97,7 +99,8 @@ function Home() {
             <PawPrint className="size-5 text-sage-dark" />
             <h2 className="mt-3 font-display text-xl font-medium">Dogs and cats only</h2>
             <p className="mt-1 text-sm text-muted">
-              No livestock, no exotics, no edible catalog. If it is not for a house pet, it is not here.
+              Treats, shampoo, and beds chosen the same way as the fountain: the warehouse
+              item, photographed as it ships, priced with our margin in.
             </p>
           </div>
         </div>
@@ -122,9 +125,45 @@ function Home() {
         </div>
       </section>
 
+      <section className="relative isolate pb-4">
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
+          <img
+            src="/products/our-story-pets.jpg"
+            alt="Our two dogs together — a dachshund at home and a small companion in the grass"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-sand to-transparent md:h-24" />
+        </div>
+        <div className="relative mx-auto -mt-4 w-[min(100%-2rem,40rem)] rounded-xl bg-paper px-6 py-8 shadow-[var(--shadow-card)] md:-mt-10 md:px-9 md:py-10">
+          <p className="text-sm font-semibold tracking-widest text-terra uppercase">Miami, Florida</p>
+          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Our Story</h2>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90 md:text-base">
+            <p>
+              Happy Bowl Co started right here in Miami, Florida — born from something simple: a
+              love for our pets and a belief that they deserve better.
+            </p>
+            <p>
+              We're Michael and Elaine, and like a lot of pet parents, we got tired of sifting
+              through shelves of products packed with fillers, artificial junk, and empty promises.
+              We wanted something different — for our own dogs and cats, and for yours.
+            </p>
+            <p>
+              So we built Happy Bowl Co around one idea: wellness shouldn't be complicated.
+              From clean, filtered water to thoughtfully chosen treats, toys, and holistic care
+              essentials, every product we offer is picked with the same question in mind — would we
+              give this to our own pets?
+            </p>
+            <p>
+              We're a small business, but we've got big love for the animals who make our
+              homes feel whole. Thanks for being part of our journey — and theirs.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto w-[min(100%-2rem,70rem)] py-14">
         <h2 className="font-display text-2xl font-medium tracking-tight">Shop by ritual</h2>
-        <p className="mt-1 mb-6 text-muted">Four short aisles. Treats, food, and care bottles stay off this floor.</p>
+        <p className="mt-1 mb-6 text-muted">Beds, treats, wellness, and care — plus the fountain aisle in Shop.</p>
         <div className="grid gap-4 sm:grid-cols-2">
           {COLLECTIONS.map((collection) => (
             <Link
@@ -151,7 +190,7 @@ function Home() {
       <section className="mx-auto w-[min(100%-2rem,70rem)] pb-8">
         <h2 className="font-display text-2xl font-medium tracking-tight">Also exploring</h2>
         <p className="mt-1 mb-6 text-muted">
-          Play and travel extras. Useful — not the reason the shop exists.
+          New beds, the oat bar, hemp joint 120, and a few play extras.
         </p>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {exploring.map((product) => (

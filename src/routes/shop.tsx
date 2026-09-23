@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CATEGORIES, PRODUCTS, searchProducts, type CategoryId, type Species } from "@/lib/catalog";
+import { CATEGORIES, PRODUCTS, productsByCategory, searchProducts, type CategoryId, type Species } from "@/lib/catalog";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,7 +54,7 @@ function ShopPage() {
         <Input
           value={query}
           name="q"
-          placeholder="Search fountains, mats, filters…"
+          placeholder="Search fountains, beds, chews, shampoo…"
           aria-label="Search products"
           onChange={(event) => setQuery(event.target.value)}
         />
@@ -64,7 +64,7 @@ function ShopPage() {
         <Chip to="/shop" search={{ q: query || undefined, species }} active={!category}>
           All
         </Chip>
-        {CATEGORIES.map((item) => (
+        {CATEGORIES.filter((item) => productsByCategory(item.id).length > 0).map((item) => (
           <Chip
             key={item.id}
             to="/shop"

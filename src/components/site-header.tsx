@@ -48,24 +48,31 @@ export function SiteHeader() {
           </Link>
           <Link
             to="/shop"
-            search={{ cat: "hydration" }}
+            search={{ cat: "beds" }}
             className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
           >
-            Hydration
+            Beds
           </Link>
           <Link
             to="/shop"
-            search={{ cat: "mealtime" }}
+            search={{ cat: "treats" }}
             className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
           >
-            Mealtime
+            Treats
           </Link>
           <Link
             to="/shop"
-            search={{ cat: "play" }}
+            search={{ cat: "wellness" }}
             className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
           >
-            Play
+            Wellness
+          </Link>
+          <Link
+            to="/shop"
+            search={{ cat: "care" }}
+            className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
+          >
+            Care
           </Link>
           <Link
             to="/about"
@@ -155,27 +162,35 @@ export function SiteHeader() {
             </Link>
             <Link
               to="/shop"
-              search={{ cat: "hydration" }}
+              search={{ cat: "beds" }}
               className="rounded-lg px-3 py-3 text-base font-medium text-ink no-underline hover:bg-sand"
               onClick={() => setMenuOpen(false)}
             >
-              Hydration
+              Beds
             </Link>
             <Link
               to="/shop"
-              search={{ cat: "mealtime" }}
+              search={{ cat: "treats" }}
               className="rounded-lg px-3 py-3 text-base font-medium text-ink no-underline hover:bg-sand"
               onClick={() => setMenuOpen(false)}
             >
-              Mealtime
+              Treats
             </Link>
             <Link
               to="/shop"
-              search={{ cat: "play" }}
+              search={{ cat: "wellness" }}
               className="rounded-lg px-3 py-3 text-base font-medium text-ink no-underline hover:bg-sand"
               onClick={() => setMenuOpen(false)}
             >
-              Play
+              Wellness
+            </Link>
+            <Link
+              to="/shop"
+              search={{ cat: "care" }}
+              className="rounded-lg px-3 py-3 text-base font-medium text-ink no-underline hover:bg-sand"
+              onClick={() => setMenuOpen(false)}
+            >
+              Care
             </Link>
             <Link
               to="/about"

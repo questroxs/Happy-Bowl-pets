@@ -1,8 +1,14 @@
+import { EXTRA_PRODUCTS } from "./catalog-extra";
+
 export const CATEGORIES = [
   { id: "hydration", label: "Hydration" },
   { id: "kits", label: "Kits" },
   { id: "filters", label: "Filters" },
   { id: "mealtime", label: "Mealtime" },
+  { id: "treats", label: "Treats" },
+  { id: "wellness", label: "Wellness" },
+  { id: "care", label: "Care" },
+  { id: "beds", label: "Beds" },
   { id: "play", label: "Play" },
   { id: "accessories", label: "Accessories" },
 ] as const;
@@ -29,7 +35,7 @@ export type Product = {
   warehouseUrl: string;
 };
 
-export const PRODUCTS: Product[] = [
+const CORE_PRODUCTS: Product[] = [
   {
     slug: "hydration-starter",
     sku: "HB-KIT-01",
@@ -112,6 +118,7 @@ export const PRODUCTS: Product[] = [
     category: "hydration",
     species: "both",
     image: "/products/fountain-xl.jpg",
+    featured: true,
     capacity: "7 L",
     material: "304 stainless steel",
     related: ["quiet-stainless-2l", "hydration-starter", "cordless-elfin"],
@@ -308,6 +315,37 @@ export const PRODUCTS: Product[] = [
       "https://www.doba.com/product/eFCmVIrOaYDK/dropshipping-portable-4-in-1-pet-water-bottle-with-food-storage-poop-bag-dispenser-and-spoon-300ml-capacity-available-in-yellow-pink-green-and-other-colors.html",
   },
 ];
+
+/** Live Doba check: out of stock, removed, or ships from a warehouse that will not fulfill a US order cleanly. */
+const UNAVAILABLE = new Set([
+  "hydration-starter", // bundled the Germany filter pack, which does not match this fountain
+  "filter-8pack", // Germany warehouse; cartridges are not the round filters in the 2 L fountain
+  "orthopedic-38",
+  "dog-sofa-grey",
+  "paw-cream",
+  "fleece-nest", // China
+  "chicken-chips",
+  "calcium-bones",
+  "triple-rawhide",
+  "cat-chicken-treats",
+  "cbd-relief", // Canada — CBD crossing the border is a fulfillment problem
+  "cbd-calm",
+  "cbd-bacon",
+  "hemp-joint-120",
+  "glucosamine-120",
+  "glucosamine-tabs",
+  "hemp-oil-drops",
+  "soccer-ball",
+  "sisal-scratcher",
+  "scratch-post",
+  "cat-fish-brush", // China
+  "oral-foam",
+  "cat-tree-60", // Canada
+]);
+
+export const PRODUCTS: Product[] = [...CORE_PRODUCTS, ...EXTRA_PRODUCTS].filter(
+  (product) => !UNAVAILABLE.has(product.slug),
+);
 
 export function getProduct(slug: string) {
   return PRODUCTS.find((product) => product.slug === slug);
