@@ -1,4 +1,5 @@
 import { EXTRA_PRODUCTS } from "./catalog-extra";
+import { MORE_PRODUCTS } from "./catalog-more";
 
 export const CATEGORIES = [
   { id: "hydration", label: "Hydration" },
@@ -343,7 +344,7 @@ const UNAVAILABLE = new Set([
   "cat-tree-60", // Canada
 ]);
 
-export const PRODUCTS: Product[] = [...CORE_PRODUCTS, ...EXTRA_PRODUCTS].filter(
+export const PRODUCTS: Product[] = [...CORE_PRODUCTS, ...EXTRA_PRODUCTS, ...MORE_PRODUCTS].filter(
   (product) => !UNAVAILABLE.has(product.slug),
 );
 

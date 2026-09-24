@@ -2,32 +2,32 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
-import { exploringProducts, featuredProducts } from "@/lib/catalog";
+import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
 
 export const Route = createFileRoute("/")({ component: Home });
 
 const COLLECTIONS = [
   {
     title: "Beds",
-    copy: "Mesh cots, lounge beds, and the Travel-Nest — the beds the warehouse can ship today.",
+    copy: "Mesh cots, lounge beds, the bolster, and the orthopedic pad the warehouse can ship.",
     cat: "beds" as const,
     image: "/products/elevated-mesh.jpg",
   },
   {
     title: "Treats",
-    copy: "Calming chews the US warehouse still has in stock. Nothing discontinued.",
+    copy: "Calming chews still in stock, plus the 25-count pig-ear bag.",
     cat: "treats" as const,
     image: "/products/calming-chews.jpg",
   },
   {
     title: "Wellness",
-    copy: "Joint oil, joint chews, and skin-and-coat chews. No medical claims.",
+    copy: "Joint oil, powders, calming drops, and the CBD2HEAL dog tincture. No medical claims.",
     cat: "wellness" as const,
     image: "/products/joint-liquid.jpg",
   },
   {
     title: "Care",
-    copy: "BeNat oat shampoo bar, the 3-pack, paw cream, and the steam brush.",
+    copy: "Shampoo, paw balm, oral foam, the green bath towel, and the steam brush.",
     cat: "care" as const,
     image: "/products/oat-shampoo.jpg",
   },
@@ -36,6 +36,16 @@ const COLLECTIONS = [
 function Home() {
   const featured = featuredProducts();
   const exploring = exploringProducts();
+  const fresh = [
+    "cordless-dual-45",
+    "cheerble-d1-4l",
+    "bone-pad-bed",
+    "pig-ears-25",
+    "cbd2heal-dogs",
+    "rolling-carrier",
+  ]
+    .map((slug) => getProduct(slug))
+    .filter((item) => item != null);
 
   return (
     <main>
@@ -49,8 +59,8 @@ function Home() {
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
         <img
-          src="/products/hero.jpg"
-          alt="An orange cat drinking from the quiet stainless fountain"
+          src="/products/hero-together.jpg"
+          alt="A golden retriever and a cream cat together with a fountain and bowls"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="hero-scrim absolute inset-0" />
@@ -121,6 +131,28 @@ function Home() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((product) => (
             <ProductCard key={product.slug} product={product} featured />
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-[min(100%-2rem,70rem)] pb-14">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-medium tracking-tight">Just added</h2>
+            <p className="mt-1 text-muted">
+              Twenty-two more warehouse items — fountains, a filter pack, beds, treats, care, toys,
+              travel, and the dog tincture. Nothing already in the shop was removed.
+            </p>
+          </div>
+          <Button asChild variant="ghost">
+            <Link to="/shop" search={{}}>
+              Full shop
+            </Link>
+          </Button>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {fresh.map((product) => (
+            <ProductCard key={product.slug} product={product} />
           ))}
         </div>
       </section>
