@@ -123,6 +123,12 @@ export function CartSheet() {
             Choose Standard or Expedited on Stripe. Tax is calculated from your US shipping address
             and shown before you pay. We receive the same order, tax, and shipping in Stripe.
           </p>
+          <p className="mt-2 text-sm text-ink">
+            Questions about this order?{" "}
+            <a href="mailto:info@happybowlpets.com" className="font-medium text-sage-dark">
+              info@happybowlpets.com
+            </a>
+          </p>
           <Button
             className="mt-4 w-full"
             disabled={items.length === 0 || checkingOut}

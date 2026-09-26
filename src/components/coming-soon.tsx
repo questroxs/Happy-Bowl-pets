@@ -26,9 +26,17 @@ export function ComingSoon() {
             <p className="text-xs font-medium tracking-widest text-muted uppercase">Miami</p>
           </div>
         </div>
-        <p className="rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold tracking-widest text-sage-dark uppercase">
-          Opening soon
-        </p>
+        <div className="flex flex-col items-end gap-2">
+          <a
+            href="mailto:info@happybowlpets.com"
+            className="text-sm font-medium text-sage-dark no-underline hover:underline"
+          >
+            info@happybowlpets.com
+          </a>
+          <p className="rounded-full border border-line bg-paper px-3 py-1.5 text-xs font-semibold tracking-widest text-sage-dark uppercase">
+            Opening soon
+          </p>
+        </div>
       </header>
 
       <section className="grid items-center gap-12 py-12 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] md:gap-16 md:py-20">

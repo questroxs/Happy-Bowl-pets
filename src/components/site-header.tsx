@@ -33,6 +33,16 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line/80 bg-sand/90 backdrop-blur-md">
+      <div className="border-b border-line/70">
+        <div className="mx-auto flex h-9 w-[min(100%-2rem,70rem)] items-center justify-end">
+          <a
+            href="mailto:info@happybowlpets.com"
+            className="text-sm font-medium text-sage-dark no-underline hover:underline"
+          >
+            info@happybowlpets.com
+          </a>
+        </div>
+      </div>
       <div className="mx-auto flex h-16 w-[min(100%-2rem,70rem)] items-center gap-3">
         <Link to="/" className="flex items-center gap-2.5 text-ink no-underline">
           <LogoMark className="size-9" />

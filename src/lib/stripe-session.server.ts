@@ -75,7 +75,7 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
       invoice_data: {
         description: `Happy Bowl Co. — ${skus}`,
         footer:
-          "A copy of this invoice is emailed to you. Happy Bowl Co. also receives the paid order, tax, and shipping in Stripe.",
+          "A copy of this invoice is emailed to you. Happy Bowl Co. also receives the paid order, tax, and shipping in Stripe. Questions: info@happybowlpets.com",
       },
     },
     payment_intent_data: {
@@ -85,7 +85,10 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
     custom_text: {
       shipping_address: {
         message:
-          "We ship inside the US. Standard is 5–8 business days; expedited is 2–3. State sales tax is calculated from this address and shown before you pay.",
+          "We ship inside the US. Standard is 5–8 business days; expedited is 2–3. State sales tax is calculated from this address and shown before you pay. Questions: info@happybowlpets.com",
+      },
+      submit: {
+        message: "Need help with this order? Email info@happybowlpets.com",
       },
     },
     metadata: { skus },
