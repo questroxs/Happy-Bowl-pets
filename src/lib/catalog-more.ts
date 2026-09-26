@@ -458,4 +458,412 @@ export const MORE_PRODUCTS: Product[] = [
     warehouseUrl:
       "https://www.doba.com/product/iJqcKoNRsPvb/dropshipping-cat-carrier-with-wheels-airline-approved-rolling-pet-carrier-with-telescopic-handle-and-shoulder-strap-dog-carrier-with-wheels-for-pets-under-25-lbs-with-1-folding-bowl-grey.html",
   },
+  {
+    slug: "wheel-puzzle",
+    sku: "HB-ML-WHL",
+    name: "Dog Puzzle Feeder",
+    tagline: "Round slow-feeder with eight covered wells. The photo is that bowl.",
+    description:
+      "A PP puzzle bowl for dogs: teal rim, yellow ring, eight orange lids, and a center well. It is not the Pet Life Roto Paw already in the shop. This photo is the warehouse bowl.",
+    details: [
+      "Dog puzzle food feeder, 8 rotating wells plus a center (Doba D0102HGW48W)",
+      "9.52 × 9.52 × 1.61 in, PP. US warehouse",
+      "Doba example: up to $30.04 per sale (61% margin)",
+    ],
+    price: 49,
+    category: "mealtime",
+    species: "dogs",
+    image: "/products/wheel-puzzle.jpg",
+    material: "PP",
+    related: ["puzzle-feeder", "slow-meal-mat", "elevated-station"],
+    warehouseUrl:
+      "https://www.doba.com/product/YQbcKqSUoPvz/dropshipping-dog-puzzle-food-feeder-slow-feeding-bowl-interactive-toy-dog-treat-dispensing-toy.html",
+  },
+  {
+    slug: "blue-bolster-bed",
+    sku: "HB-BED-BLU",
+    name: "Blue Bolster Bed",
+    tagline: "Plush bolster for dogs and cats. Washable cover. US warehouse.",
+    description:
+      "The blue plush bolster in the photo, shown with a small dog already in it. Anti-slip bottom, removable washable cover. The listing prints two size lines — both are quoted below. It is not the brown bolster or the orthopedic pad.",
+    details: [
+      "Plush bed for dogs and cats, blue, artificial fiber and linen (Doba D01027RMUTJ)",
+      "Listed sizes: 27.56 × 17.72 × 8.86 in and 24.4 × 15.8 × 7.9 in",
+      "US warehouse. Doba example: up to $22.95 per sale (47% margin)",
+    ],
+    price: 49,
+    category: "beds",
+    species: "both",
+    image: "/products/blue-bolster-bed.jpg",
+    material: "Artificial fiber, linen",
+    related: ["brown-bolster", "bone-pad-bed", "fold-cat-cave"],
+    warehouseUrl:
+      "https://www.doba.com/product/KBehCFJqAQvg/dropshipping-blue-bolster-bed.html",
+  },
+  {
+    slug: "fold-cat-cave",
+    sku: "HB-BED-CAVE",
+    name: "Foldable Cat Cave",
+    tagline: "Grey cave with a removable cushion. Cats and small dogs.",
+    description:
+      "The grey foldable cave in the photo, with the zippered cushion beside it. The warehouse title also names kittens and rabbits. Anti-slip, water-resistant bottom. This photo is that cave — including the supplier caption already printed on it.",
+    details: [
+      "Foldable cat cave, cats or small dogs (Doba D01027HZAH7)",
+      "15.70 × 15.70 × 14.10 in, about 1.99 lb, PP-cotton fill",
+      "US warehouse. Doba example: up to $47.89 per sale (53% margin)",
+    ],
+    price: 90,
+    category: "beds",
+    species: "both",
+    image: "/products/fold-cat-cave.jpg",
+    related: ["blue-bolster-bed", "rattan-chaise", "travel-nest"],
+    warehouseUrl:
+      "https://www.doba.com/product/KvFjVoTBMYbP/dropshipping-foldable-cat-cave.html",
+  },
+  {
+    slug: "remote-dual-45",
+    sku: "HB-FNT-R45",
+    name: "Remote Dual-Tank Fountain 4.5 L",
+    tagline: "Milky dual-tank fountain. The warehouse example price, not a markup.",
+    description:
+      "The milky 4.5 L dual-tank fountain in the photo, with three cats around it. The listing calls it a wireless remote-control fountain and says the design avoids a chewed power cord. The warehouse photo still shows a white cord on the floor beside this unit — you are buying the fountain in the photo, not the cordless 4.5 L already in the shop ($80).",
+    details: [
+      "4.5 L / 1.2 gal water tank, 2 L / 0.53 gal wastewater tank (Doba D01027HK9A7)",
+      "Listed size 24 × 28 × 23 cm. US warehouse. In stock",
+      "Doba example: up to $72.36 per sale (37% margin). Our $196 is that example",
+    ],
+    price: 196,
+    category: "hydration",
+    species: "both",
+    image: "/products/remote-dual-45.jpg",
+    capacity: "4.5 L",
+    related: ["cordless-dual-45", "cheerble-d1-4l", "quiet-stainless-2l"],
+    warehouseUrl:
+      "https://www.doba.com/product/YJFGVrtQBPDg/dropshipping-pet-water-fountain.html",
+  },
+  {
+    slug: "yegbong-lav-100",
+    sku: "HB-CAR-Y100",
+    name: "Lavender Shampoo & Conditioner, 100 ml",
+    tagline: "The bottle in the photo. Doba lists it as YEGBONG Pet Shampoo, 100 ml.",
+    description:
+      "YEGBONG 100 ml bottle. The warehouse title says Pet Shampoo. The bottle and box in the photo read PET SHAMPOO & CONDITIONER, lavender, 100 ml / 3.38 fl oz. External use. Keep it out of eyes. This is not the oat shampoo bar.",
+    details: [
+      "YEGBONG, 100 ml, dogs and cats (Doba D01027H497W)",
+      "About 5.12 × 1.62 × 1.62 in, 0.29 lb. A spec line says China — that is manufacture, not the ship-from",
+      "Ships from a US warehouse. Doba example: up to $6.37 per sale (64% margin)",
+    ],
+    price: 10,
+    category: "care",
+    species: "both",
+    image: "/products/yegbong-lav-100.jpg",
+    capacity: "100 ml",
+    related: ["oat-shampoo", "crystal-shampoo", "paw-balm-15"],
+    warehouseUrl:
+      "https://www.doba.com/product/GoeUVMZUQcvK/dropshipping-yegbong-pet-shampoo-100-ml.html",
+  },
+  {
+    slug: "crystal-shampoo",
+    sku: "HB-CAR-CRYS",
+    name: "Memory Lane Shampoo, 16 oz",
+    tagline: "Merci Collective crystal-infused shampoo. Dogs and cats.",
+    description:
+      "The bottle in the photo: Merci Collective Memory Lane, labeled soap-free aloe and oatmeal with cucumber and ripe melon, 16 fl oz. The box beside it holds a crystal vial. We are not repeating the box's claim that crystals restore youth. External use. Follow the label.",
+    details: [
+      "Crystal Infused Luxury Pet Shampoo, 16 fl oz, dogs and cats (Doba D0102HIJFYW)",
+      "US warehouse, in stock. The photo is this bottle and box",
+      "Doba example: up to $13.26 per sale (47% margin)",
+    ],
+    price: 28,
+    category: "care",
+    species: "both",
+    image: "/products/crystal-shampoo.jpg",
+    capacity: "16 fl oz",
+    related: ["yegbong-lav-100", "oat-shampoo", "paw-balm-15"],
+    warehouseUrl:
+      "https://www.doba.com/product/sLVMQRWfGcqu/dropshipping-crystal-infused-luxury-pet-shampoo.html",
+  },
+  {
+    slug: "pupx-glitter",
+    sku: "HB-PLY-GLIT",
+    name: "PUP-X Glitter Ball, 2 Pack",
+    tagline: "SodaPup green glitter balls. Medium. Made in the USA.",
+    description:
+      "The retail card in the photo: two green SodaPup PUP-X balls, marked medium, floats, fits ball launchers, made in the USA. The warehouse title also says treat dispenser. Gentle to moderate chewers — not the nylon bone for aggressive chewers.",
+    details: [
+      "SodaPup PUP-X green glitter ball, 2 pack (Doba D01027E5712)",
+      "US warehouse. Doba example: up to $3.41 per sale (26% margin)",
+      "Different from the glow-in-the-dark 2-pack",
+    ],
+    price: 13,
+    category: "play",
+    species: "dogs",
+    image: "/products/pupx-glitter.jpg",
+    related: ["pupx-glow-2", "pupx-glow-4", "ball-launcher"],
+    warehouseUrl:
+      "https://www.doba.com/product/TZQWCUcGieDa/dropshipping-green-glitter-ball-2-pack-dog-toy-soft-pup-x-rubber-floating-fetch-ball-with-treat-dispenser-usa-made.html",
+  },
+  {
+    slug: "herbal-harmony",
+    sku: "HB-WEL-HH30",
+    name: "Herbal Harmony Drops, 30 ml",
+    tagline: "Welsdom 30 ml bacon drops for dogs and cats. Not CBD.",
+    description:
+      "Welsdom Herbal Harmony Advanced Suspension, 30 ml, bacon flavour, labeled for dogs and cats. The warehouse title is a generic herbal-calming-drops line; the bottle in the photo reads Herbal Harmony. This is not CBD and it is not the 60 ml calming drops. The label makes stress and immune claims — those are the label's words, not ours.",
+    details: [
+      "Welsdom Herbal Harmony Advanced Suspension, 30 ml (Doba D0102XFBEP2)",
+      "Ships from a US warehouse. Doba example: up to $20.11 per sale (78% margin)",
+      LABEL,
+    ],
+    price: 26,
+    category: "wellness",
+    species: "both",
+    image: "/products/herbal-harmony.jpg",
+    capacity: "30 ml",
+    related: ["immune-suspension", "calm-drops-60", "detox-powder"],
+    warehouseUrl:
+      "https://www.doba.com/product/hsKZDtPiHebk/dropshipping-herbal-calming-drops-for-dogs-and-cats-natural-anxiety-and-stress-relief-pet-relaxation-aid-travel-and-home-use.html",
+  },
+  {
+    slug: "pupx-glow-4",
+    sku: "HB-PLY-GLOW4",
+    name: "PUP-X Glow Ball, 4 in",
+    tagline: "Glow-in-the-dark treat ball. The pale ball in the photo.",
+    description:
+      "The pale SodaPup PUP-X ball in the photo, with a star-shaped opening. The warehouse lists it as a 4 inch glow-in-the-dark treat dispenser that floats, made in the USA, for medium and large dogs. Not the 2-pack on a card.",
+    details: [
+      "PUP-X glow treat ball, 4 in (Doba D01027R8SQJ)",
+      "US warehouse, in stock. Doba example: up to $4.46 per sale (26% margin)",
+      "Different from the glow 2-pack and the green glitter 2-pack",
+    ],
+    price: 17,
+    category: "play",
+    species: "dogs",
+    image: "/products/pupx-glow-4.jpg",
+    related: ["pupx-glow-2", "pupx-glitter", "ball-launcher"],
+    warehouseUrl:
+      "https://www.doba.com/product/eUFkQjJUCKvo/dropshipping-pup-x-glow.html",
+  },
+  {
+    slug: "usa-k9-magnum",
+    sku: "HB-PLY-K9",
+    name: "USA-K9 Magnum Black Ball",
+    tagline: "The black ball in the photo. The title and the color do not match.",
+    description:
+      "The photo is a black USA-K9 Magnum rubber ball. The warehouse title says Stars and Stripes, red. The color line and this photo say Magnum Black, about 3 inches, for dogs around 30–65 lb, with a treat cavity, made in the USA. You are buying the black ball in the photo.",
+    details: [
+      "USA-K9 Magnum, listed large, 3 in diameter (Doba D01027PE3F6)",
+      "US warehouse, in stock. Doba example: up to $4.20 per sale (26% margin)",
+      "Not the pink skull chew",
+    ],
+    price: 16,
+    category: "play",
+    species: "dogs",
+    image: "/products/usa-k9-magnum.jpg",
+    related: ["skull-chew", "tough-bone", "dura-chew"],
+    warehouseUrl:
+      "https://www.doba.com/product/EDFYKbuEMeVw/dropshipping-usa-k9.html",
+  },
+  {
+    slug: "rattan-chaise",
+    sku: "HB-BED-CHA",
+    name: "Rattan Pet Chaise",
+    tagline: "Black chaise. The warehouse example price, not a markup.",
+    description:
+      "The black chaise in the photo, with a pug on the same sofa. Eucalyptus, flannel, and foam. Overall 29.9 × 17.7 × 16.9 in. The listing's weight capacity is 33 lb — cats and small dogs, not a large dog. Our price is Doba's published example. The supplier note says Amazon shipping and prohibited on Walmart; that is their channel note, not a limit on this shop.",
+    details: [
+      "Rattan pet sofa, black (Doba D01027RMCST)",
+      "29.9 × 17.7 × 16.9 in, weight capacity 33 lb",
+      "US warehouse, in stock. Doba example: up to $137.59 per sale (47% margin). Our $293 is that example",
+    ],
+    price: 293,
+    category: "beds",
+    species: "both",
+    image: "/products/rattan-chaise.jpg",
+    material: "Eucalyptus, flannel, foam",
+    related: ["fold-cat-cave", "blue-bolster-bed", "lounge-cot-beige"],
+    warehouseUrl:
+      "https://www.doba.com/product/DKewFdoWLCbt/dropshipping-rattan-chaise.html",
+  },
+  {
+    slug: "immune-suspension",
+    sku: "HB-WEL-IM60",
+    name: "Immune Suspension, 60 ml",
+    tagline: "Welsdom 60 ml bacon drops for dogs and cats. Not CBD.",
+    description:
+      "Welsdom Immune Suspension, 60 ml, bacon flavour, labeled for dogs and cats, with a measuring cup in the photo. It is not CBD and it is not the 30 ml Herbal Harmony bottle. The box makes relaxation and immune claims and calls itself a veterinary health product — follow the package. We are not repeating those claims.",
+    details: [
+      "Welsdom Immune Suspension, 60 ml (Doba D0102XF1TPP)",
+      "US warehouse. Doba example: up to $14.65 per sale (55% margin)",
+      LABEL,
+    ],
+    price: 27,
+    category: "wellness",
+    species: "both",
+    image: "/products/immune-suspension.jpg",
+    capacity: "60 ml",
+    related: ["herbal-harmony", "detox-powder", "calm-drops-60"],
+    warehouseUrl:
+      "https://www.doba.com/product/dSeyVEccmQDK/dropshipping-immune-suspension-for-dogs-and-cats-natural-immune-support-liquid-boost-pet-health-and-wellness.html",
+  },
+  {
+    slug: "moo-born",
+    sku: "HB-PLY-MOOB",
+    name: "Moo-Born Plush",
+    tagline: "Pet Life cow with a yellow teether ring. Not the Moo-Cifier.",
+    description:
+      "The pale yellow Pet Life cow in the photo, with a blue nose and a yellow teether ring. It is a different toy from the Moo-Cifier already in the shop. The listing prints two size lines.",
+    details: [
+      "Pet Life Moo-Born plush (Doba D0102HAXIQV)",
+      "Listed sizes include 4 × 3 × 1.5 in and 8.66 × 5.12 × 1.4 in",
+      "US warehouse. Doba example: up to $4.88 per sale (29% margin)",
+    ],
+    price: 17,
+    category: "play",
+    species: "both",
+    image: "/products/moo-born.jpg",
+    related: ["moo-cifier", "totty-chew", "giraffe-cow"],
+    warehouseUrl:
+      "https://www.doba.com/product/WLqUKgvAdcbS/dropshipping-pet-life-moo-born.html",
+  },
+  {
+    slug: "totty-chew",
+    sku: "HB-PLY-TOT",
+    name: "Totty-Chew Bear",
+    tagline: "Pink Pet Life bear with an orange rubber middle.",
+    description:
+      "The pink Pet Life bear in the photo: plush head and feet, orange rubber midsection. The listing also names blue — this order is the pink toy in the photo. Dogs and cats.",
+    details: [
+      "Pet Life Totty-Chew (Doba D0102HAXILG)",
+      "US warehouse. Doba example: up to $4.88 per sale (29% margin)",
+      "Plush plus rubber. Supervise chewing",
+    ],
+    price: 17,
+    category: "play",
+    species: "both",
+    image: "/products/totty-chew.jpg",
+    related: ["moo-born", "moo-cifier", "bone-teether"],
+    warehouseUrl:
+      "https://www.doba.com/product/BDbYFTDTvJqV/dropshipping-pet-life-totty-chew.html",
+  },
+  {
+    slug: "bone-teether",
+    sku: "HB-PLY-BONE",
+    name: "Bone Teether",
+    tagline: "Red and blue Pet Life bone. Floats.",
+    description:
+      "The red and blue Pet Life bone in the photo. The warehouse lists it as a floating chew and fetch teether.",
+    details: [
+      "Pet Life bone teether (Doba D0102H7L4CU)",
+      "7.87 × 2.9 × 2.36 in. US warehouse",
+      "Doba example: up to $4.88 per sale (29% margin)",
+    ],
+    price: 17,
+    category: "play",
+    species: "dogs",
+    image: "/products/bone-teether.jpg",
+    related: ["dumbbell-float", "tough-bone", "totty-chew"],
+    warehouseUrl:
+      "https://www.doba.com/product/ZQqjDGESzPbN/dropshipping-pet-life-bone-shaped-durable-chew-and-fetch-teether-dog-toy.html",
+  },
+  {
+    slug: "bubble-vogue",
+    sku: "HB-TRV-BUB",
+    name: "Bubble Vogue Carrier",
+    tagline: "Quilted Pet Life carrier. The beige one in the photo.",
+    description:
+      "Pet Life Bubble Vogue, the beige quilted carrier in the photo. The listing also names pink, grey, gold, and black — this order is the carrier in the photo. A current spec line reads 16 × 12 × 4 in.",
+    details: [
+      "Pet Life Bubble Vogue carrier (Doba D0102HAXAPA)",
+      "US warehouse, in stock. Dogs and cats",
+      "Doba example: up to $17.51 per sale (23% margin)",
+    ],
+    price: 76,
+    category: "accessories",
+    species: "both",
+    image: "/products/bubble-vogue.jpg",
+    related: ["mesh-sling", "rolling-carrier", "open-road-seat"],
+    warehouseUrl:
+      "https://www.doba.com/product/gMqmQrVQfcbD/dropshipping-bubble-vogue.html",
+  },
+  {
+    slug: "mesh-sling",
+    sku: "HB-TRV-SLING",
+    name: "Mesh Shoulder Sling",
+    tagline: "Red and black sling for a small dog or cat.",
+    description:
+      "The red and black mesh shoulder sling in the photo, puppy beside it. The warehouse artwork on that photo repeats a drawstring badge — we left the picture as the warehouse shipped it. For small dogs and cats. Ships from the United States.",
+    details: [
+      "Hands-free pet sling, adjustable strap (Doba D0102H2LQZW)",
+      "US warehouse, in stock. Doba example: up to $15.47 per sale (47% margin)",
+      "The photo is red and black mesh",
+    ],
+    price: 33,
+    category: "accessories",
+    species: "both",
+    image: "/products/mesh-sling.jpg",
+    related: ["bubble-vogue", "rolling-carrier", "open-road-seat"],
+    warehouseUrl:
+      "https://www.doba.com/product/QAVDecsqGPvl/dropshipping-mesh-sling.html",
+  },
+  {
+    slug: "tough-bone",
+    sku: "HB-PLY-TBN",
+    name: "Nylon Chew Bone",
+    tagline: "Speckled SodaPup nylon bone for aggressive chewers.",
+    description:
+      "The speckled nylon bone in the photo. SodaPup lists it for aggressive chewers and made in the USA. It is not the soft PUP-X fetch balls.",
+    details: [
+      "SodaPup nylon chew bone (Doba D01027RWE2P)",
+      "US warehouse, in stock. Doba example: up to $2.88 per sale (26% margin)",
+      "Aggressive chewers. Still supervise",
+    ],
+    price: 11,
+    category: "play",
+    species: "dogs",
+    image: "/products/tough-bone.jpg",
+    related: ["usa-k9-magnum", "skull-chew", "bone-teether"],
+    warehouseUrl:
+      "https://www.doba.com/product/oSeaKQPtbFqn/dropshipping-sodapup-nylon-bone.html",
+  },
+  {
+    slug: "pupx-glow-2",
+    sku: "HB-PLY-GLOW2",
+    name: "PUP-X Glow Ball, 2 Pack",
+    tagline: "Two pale green glow balls. Medium. Not the glitter pack.",
+    description:
+      "The card in the photo: two pale green SodaPup PUP-X balls marked GLOWS, medium, floats, fits ball launchers, made in the USA. A different card from the green glitter 2-pack.",
+    details: [
+      "PUP-X glow-in-the-dark fetch ball, 2 pack (Doba D01027RUUP2)",
+      "US warehouse. Doba example: up to $3.41 per sale (26% margin)",
+      "Card says medium",
+    ],
+    price: 13,
+    category: "play",
+    species: "dogs",
+    image: "/products/pupx-glow-2.jpg",
+    related: ["pupx-glitter", "pupx-glow-4", "ball-launcher"],
+    warehouseUrl:
+      "https://www.doba.com/product/pLQsFgcFweqt/dropshipping-pup-x-glow-2-pack.html",
+  },
+  {
+    slug: "skull-chew",
+    sku: "HB-PLY-SKULL",
+    name: "Skull Chew with Rope",
+    tagline: "Pink skull and a red-and-white rope. The toy in the photo.",
+    description:
+      "The pink skull in the photo, with a red-and-white rope. The warehouse lists it large, about 8.25 oz, for dogs around 30–65 lb, made in the USA.",
+    details: [
+      "USA-K9 / SodaPup skull chew with rope (Doba D01027E57QJ)",
+      "US warehouse, in stock. Doba example: up to $4.46 per sale (26% margin)",
+      "Not the black Magnum ball",
+    ],
+    price: 17,
+    category: "play",
+    species: "dogs",
+    image: "/products/skull-chew.jpg",
+    related: ["usa-k9-magnum", "tough-bone", "dura-chew"],
+    warehouseUrl:
+      "https://www.doba.com/product/aJeQKwPRhFbu/dropshipping-usa-k9-skull.html",
+  },
 ];

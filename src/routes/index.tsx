@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({ component: Home });
 const COLLECTIONS = [
   {
     title: "Beds",
-    copy: "Mesh cots, lounge beds, the bolster, and the orthopedic pad the warehouse can ship.",
+    copy: "Mesh cots, bolsters, the cat cave, the rattan chaise, and the orthopedic pad.",
     cat: "beds" as const,
     image: "/products/elevated-mesh.jpg",
   },
@@ -21,13 +21,13 @@ const COLLECTIONS = [
   },
   {
     title: "Wellness",
-    copy: "Joint oil, powders, calming drops, and the CBD2HEAL dog tincture. No medical claims.",
+    copy: "Joint oil, powders, calming drops, herbal drops, and the CBD2HEAL dog tincture. No medical claims.",
     cat: "wellness" as const,
     image: "/products/joint-liquid.jpg",
   },
   {
     title: "Care",
-    copy: "Shampoo, paw balm, oral foam, the green bath towel, and the steam brush.",
+    copy: "Shampoo, the lavender bottle, paw balm, oral foam, and the steam brush.",
     cat: "care" as const,
     image: "/products/oat-shampoo.jpg",
   },
@@ -37,12 +37,12 @@ function Home() {
   const featured = featuredProducts();
   const exploring = exploringProducts();
   const fresh = [
-    "cordless-dual-45",
-    "cheerble-d1-4l",
-    "bone-pad-bed",
-    "pig-ears-25",
-    "cbd2heal-dogs",
-    "rolling-carrier",
+    "remote-dual-45",
+    "fold-cat-cave",
+    "blue-bolster-bed",
+    "herbal-harmony",
+    "crystal-shampoo",
+    "bubble-vogue",
   ]
     .map((slug) => getProduct(slug))
     .filter((item) => item != null);
@@ -140,8 +140,8 @@ function Home() {
           <div>
             <h2 className="font-display text-2xl font-medium tracking-tight">Just added</h2>
             <p className="mt-1 text-muted">
-              Twenty-two more warehouse items — fountains, a filter pack, beds, treats, care, toys,
-              travel, and the dog tincture. Nothing already in the shop was removed.
+              Another warehouse wave on top of the last one — a remote dual fountain, beds, shampoo,
+              herbal drops, toys, and travel. Nothing already in the shop was removed.
             </p>
           </div>
           <Button asChild variant="ghost">
