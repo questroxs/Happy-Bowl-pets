@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { notifyPaidOrder } from "@/lib/notify-paid-order";
 import { useShopifyStore } from "@/lib/shopify-store";
 
 export const Route = createFileRoute("/order-confirmed")({
@@ -15,7 +16,9 @@ function OrderConfirmedPage() {
   const clearCart = useShopifyStore((state) => state.clearCart);
 
   useEffect(() => {
-    if (sessionId) clearCart();
+    if (!sessionId) return;
+    clearCart();
+    void notifyPaidOrder({ data: { sessionId } }).catch(() => undefined);
   }, [sessionId, clearCart]);
 
   const reference = sessionId ? sessionId.slice(-8).toUpperCase() : null;
