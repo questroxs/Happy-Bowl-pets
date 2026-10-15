@@ -168,15 +168,12 @@ function Home() {
         </div>
       </section>
 
-      <section className="relative isolate pb-4">
-        <div className="relative aspect-[16/9] w-full overflow-hidden">
-          <img
-            src="/products/our-story-pets.jpg"
-            alt="Our two dogs together — a dachshund at home and a small companion in the grass"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-sand to-transparent md:h-24" />
-        </div>
+      <section className="relative isolate pb-14">
+        <img
+          src="/products/our-story.jpg"
+          alt="A cream Shih Tzu and a dachshund sitting together in the living room"
+          className="h-auto w-full"
+        />
         <div className="relative mx-auto -mt-4 w-[min(100%-2rem,40rem)] rounded-xl bg-paper px-6 py-8 shadow-[var(--shadow-card)] md:-mt-10 md:px-9 md:py-10">
           <p className="text-sm font-semibold tracking-widest text-terra uppercase">Miami, Florida</p>
           <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Our Story</h2>
@@ -202,6 +199,15 @@ function Home() {
             </p>
           </div>
         </div>
+        <video
+          src="/products/our-story.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="mx-auto mt-8 w-[min(100%-2rem,40rem)] rounded-xl"
+          aria-label="A cream Shih Tzu and a dachshund on the sofa"
+        />
       </section>
 
       <section className="mx-auto w-[min(100%-2rem,70rem)] py-14">
