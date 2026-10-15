@@ -7,10 +7,27 @@ import { Label } from "@/components/ui/label";
 import { PRODUCTS } from "@/lib/catalog";
 import { shopifyImportCsv } from "@/lib/shopify";
 import { isShopifyLive, useShopifyStore } from "@/lib/shopify-store";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export const Route = createFileRoute("/shopify")({ component: ShopifyPage });
 
 function ShopifyPage() {
+  const supplierNotes = useSupplierNotes();
+  if (!supplierNotes) {
+    return (
+      <main className="mx-auto w-[min(100%-2rem,42rem)] py-16">
+        <h1 className="font-display text-4xl font-medium tracking-tight">Checkout is in the cart</h1>
+        <p className="mt-3 text-muted">This setup page is not part of the shop.</p>
+        <Link to="/shop" search={{}} className="mt-6 inline-block font-medium text-sage-dark">
+          Browse the shop
+        </Link>
+      </main>
+    );
+  }
+  return <ShopifySetup />;
+}
+
+function ShopifySetup() {
   const status = useShopifyStore((state) => state.status);
   const shopName = useShopifyStore((state) => state.shopName);
   const config = useShopifyStore((state) => state.config);

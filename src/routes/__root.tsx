@@ -7,8 +7,8 @@ import { WaitlistSheet } from "@/components/waitlist-sheet";
 import { NotifyDialog } from "@/components/notify-dialog";
 import { CartSheet } from "@/components/cart-sheet";
 import { ShopifyBridge } from "@/components/shopify-bridge";
-import { ComingSoon } from "@/components/coming-soon";
-import { isComingSoonHost } from "@/lib/public-host";
+import { isSupplierHost } from "@/lib/public-host";
+import { SupplierNotesProvider } from "@/lib/supplier-notes";
 import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 
@@ -28,20 +28,18 @@ async function requestHost(): Promise<string> {
 }
 
 export const Route = createRootRoute({
-  loader: async () => ({ comingSoon: isComingSoonHost(await requestHost()) }),
-  head: ({ loaderData }) => ({
+  loader: async () => ({ supplierNotes: isSupplierHost(await requestHost()) }),
+  head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: loaderData?.comingSoon ? "Opening soon — Happy Bowl Co." : APP_NAME },
+      { title: APP_NAME },
       {
         name: "description",
-        content: loaderData?.comingSoon
-          ? "Happy Bowl Co. is opening soon. Quiet stainless fountains, calmer mealtimes, and everyday care for dogs and cats."
-          : "Happy Bowl Co. — quiet stainless fountains, calmer mealtimes, and thoughtful extras for dogs and cats.",
+        content:
+          "Happy Bowl Co. — quiet stainless fountains, calmer mealtimes, and thoughtful extras for dogs and cats.",
       },
       { name: "theme-color", content: "#f4efe6" },
-      ...(loaderData?.comingSoon ? [{ name: "robots", content: "noindex" }] : []),
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -54,7 +52,7 @@ export const Route = createRootRoute({
 });
 
 function RootLayout() {
-  const { comingSoon } = Route.useLoaderData();
+  const { supplierNotes } = Route.useLoaderData();
 
   return (
     <html lang="en" className="antialiased" suppressHydrationWarning>
@@ -63,9 +61,7 @@ function RootLayout() {
       </head>
       <body className="min-h-screen bg-sand text-ink">
         <PreviewHostBridge />
-        {comingSoon ? (
-          <ComingSoon />
-        ) : (
+        <SupplierNotesProvider value={supplierNotes}>
           <AuthProvider>
             <SiteHeader />
             <Outlet />
@@ -81,7 +77,7 @@ function RootLayout() {
               }}
             />
           </AuthProvider>
-        )}
+        </SupplierNotesProvider>
         <Scripts />
       </body>
     </html>

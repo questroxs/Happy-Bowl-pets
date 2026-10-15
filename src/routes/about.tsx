@@ -1,17 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export const Route = createFileRoute("/about")({ component: AboutPage });
 
 function AboutPage() {
+  const supplierNotes = useSupplierNotes();
+
   return (
     <main className="mx-auto w-[min(100%-2rem,42rem)] py-12">
       <p className="text-sm font-semibold tracking-widest text-terra uppercase">The house</p>
       <h1 className="mt-2 font-display text-4xl font-medium tracking-tight">A quieter bowl.</h1>
       <p className="mt-4 text-lg text-muted">
-        Happy Bowl Co. is a wellness shop for dogs and cats. We still start with water that
-        actually gets drunk — then beds, treats, toys, and shampoo from the same
-        US warehouse, using that warehouse’s own photo so the listing matches the box.
+        {supplierNotes
+          ? "Happy Bowl Co. is a wellness shop for dogs and cats. We still start with water that actually gets drunk — then beds, treats, toys, and shampoo from the same US warehouse, using that warehouse’s own photo so the listing matches the box."
+          : "Happy Bowl Co. is a wellness shop for dogs and cats. We start with water that actually gets drunk — then beds, treats, toys, and shampoo, using the product photo so the listing matches the box."}
       </p>
 
       <img
@@ -28,9 +31,9 @@ function AboutPage() {
           water doesn’t stop at the door.
         </p>
         <p>
-          If a listing is out of stock, ships from overseas, or the photo isn’t the warehouse
-          item, it does not go on the floor. Joint chews and drops follow the label on the
-          bottle — not a vet visit. Prices already include our margin over warehouse cost.
+          {supplierNotes
+            ? "If a listing is out of stock, ships from overseas, or the photo isn’t the warehouse item, it does not go on the floor. Joint chews and drops follow the label on the bottle — not a vet visit. Prices already include our margin over warehouse cost."
+            : "If a piece is out of stock or the photo isn’t the item we ship, it does not go on the floor. Joint chews and drops follow the label on the bottle — not a vet visit."}
         </p>
       </section>
 
@@ -49,7 +52,11 @@ function AboutPage() {
         <ul className="space-y-2 text-base">
           <li>Dogs and cats only.</li>
           <li>Quiet stainless is still the fountain path.</li>
-          <li>Joint chews and drops are warehouse listings — not a vet substitute.</li>
+          <li>
+            {supplierNotes
+              ? "Joint chews and drops are warehouse listings — not a vet substitute."
+              : "Joint chews and drops follow the label — not a vet substitute."}
+          </li>
           <li>Dispensers and chews are enrichment. Supervise them.</li>
         </ul>
       </section>

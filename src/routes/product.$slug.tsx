@@ -4,8 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { getProduct, relatedProducts, speciesLabel } from "@/lib/catalog";
+import { presentProduct } from "@/lib/customer-copy";
 import { useShopifyStore } from "@/lib/shopify-store";
 import { useShopStore } from "@/lib/store";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatPrice } from "@/lib/utils";
 
 export const Route = createFileRoute("/product/$slug")({
@@ -14,7 +16,9 @@ export const Route = createFileRoute("/product/$slug")({
 
 function ProductPage() {
   const { slug } = Route.useParams();
-  const product = getProduct(slug);
+  const supplierNotes = useSupplierNotes();
+  const raw = getProduct(slug);
+  const product = raw ? presentProduct(raw, supplierNotes) : undefined;
   const savedSlugs = useShopStore((s) => s.saved);
   const toggleSaved = useShopStore((s) => s.toggleSaved);
   const addToCart = useShopifyStore((s) => s.addToCart);
@@ -59,7 +63,7 @@ function ProductPage() {
         <div>
           <div className="flex flex-wrap gap-2">
             <Badge>{speciesLabel(product.species)}</Badge>
-            <Badge tone="sage">Warehouse photo</Badge>
+            {supplierNotes ? <Badge tone="sage">Warehouse photo</Badge> : null}
           </div>
           <h1 className="mt-3 font-display text-4xl leading-tight font-medium tracking-tight">
             {product.name}
@@ -72,24 +76,27 @@ function ProductPage() {
           </p>
           <p className="mt-5 text-base">{product.description}</p>
           <p className="mt-3 rounded-lg bg-sage-soft px-3 py-2 text-sm text-ink">
-            The photo is the warehouse item. What you see is what we send.
+            {supplierNotes
+              ? "The photo is the warehouse item. What you see is what we send."
+              : "The photo is the item we ship."}
           </p>
-          {product.category === "wellness" ||
-          /cbd|hemp|calming/.test(product.slug) ? (
+          {product.category === "wellness" || /cbd|hemp|calming/.test(product.slug) ? (
             <p className="mt-3 rounded-lg bg-sand px-3 py-2 text-sm text-muted">
               Not a substitute for veterinary care. These statements have not been evaluated by the
               FDA.
             </p>
           ) : null}
-          <a
-            href={product.warehouseUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-sage-dark"
-          >
-            Warehouse listing
-            <ExternalLink className="size-3.5" />
-          </a>
+          {supplierNotes && product.warehouseUrl ? (
+            <a
+              href={product.warehouseUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-sage-dark"
+            >
+              Warehouse listing
+              <ExternalLink className="size-3.5" />
+            </a>
+          ) : null}
           <ul className="mt-5 space-y-2 text-sm text-ink">
             {product.details.map((detail) => (
               <li key={detail} className="flex gap-2">

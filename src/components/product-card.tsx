@@ -3,7 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/lib/catalog";
 import { speciesLabel } from "@/lib/catalog";
+import { presentProduct } from "@/lib/customer-copy";
 import { useShopifyStore } from "@/lib/shopify-store";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatPrice } from "@/lib/utils";
 
 export function ProductCard({
@@ -14,6 +16,7 @@ export function ProductCard({
   featured?: boolean;
 }) {
   const addToCart = useShopifyStore((state) => state.addToCart);
+  const shown = presentProduct(product, useSupplierNotes());
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-xl bg-card shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5">
@@ -25,7 +28,7 @@ export function ProductCard({
         <div className="flex aspect-4/3 items-center justify-center overflow-hidden bg-cream">
           <img
             src={product.image}
-            alt={product.name}
+            alt={shown.name}
             className="product-photo h-full w-full object-contain p-2 transition-transform duration-300 ease-out group-hover:scale-[1.02]"
             width={640}
             height={480}
@@ -36,9 +39,9 @@ export function ProductCard({
             {featured ? "Featured" : speciesLabel(product.species)}
           </Badge>
           <h3 className="font-display text-lg leading-snug font-medium tracking-tight">
-            {product.name}
+            {shown.name}
           </h3>
-          <p className="text-sm text-muted">{product.tagline}</p>
+          <p className="text-sm text-muted">{shown.tagline}</p>
           <div className="mt-auto flex items-end justify-between pt-3">
             <p className="font-medium text-sage-dark">{formatPrice(product.price)}</p>
             <span className="text-sm font-medium text-sage-dark">View details</span>

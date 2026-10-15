@@ -2,11 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { flagLabel, pricingRows, type PriceFlag } from "@/lib/doba-pricing";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatMoney, formatPrice } from "@/lib/utils";
 
 export const Route = createFileRoute("/compare")({ component: ComparePage });
 
 function ComparePage() {
+  const supplierNotes = useSupplierNotes();
+  if (!supplierNotes) {
+    return (
+      <main className="mx-auto w-[min(100%-2rem,42rem)] py-16">
+        <h1 className="font-display text-4xl font-medium tracking-tight">Shop the catalog</h1>
+        <p className="mt-3 text-muted">
+          Prices are on each product. Checkout is on Stripe, and US shipping is calculated before you pay.
+        </p>
+        <Link to="/shop" search={{}} className="mt-6 inline-block font-medium text-sage-dark">
+          Browse the shop
+        </Link>
+      </main>
+    );
+  }
+  return <SupplierCompare />;
+}
+
+function SupplierCompare() {
   const rows = pricingRows();
   const known = rows.filter((row) => row.dobaCost != null);
   const thin = known.filter((row) => row.flag === "thin" || row.flag === "at-cost");

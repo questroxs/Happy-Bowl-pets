@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export type ShopSearch = {
   cat?: string;
@@ -37,6 +38,7 @@ function ShopPage() {
   }, [q]);
 
   const results = searchProducts(query, category, speciesFilter);
+  const supplierNotes = useSupplierNotes();
   const title = category
     ? (CATEGORIES.find((item) => item.id === category)?.label ?? "Shop")
     : "Catalog";
@@ -46,8 +48,9 @@ function ShopPage() {
       <p className="text-sm font-semibold tracking-widest text-terra uppercase">Shop</p>
       <h1 className="mt-1 font-display text-4xl font-medium tracking-tight">{title}</h1>
       <p className="mt-2 max-w-xl text-muted">
-        {PRODUCTS.length} warehouse-matched pieces. The photo is the item we ship. Pay on Stripe —
-        US shipping and state tax are calculated from your address before you pay.
+        {supplierNotes
+          ? `${PRODUCTS.length} warehouse-matched pieces. The photo is the item we ship. Pay on Stripe — US shipping and state tax are calculated from your address before you pay.`
+          : `${PRODUCTS.length} pieces for dogs and cats. The photo is the item we ship. Pay on Stripe — US shipping and state tax are calculated from your address before you pay.`}
       </p>
 
       <div className="mt-6 max-w-md">

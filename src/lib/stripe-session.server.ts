@@ -1,5 +1,6 @@
 import { getRequest } from "@tanstack/react-start/server";
 import { getProduct } from "./catalog";
+import { customerCopy } from "./customer-copy";
 import type { CheckoutLine } from "./checkout";
 import { env } from "./env.server";
 import { dollarsToCents, shippingOptions } from "./shipping";
@@ -113,7 +114,7 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
         tax_behavior: "exclusive",
         product_data: {
           name: item.product.name,
-          description: `${item.product.sku} — ${item.product.tagline}`,
+          description: `${item.product.sku} — ${customerCopy(item.product.tagline)}`,
           images: [`${origin}${item.product.image}`],
           metadata: { sku: item.product.sku, slug: item.product.slug },
         },

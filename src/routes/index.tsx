@@ -3,6 +3,7 @@ import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -36,6 +37,7 @@ const COLLECTIONS = [
 function Home() {
   const featured = featuredProducts();
   const exploring = exploringProducts();
+  const supplierNotes = useSupplierNotes();
   const fresh = [
     "remote-dual-45",
     "fold-cat-cave",
@@ -51,10 +53,15 @@ function Home() {
     <main>
       <p className="border-b border-sage/40 bg-cream px-4 py-3 text-center text-sm text-ink">
         Checkout is open. US shipping from $6.95 (free at $75). State tax is calculated on Stripe
-        from your address — you and we both get the receipt.{" "}
-        <Link to="/compare" className="font-medium text-sage-dark">
-          Warehouse vs our prices
-        </Link>
+        from your address — you and we both get the receipt.
+        {supplierNotes ? (
+          <>
+            {" "}
+            <Link to="/compare" className="font-medium text-sage-dark">
+              Warehouse vs our prices
+            </Link>
+          </>
+        ) : null}
       </p>
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
@@ -72,7 +79,10 @@ function Home() {
             Fresher water. Calmer days.
           </h1>
           <p className="mt-3 max-w-lg text-base text-paper/90">
-            Quiet stainless fountains, raised beds, treats, toys, and everyday care. The photo is the warehouse item — the one that is actually in stock.
+            Quiet stainless fountains, raised beds, treats, toys, and everyday care.{" "}
+            {supplierNotes
+              ? "The photo is the warehouse item — the one that is actually in stock."
+              : "The photo is the item we ship."}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -109,8 +119,9 @@ function Home() {
             <PawPrint className="size-5 text-sage-dark" />
             <h2 className="mt-3 font-display text-xl font-medium">Dogs and cats only</h2>
             <p className="mt-1 text-sm text-muted">
-              Treats, shampoo, and beds chosen the same way as the fountain: the warehouse
-              item, photographed as it ships, priced with our margin in.
+              {supplierNotes
+                ? "Treats, shampoo, and beds chosen the same way as the fountain: the warehouse item, photographed as it ships, priced with our margin in."
+                : "Treats, shampoo, and beds chosen the same way as the fountain: photographed as they ship."}
             </p>
           </div>
         </div>
@@ -140,8 +151,9 @@ function Home() {
           <div>
             <h2 className="font-display text-2xl font-medium tracking-tight">Just added</h2>
             <p className="mt-1 text-muted">
-              Another warehouse wave on top of the last one — a remote dual fountain, beds, shampoo,
-              herbal drops, toys, and travel. Nothing already in the shop was removed.
+              {supplierNotes
+                ? "Another warehouse wave on top of the last one — a remote dual fountain, beds, shampoo, herbal drops, toys, and travel. Nothing already in the shop was removed."
+                : "A remote dual fountain, beds, shampoo, herbal drops, toys, and travel."}
             </p>
           </div>
           <Button asChild variant="ghost">

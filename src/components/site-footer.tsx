@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { LogoMark } from "@/components/logo";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export function SiteFooter() {
+  const supplierNotes = useSupplierNotes();
   return (
     <footer className="mt-16 border-t border-line bg-cream">
       <div className="mx-auto grid w-[min(100%-2rem,70rem)] gap-8 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
@@ -11,8 +13,9 @@ export function SiteFooter() {
             <p className="font-display text-lg font-medium">Happy Bowl Co.</p>
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted">
-            Wellness shop for dogs and cats. Fountains, beds, treats, toys, and care — warehouse
-            pieces, photographed on cream. Pay on Stripe.
+            Wellness shop for dogs and cats. Fountains, beds, treats, toys, and care
+            {supplierNotes ? " — warehouse pieces, photographed on cream." : ", photographed as they ship."} Pay
+            on Stripe.
           </p>
         </div>
         <div>
@@ -55,11 +58,13 @@ export function SiteFooter() {
                 How we choose pieces
               </Link>
             </li>
-            <li>
-              <Link to="/compare" className="text-sage-dark no-underline">
-                Warehouse vs our prices
-              </Link>
-            </li>
+            {supplierNotes ? (
+              <li>
+                <Link to="/compare" className="text-sage-dark no-underline">
+                  Warehouse vs our prices
+                </Link>
+              </li>
+            ) : null}
           </ul>
         </div>
       </div>
