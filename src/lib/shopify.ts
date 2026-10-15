@@ -319,7 +319,7 @@ export function shopifyImportCsv(products: Product[]): string {
       product.slug,
       product.name,
       body,
-      "Happy Bowl Co.",
+      "Happy Bowl Pets Co.",
       product.category,
       `${speciesTag}, ${product.category}`,
       "TRUE",

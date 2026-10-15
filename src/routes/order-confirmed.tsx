@@ -32,7 +32,7 @@ function OrderConfirmedPage() {
       <p className="mt-4 text-lg text-muted">
         Thank you. A receipt with tax and shipping is on its way to your email.
         {supplierNotes
-          ? " Happy Bowl Co. received the same paid order — address, tax, and shipping method included."
+          ? " Happy Bowl Pets Co. received the same paid order — address, tax, and shipping method included."
           : ""}{" "}
         Questions:{" "}
         <a href="mailto:info@happybowlpets.com" className="font-medium text-sage-dark">

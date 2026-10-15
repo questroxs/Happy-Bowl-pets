@@ -11,7 +11,7 @@ function AboutPage() {
     <main>
       <img
         src="/products/our-story.jpg"
-        alt="A cream dog and a dachshund on a rug in a warm living room, Happy Bowl Co."
+        alt="A cream dog and a dachshund on a rug in a warm living room, Happy Bowl Pets Co."
         className="h-auto w-full object-cover"
       />
       <div className="mx-auto w-[min(100%-2rem,42rem)] py-12">
@@ -19,8 +19,8 @@ function AboutPage() {
       <h1 className="mt-2 font-display text-4xl font-medium tracking-tight">A quieter bowl.</h1>
       <p className="mt-4 text-lg text-muted">
         {supplierNotes
-          ? "Happy Bowl Co. is a wellness shop for dogs and cats. We still start with water that actually gets drunk — then beds, treats, toys, and shampoo from the same US warehouse, using that warehouse’s own photo so the listing matches the box."
-          : "Happy Bowl Co. is a shop for dogs and cats. Quiet fountains, raised beds, treats, toys, costumes, and everyday care."}
+          ? "Happy Bowl Pets Co. is a wellness shop for dogs and cats. We still start with water that actually gets drunk — then beds, treats, toys, and shampoo from the same US warehouse, using that warehouse’s own photo so the listing matches the box."
+          : "Happy Bowl Pets Co. is a shop for dogs and cats. Quiet fountains, raised beds, treats, toys, costumes, and everyday care."}
       </p>
 
       <section className="mt-10 space-y-4 text-base">

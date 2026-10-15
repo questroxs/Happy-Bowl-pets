@@ -179,7 +179,7 @@ function Home() {
           <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Our Story</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90 md:text-base">
             <p>
-              Happy Bowl Co started right here in Miami, Florida — born from something simple: a
+              Happy Bowl Pets Co started right here in Miami, Florida — born from something simple: a
               love for our pets and a belief that they deserve better.
             </p>
             <p>
@@ -188,7 +188,7 @@ function Home() {
               We wanted something different — for our own dogs and cats, and for yours.
             </p>
             <p>
-              So we built Happy Bowl Co around one idea: wellness shouldn't be complicated.
+              So we built Happy Bowl Pets Co around one idea: wellness shouldn't be complicated.
               From clean, filtered water to thoughtfully chosen treats, toys, and holistic care
               essentials, every product we offer is picked with the same question in mind — would we
               give this to our own pets?

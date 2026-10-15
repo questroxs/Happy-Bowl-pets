@@ -104,7 +104,7 @@ export function formatPaidOrder(order: PaidOrder): { subject: string; text: stri
   const who = order.customerName || order.customerEmail || "customer";
   const subject = `Paid order ${amount} - ${who}`;
   const lines = [
-    "Happy Bowl Co. received a paid checkout.",
+    "Happy Bowl Pets Co. received a paid checkout.",
     "",
     `Mode: ${order.livemode ? "live" : "test"}`,
     `Amount: ${amount}`,

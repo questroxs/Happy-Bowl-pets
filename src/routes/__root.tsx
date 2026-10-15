@@ -12,7 +12,7 @@ import { SupplierNotesProvider } from "@/lib/supplier-notes";
 import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Happy Bowl Co.";
+const APP_NAME = "Happy Bowl Pets Co.";
 
 async function requestHost(): Promise<string> {
   if (import.meta.env.SSR) {
@@ -37,7 +37,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Happy Bowl Co. — quiet stainless fountains, calmer mealtimes, and thoughtful extras for dogs and cats.",
+          "Happy Bowl Pets Co. — quiet stainless fountains, calmer mealtimes, and thoughtful extras for dogs and cats.",
       },
       { name: "theme-color", content: "#f4efe6" },
     ],

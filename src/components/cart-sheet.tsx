@@ -37,7 +37,7 @@ export function CartSheet() {
         <SheetTitle>Cart</SheetTitle>
         <SheetDescription className="mt-1">
           {supplierNotes
-            ? "Pay on Stripe. US shipping and state tax are calculated from the address you enter — you and Happy Bowl Co. both get the receipt by email."
+            ? "Pay on Stripe. US shipping and state tax are calculated from the address you enter — you and Happy Bowl Pets Co. both get the receipt by email."
             : "Shipping and tax are added before you pay."}
         </SheetDescription>
         <div className="mt-6 flex flex-1 flex-col gap-3 overflow-y-auto pr-1">

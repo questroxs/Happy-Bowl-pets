@@ -33,7 +33,7 @@ async function stripeRequest(path: string, payload?: Record<string, unknown>): P
 async function sendResend(subject: string, text: string): Promise<void> {
   const key = env("RESEND_API_KEY");
   if (!key) throw new Error("Resend is not configured.");
-  const from = env("ORDER_FROM_EMAIL") || "Happy Bowl Co. <onboarding@resend.dev>";
+  const from = env("ORDER_FROM_EMAIL") || "Happy Bowl Pets Co. <onboarding@resend.dev>";
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -101,7 +101,7 @@ async function sendSmtp(subject: string, text: string): Promise<void> {
   if (!user || !pass) throw new Error("SMTP is not configured.");
   const host = env("ORDER_SMTP_HOST") || "smtp.gmail.com";
   const port = Number(env("ORDER_SMTP_PORT") || "465");
-  const from = env("ORDER_FROM_EMAIL") || `Happy Bowl Co. <${user}>`;
+  const from = env("ORDER_FROM_EMAIL") || `Happy Bowl Pets Co. <${user}>`;
   const fromAddr = from.match(/<([^>]+)>/)?.[1] || user;
 
   const socket = tlsConnect({ host, port, servername: host });

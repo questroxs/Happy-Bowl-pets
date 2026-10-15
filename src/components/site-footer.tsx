@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div>
           <div className="flex items-center gap-2.5">
             <LogoMark className="size-9" />
-            <p className="font-display text-lg font-medium">Happy Bowl Co.</p>
+            <p className="font-display text-lg font-medium">Happy Bowl Pets Co.</p>
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted">
             Wellness shop for dogs and cats. Fountains, beds, treats, toys, costumes, and care.
@@ -77,7 +77,7 @@ export function SiteFooter() {
         </div>
       </div>
       <p className="border-t border-line py-5 text-center text-sm text-muted">
-        Checkout on Stripe. You and Happy Bowl Co. both receive the receipt.
+        Checkout on Stripe. You and Happy Bowl Pets Co. both receive the receipt.
       </p>
     </footer>
   );

@@ -79,13 +79,13 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
     invoice_creation: {
       enabled: true,
       invoice_data: {
-        description: `Happy Bowl Co. — ${skus}`,
+        description: `Happy Bowl Pets Co. — ${skus}`,
         footer:
-          "A copy of this invoice is emailed to you. Happy Bowl Co. also receives the paid order, tax, and shipping in Stripe. Questions: info@happybowlpets.com",
+          "A copy of this invoice is emailed to you. Happy Bowl Pets Co. also receives the paid order, tax, and shipping in Stripe. Questions: info@happybowlpets.com",
       },
     },
     payment_intent_data: {
-      description: `Happy Bowl Co. — ${skus}`,
+      description: `Happy Bowl Pets Co. — ${skus}`,
       metadata: { skus },
     },
     custom_text: {

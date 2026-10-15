@@ -46,7 +46,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 w-[min(100%-2rem,70rem)] items-center gap-3">
         <Link to="/" className="flex items-center gap-2.5 text-ink no-underline">
           <LogoMark className="size-9" />
-          <span className="font-display text-lg font-medium tracking-tight">Happy Bowl Co.</span>
+          <span className="font-display text-base font-medium tracking-tight whitespace-nowrap lg:text-lg">Happy Bowl Pets Co.</span>
         </Link>
         <nav className="ml-6 hidden items-center gap-1 md:flex">
           <Link

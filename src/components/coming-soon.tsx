@@ -22,7 +22,7 @@ export function ComingSoon() {
         <div className="flex items-center gap-3">
           <LogoMark className="size-9" />
           <div className="leading-tight">
-            <p className="font-display text-lg font-medium tracking-tight">Happy Bowl Co.</p>
+            <p className="font-display text-lg font-medium tracking-tight">Happy Bowl Pets Co.</p>
             <p className="text-xs font-medium tracking-widest text-muted uppercase">Miami</p>
           </div>
         </div>
