@@ -32,6 +32,12 @@ const COLLECTIONS = [
     cat: "care" as const,
     image: "/products/oat-shampoo.jpg",
   },
+  {
+    title: "Costumes",
+    copy: "Spider, cowboy, snowman, inmate stripes, and a Santa coat. The garment in the photo is the one we ship.",
+    cat: "costumes" as const,
+    image: "/products/creepy-webs.jpg",
+  },
 ];
 
 function Home() {

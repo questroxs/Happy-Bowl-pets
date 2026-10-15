@@ -42,6 +42,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/shop" search={{ cat: "costumes" }} className="text-sage-dark no-underline">
+                Costumes
+              </Link>
+            </li>
+            <li>
               <Link to="/shop" search={{}} className="text-sage-dark no-underline">
                 Full catalog
               </Link>

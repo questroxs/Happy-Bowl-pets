@@ -1,5 +1,6 @@
 import { EXTRA_PRODUCTS } from "./catalog-extra";
 import { MORE_PRODUCTS } from "./catalog-more";
+import { WEAR_PRODUCTS } from "./catalog-wear";
 
 export const CATEGORIES = [
   { id: "hydration", label: "Hydration" },
@@ -12,6 +13,7 @@ export const CATEGORIES = [
   { id: "beds", label: "Beds" },
   { id: "play", label: "Play" },
   { id: "accessories", label: "Accessories" },
+  { id: "costumes", label: "Costumes" },
 ] as const;
 
 export type CategoryId = (typeof CATEGORIES)[number]["id"];
@@ -344,9 +346,12 @@ const UNAVAILABLE = new Set([
   "cat-tree-60", // Canada
 ]);
 
-export const PRODUCTS: Product[] = [...CORE_PRODUCTS, ...EXTRA_PRODUCTS, ...MORE_PRODUCTS].filter(
-  (product) => !UNAVAILABLE.has(product.slug),
-);
+export const PRODUCTS: Product[] = [
+  ...CORE_PRODUCTS,
+  ...EXTRA_PRODUCTS,
+  ...MORE_PRODUCTS,
+  ...WEAR_PRODUCTS,
+].filter((product) => !UNAVAILABLE.has(product.slug));
 
 export function getProduct(slug: string) {
   return PRODUCTS.find((product) => product.slug === slug);

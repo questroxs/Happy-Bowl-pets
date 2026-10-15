@@ -69,6 +69,11 @@ export const DOBA_HINTS: DobaHint[] = [
   { slug: "tough-bone", perSale: 2.88, marginPct: 26 },
   { slug: "pupx-glow-2", perSale: 3.41, marginPct: 26 },
   { slug: "skull-chew", perSale: 4.46, marginPct: 26 },
+  { slug: "creepy-webs", perSale: 14.56, marginPct: 42 },
+  { slug: "rodeo-bones", perSale: 25.35, marginPct: 51 },
+  { slug: "snowman-hoodie", perSale: 13.2, marginPct: 38 },
+  { slug: "inmate-stripes", perSale: 19.56, marginPct: 49 },
+  { slug: "santa-coat", perSale: 16.75, marginPct: 50 },
 ];
 
 const HINT_BY_SLUG = new Map(DOBA_HINTS.map((hint) => [hint.slug, hint]));

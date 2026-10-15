@@ -85,6 +85,13 @@ export function SiteHeader() {
             Care
           </Link>
           <Link
+            to="/shop"
+            search={{ cat: "costumes" }}
+            className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
+          >
+            Costumes
+          </Link>
+          <Link
             to="/about"
             className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
           >
@@ -201,6 +208,14 @@ export function SiteHeader() {
               onClick={() => setMenuOpen(false)}
             >
               Care
+            </Link>
+            <Link
+              to="/shop"
+              search={{ cat: "costumes" }}
+              className="rounded-lg px-3 py-3 text-base font-medium text-ink no-underline hover:bg-sand"
+              onClick={() => setMenuOpen(false)}
+            >
+              Costumes
             </Link>
             <Link
               to="/about"
