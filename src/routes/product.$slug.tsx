@@ -109,7 +109,7 @@ function ProductPage() {
               rel="noreferrer"
               className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-sage-dark"
             >
-              Warehouse listing
+              Doba warehouse
               <ExternalLink className="size-3.5" />
             </a>
           ) : null}

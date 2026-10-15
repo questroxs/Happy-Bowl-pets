@@ -68,6 +68,16 @@ export function ProductCard({
           </div>
         </div>
       </Link>
+      {supplierNotes && projected.warehouseUrl ? (
+        <a
+          href={projected.warehouseUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="px-4 pt-1 text-xs font-medium text-sage-dark"
+        >
+          Doba warehouse
+        </a>
+      ) : null}
       {buyable ? (
         <div className="px-4 pb-4">
           {projected.sizes?.length ? (
