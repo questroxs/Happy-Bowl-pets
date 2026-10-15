@@ -181,7 +181,7 @@ function Home() {
 
       <section className="relative isolate pb-14">
         <img
-          src="/products/story-dogs.jpg"
+          src="/products/story-banner.jpg"
           alt="A cream Shih Tzu and a dachshund sitting together in the living room"
           className="h-auto w-full"
         />

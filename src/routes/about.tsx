@@ -10,7 +10,7 @@ function AboutPage() {
   return (
     <main>
       <img
-        src="/products/story-dogs.jpg"
+        src="/products/story-banner.jpg"
         alt="A cream dog and a dachshund on a rug in a warm living room, Happy Bowl Pets Co."
         className="h-auto w-full object-cover"
       />
