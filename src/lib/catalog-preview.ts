@@ -77,6 +77,231 @@ const CLAIM =
 
 const WEEK = 7 * 24 * 60 * 60 * 1000;
 
+const FOR_SALE = new Set([
+  "calming-chews",
+  "joint-liquid",
+  "joint-muscle-chew",
+  "skin-chews",
+  "yegbong-drops",
+  "pig-ears-25",
+  "calm-powder",
+  "calm-drops-60",
+  "detox-powder",
+  "cbd2heal-dogs",
+  "herbal-harmony",
+  "immune-suspension",
+]);
+
+/** Prices clear $8 profit and 40% after Doba cost, shipping, and 2.9% + $0.30. */
+const SALE: Record<string, Pick<Product, "name" | "tagline" | "description" | "details" | "price">> = {
+  "calming-chews": {
+    name: "Welsdom Calming Chews",
+    tagline: "30 soft chews for dogs.",
+    description:
+      "Welsdom Calming Chews (30 chews) are a dietary supplement formulated to support calm behavior in dogs.",
+    details: [
+      "Key Ingredients & Active Content (per pouch)",
+      "Calming chew blend: Included",
+      "Count: 30 chews",
+      "Benefits & Features",
+      "Daily Use: Soft chews made for a regular routine.",
+      "Behavior Support: Formulated to support calm behavior.",
+      "Palatable Design: A chew dogs can take by hand.",
+    ],
+    price: 33.99,
+  },
+  "joint-liquid": {
+    name: "Welsdom Joint Oil",
+    tagline: "120 ml joint oil for dogs and cats.",
+    description:
+      "Welsdom Joint Oil (120 ml) is a liquid supplement formulated to support joint health and mobility in dogs and cats.",
+    details: [
+      "Key Ingredients & Active Content (per bottle)",
+      "Joint nutritional oil: Included",
+      "Size: 120 ml",
+      "Measuring cup: Included",
+      "Small-dog serving printed on the bottle: 2 ml",
+      "Benefits & Features",
+      "Mobility Support: Formulated to support comfortable movement.",
+      "Shared Household: Labeled for dogs and cats.",
+      "Measured Serving: A cup is included so the daily amount stays simple.",
+    ],
+    price: 52.99,
+  },
+  "joint-muscle-chew": {
+    name: "Welsdom Joint & Muscle Chews",
+    tagline: "30 soft chews for dogs.",
+    description:
+      "Welsdom Joint & Muscle Chews (30 chews) are a dietary supplement formulated to support canine joint health, mobility, and flexibility.",
+    details: [
+      "Key Ingredients & Active Content (per pouch)",
+      "Collagen Hydrolysate (Hydrolyzed Collagen): 0.14 g",
+      "Methylsulfonylmethane (MSM): 0.04 g",
+      "Sodium Hyaluronate (Hyaluronic Acid): 0.008 g",
+      "Glucosamine & Chondroitin: Included",
+      "Fish Oil: Included, provides omega-3s",
+      "Benefits & Features",
+      "Mobility Support: Promotes agility and comfort for dogs of all activity levels.",
+      "Antioxidant Support: Helps support the body against oxidative stress.",
+      "Palatable Design: Soft chews make daily use easy.",
+    ],
+    price: 38.99,
+  },
+  "skin-chews": {
+    name: "Welsdom Skin Health Chews",
+    tagline: "30 bacon soft chews, 120 g.",
+    description:
+      "Welsdom Skin Health Chews (30 chews, 120 g) are a dietary supplement formulated to support skin and coat health in dogs.",
+    details: [
+      "Key Ingredients & Active Content (per pouch)",
+      "Omega coat and skin chew blend: Included",
+      "Fish oil: Included",
+      "Count: 30 soft chews, 120 g",
+      "Flavor: Bacon",
+      "Benefits & Features",
+      "Coat Support: Formulated to support a healthy-looking coat.",
+      "Skin Support: Formulated to support comfortable skin.",
+      "Palatable Design: Bacon-flavored soft chews.",
+    ],
+    price: 27.99,
+  },
+  "yegbong-drops": {
+    name: "Yegbong Soothing Drops",
+    tagline: "60 ml dropper for cats and dogs.",
+    description:
+      "Yegbong Soothing Drops (60 ml) are a liquid supplement formulated to support joint comfort in cats and dogs.",
+    details: [
+      "Key Ingredients & Active Content (per bottle)",
+      "Soothing drop formula: Included",
+      "Size: 60 ml / 2 fl oz",
+      "Benefits & Features",
+      "Joint Support: Labeled for joint care.",
+      "Shared Household: For cats and dogs.",
+      "Easy Use: A dropper that can be added to a meal.",
+    ],
+    price: 22.99,
+  },
+  "pig-ears-25": {
+    name: "Bonez Pig Ears, 25 Count",
+    tagline: "25 whole pig ears, about 4 lb.",
+    description:
+      "Bonez Pig Ears (25 count, about 4 lb) are whole pig-ear chews for dogs.",
+    details: [
+      "Key Ingredients & Active Content (per bag)",
+      "Whole pig ears: 25",
+      "Bag weight: about 4 lb",
+      "Benefits & Features",
+      "Single-Ingredient Chew: Pig ears, with nothing else listed on the bag.",
+      "Supervised Chew: Stay with your dog while they chew.",
+      "Dogs Only: Not a meal, and not for pets that gulp chews whole.",
+    ],
+    price: 79.99,
+  },
+  "calm-powder": {
+    name: "Calming Powder for Dogs",
+    tagline: "A powder stirred into a dog's meal.",
+    description:
+      "Calming Powder for Dogs is a powdered supplement formulated to support calm behavior.",
+    details: [
+      "Key Ingredients & Active Content (per pouch)",
+      "Calming powder blend: Included",
+      "Benefits & Features",
+      "Meal Mix: Stirred into breakfast or dinner.",
+      "Behavior Support: Formulated to support relaxation.",
+      "For Dogs: Labeled for dogs.",
+    ],
+    price: 40.99,
+  },
+  "calm-drops-60": {
+    name: "Calming Comfort Drops, 60 mL",
+    tagline: "60 ml drops for cats and dogs. Not CBD.",
+    description:
+      "Welsdom Calming Comfort Drops (60 ml) are a liquid supplement formulated to support calm behavior in cats and dogs.",
+    details: [
+      "Key Ingredients & Active Content (per bottle)",
+      "Calming comfort formula: Included",
+      "Size: 60 ml",
+      "Not CBD",
+      "Benefits & Features",
+      "Behavior Support: Formulated to support relaxation.",
+      "Shared Household: For cats and dogs.",
+      "Dropper Bottle: A measured liquid, not a chew.",
+    ],
+    price: 23.99,
+  },
+  "detox-powder": {
+    name: "Welsdom Detox Powder, 120 g",
+    tagline: "120 g bacon-flavored powder.",
+    description:
+      "Welsdom Detox Powder (120 g) is a powdered supplement formulated to support liver and immune health in cats and dogs.",
+    details: [
+      "Key Ingredients & Active Content (per pouch)",
+      "Detox powder blend: Included",
+      "Size: 120 g",
+      "Flavor: Bacon",
+      "Benefits & Features",
+      "Liver Support: Labeled to support the liver.",
+      "Immune Support: Labeled to support immune health.",
+      "Meal Mix: Bacon-flavored powder for wet food.",
+    ],
+    price: 26.99,
+  },
+  "cbd2heal-dogs": {
+    name: "CBD2HEAL Dog Tincture, 1000 mg",
+    tagline: "1000 mg hemp-extract dropper for dogs.",
+    description:
+      "CBD2HEAL Dog Tincture (1000 mg) is a hemp-extract liquid formulated to support calm behavior in dogs.",
+    details: [
+      "Key Ingredients & Active Content (per bottle)",
+      "Hemp extract: 1000 mg",
+      "Flavor shown: Bacon. Original is also listed.",
+      "Benefits & Features",
+      "Dropper Tincture: A liquid for dogs, not a treat pouch.",
+      "Labeled Strength: This order is the 1000 mg bottle in the photo.",
+      "Daily Use: A few drops from the dropper.",
+    ],
+    price: 40.99,
+  },
+  "herbal-harmony": {
+    name: "Herbal Harmony Drops, 30 ml",
+    tagline: "30 ml bacon-flavored drops. Not CBD.",
+    description:
+      "Welsdom Herbal Harmony (30 ml) is a liquid supplement formulated to support calm behavior and immune health in dogs and cats.",
+    details: [
+      "Key Ingredients & Active Content (per bottle)",
+      "Herbal harmony suspension: Included",
+      "Size: 30 ml",
+      "Flavor: Bacon",
+      "Not CBD, and not the 60 ml Calming Comfort Drops",
+      "Benefits & Features",
+      "Behavior Support: Labeled to support calm.",
+      "Immune Support: Labeled to support immune health.",
+      "Shared Household: For dogs and cats.",
+    ],
+    price: 20.99,
+  },
+  "immune-suspension": {
+    name: "Immune Suspension, 60 ml",
+    tagline: "60 ml bacon-flavored liquid with a measuring cup.",
+    description:
+      "Welsdom Immune Suspension (60 ml) is a liquid supplement formulated to support immune health in dogs and cats.",
+    details: [
+      "Key Ingredients & Active Content (per bottle)",
+      "Immune suspension: Included",
+      "Size: 60 ml",
+      "Flavor: Bacon",
+      "Measuring cup: Included",
+      "Not CBD, and not the 30 ml Herbal Harmony bottle",
+      "Benefits & Features",
+      "Immune Support: Labeled to support immune health.",
+      "Measured Serving: A cup is included.",
+      "Meal Pour: A small daily amount in food.",
+    ],
+    price: 32.99,
+  },
+};
+
+
 type Replacement = Pick<Product, "name" | "tagline" | "description" | "details" | "price" | "warehouseUrl"> & {
   material?: string;
   capacity?: string;
@@ -255,7 +480,7 @@ export function projectPreview(
     next.price = 38.99;
   }
 
-  if (ingestible(next)) {
+  if (ingestible(next) && !FOR_SALE.has(product.slug)) {
     const name = COMING_SOON_NAMES[product.slug] ?? next.name;
     next = {
       ...next,
@@ -267,6 +492,8 @@ export function projectPreview(
       featured: false,
       exploring: false,
     };
+  } else if (SALE[product.slug]) {
+    next = { ...next, ...SALE[product.slug], stock: "in_stock", featured: false, exploring: false };
   } else {
     next.tagline = cleanSentence(next.tagline) || next.tagline;
     next.description = cleanSentence(next.description) || next.description;

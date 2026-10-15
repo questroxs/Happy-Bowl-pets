@@ -45,7 +45,7 @@ function ShopPage() {
   const stock = supplierNotes ? overrides : {};
   const visible = results
     .map((product) => projectPreview(product, stock))
-    .filter((product) => product && !agedOut(product));
+    .filter((product) => product && product.stock !== "out_of_stock" && !agedOut(product));
   const tabs = previewCatalog(stock).filter((product) => canPurchase(product));
   const title = category
     ? (CATEGORIES.find((item) => item.id === category)?.label ?? "Shop")

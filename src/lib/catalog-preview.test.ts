@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { getProduct } from "./catalog.ts";
-import { canPurchase, isPreviewRemoved, previewOne } from "./catalog-preview.ts";
+import { canPurchase, previewOne } from "./catalog-preview.ts";
 
 describe("vercel preview catalog", () => {
   it("reprices without changing the public product", () => {
@@ -11,13 +11,12 @@ describe("vercel preview catalog", () => {
     assert.equal(preview?.price, 138.99);
   });
 
-  it("removes the thin items and blocks ingestibles", () => {
-    assert.equal(isPreviewRemoved("frog-dispenser"), true);
-    assert.equal(previewOne("frog-dispenser"), null);
+  it("sells the joint chews instead of marking them coming soon", () => {
     const chew = previewOne("joint-muscle-chew");
-    assert.equal(chew?.stock, "coming_soon");
-    assert.equal(canPurchase(chew!), false);
-    assert.equal(chew?.name.includes("Joint"), false);
+    assert.equal(chew?.stock, "in_stock");
+    assert.equal(canPurchase(chew!), true);
+    assert.equal(chew?.price, 38.99);
+    assert.match(chew?.description ?? "", /30 chews/);
   });
 
   it("replaces the lick mat and keeps it featured", () => {
