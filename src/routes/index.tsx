@@ -45,18 +45,14 @@ const COLLECTIONS = [
 function Home() {
   const supplierNotes = useSupplierNotes();
   const overrides = useStockOverrides();
+  const stock = supplierNotes ? overrides : {};
   const gate = (product: NonNullable<ReturnType<typeof getProduct>>) => {
-    if (!supplierNotes) return product;
-    const next = projectPreview(product, overrides);
+    const next = projectPreview(product, stock);
     if (!next || agedOut(next) || !canPurchase(next)) return null;
     return next;
   };
-  const featured = (supplierNotes ? featuredProducts().map(gate) : featuredProducts()).filter(
-    (item) => item != null,
-  );
-  const exploring = (supplierNotes ? exploringProducts().map(gate) : exploringProducts()).filter(
-    (item) => item != null,
-  );
+  const featured = featuredProducts().map(gate).filter((item) => item != null);
+  const exploring = exploringProducts().map(gate).filter((item) => item != null);
   const fresh = [
     "remote-dual-45",
     "fold-cat-cave",
@@ -67,7 +63,7 @@ function Home() {
   ]
     .map((slug) => getProduct(slug))
     .filter((item) => item != null)
-    .map((item) => (supplierNotes ? gate(item) : item))
+    .map((item) => gate(item))
     .filter((item) => item != null);
 
   return (

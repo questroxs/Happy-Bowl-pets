@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CATEGORIES, productsByCategory, searchProducts, type CategoryId, type Species } from "@/lib/catalog";
+import { CATEGORIES, searchProducts, type CategoryId, type Species } from "@/lib/catalog";
 import { agedOut, canPurchase, previewCatalog, projectPreview } from "@/lib/catalog-preview";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
@@ -42,12 +42,11 @@ function ShopPage() {
   const results = searchProducts(query, category, speciesFilter);
   const supplierNotes = useSupplierNotes();
   const overrides = useStockOverrides();
-  const visible = supplierNotes
-    ? results
-        .map((product) => projectPreview(product, overrides))
-        .filter((product) => product && !agedOut(product))
-    : results;
-  const tabs = supplierNotes ? previewCatalog(overrides).filter((product) => canPurchase(product)) : null;
+  const stock = supplierNotes ? overrides : {};
+  const visible = results
+    .map((product) => projectPreview(product, stock))
+    .filter((product) => product && !agedOut(product));
+  const tabs = previewCatalog(stock).filter((product) => canPurchase(product));
   const title = category
     ? (CATEGORIES.find((item) => item.id === category)?.label ?? "Shop")
     : "Catalog";
@@ -76,11 +75,7 @@ function ShopPage() {
         <Chip to="/shop" search={{ q: query || undefined, species }} active={!category}>
           All
         </Chip>
-        {CATEGORIES.filter((item) =>
-          supplierNotes
-            ? tabs!.some((product) => product.category === item.id)
-            : productsByCategory(item.id).length > 0,
-        ).map((item) => (
+        {CATEGORIES.filter((item) => tabs.some((product) => product.category === item.id)).map((item) => (
           <Chip
             key={item.id}
             to="/shop"

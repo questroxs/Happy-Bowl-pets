@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { toast } from "sonner";
-import { PRODUCTS, getProduct } from "@/lib/catalog";
+import { PRODUCTS } from "@/lib/catalog";
 import { canPurchase, previewOne } from "@/lib/catalog-preview";
 import { createCheckoutSession } from "@/lib/create-checkout";
 import { isSupplierHost } from "@/lib/public-host";
@@ -120,9 +120,9 @@ export const useShopifyStore = create<ShopifyState>()(
         }
       },
       addToCart: (slug, size) => {
-        const preview = typeof window !== "undefined" && isSupplierHost(window.location.host);
-        const product = preview ? previewOne(slug, stockSnapshot()) : getProduct(slug);
-        if (!product || (preview && !canPurchase(product))) {
+        const supplier = typeof window !== "undefined" && isSupplierHost(window.location.host);
+        const product = previewOne(slug, supplier ? stockSnapshot() : {});
+        if (!product || !canPurchase(product)) {
           toast.error("That piece is not available to purchase.");
           return;
         }
@@ -201,8 +201,8 @@ export function cartCount(cart: CartLine[]) {
 
 export function cartSubtotal(cart: CartLine[]) {
   return cart.reduce((sum, line) => {
-    const product = getProduct(line.slug);
-    return product ? sum + product.price * line.quantity : sum;
+    const product = previewOne(line.slug);
+    return product && canPurchase(product) ? sum + product.price * line.quantity : sum;
   }, 0);
 }
 

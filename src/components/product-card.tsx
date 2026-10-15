@@ -8,7 +8,7 @@ import { presentProduct } from "@/lib/customer-copy";
 import { useShopifyStore } from "@/lib/shopify-store";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
-import { formatMoney, formatPrice } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils";
 
 export function ProductCard({
   product,
@@ -20,11 +20,11 @@ export function ProductCard({
   const addToCart = useShopifyStore((state) => state.addToCart);
   const supplierNotes = useSupplierNotes();
   const overrides = useStockOverrides();
-  const projected = supplierNotes ? projectPreview(product, overrides) : product;
+  const projected = projectPreview(product, supplierNotes ? overrides : {});
   if (!projected) return null;
   const shown = presentProduct(projected, supplierNotes);
-  const buyable = !supplierNotes || canPurchase(projected);
-  const price = supplierNotes ? formatMoney(projected.price) : formatPrice(projected.price);
+  const buyable = canPurchase(projected);
+  const price = formatMoney(projected.price);
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-xl bg-card shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5">

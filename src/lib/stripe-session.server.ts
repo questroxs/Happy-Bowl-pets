@@ -1,5 +1,4 @@
 import { getRequest } from "@tanstack/react-start/server";
-import { getProduct } from "./catalog";
 import { canPurchase, previewOne } from "./catalog-preview";
 import { customerCopy } from "./customer-copy";
 import type { CheckoutLine } from "./checkout";
@@ -57,9 +56,9 @@ function checkoutPayload(
 ) {
   const items = lines
     .map((line) => {
-      const product = preview ? previewOne(line.slug, stock) : getProduct(line.slug);
+      const product = previewOne(line.slug, preview ? stock : {});
       if (!product || line.quantity < 1) return null;
-      if (preview && !canPurchase(product)) {
+      if (!canPurchase(product)) {
         throw new Error(`${product.name} is not available to purchase.`);
       }
       if (product.sizes?.length && (!line.size || !product.sizes.includes(line.size))) {

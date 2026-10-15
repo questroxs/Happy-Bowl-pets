@@ -4,14 +4,14 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
-import { getProduct, speciesLabel } from "@/lib/catalog";
+import { speciesLabel } from "@/lib/catalog";
 import { canPurchase, isPreviewRemoved, previewOne } from "@/lib/catalog-preview";
 import { presentProduct } from "@/lib/customer-copy";
 import { useShopifyStore } from "@/lib/shopify-store";
 import { useShopStore } from "@/lib/store";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
-import { formatMoney, formatPrice } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils";
 
 export const Route = createFileRoute("/product/$slug")({
   component: ProductPage,
@@ -25,10 +25,10 @@ function ProductPage() {
   const toggleSaved = useShopStore((s) => s.toggleSaved);
   const addToCart = useShopifyStore((s) => s.addToCart);
   const [size, setSize] = useState("M");
-  if (supplierNotes && isPreviewRemoved(slug)) {
+  if (isPreviewRemoved(slug)) {
     return <Navigate to="/shop" search={{}} />;
   }
-  const raw = supplierNotes ? previewOne(slug, overrides) : getProduct(slug);
+  const raw = previewOne(slug, supplierNotes ? overrides : {});
   const product = raw ? presentProduct(raw, supplierNotes) : undefined;
 
   if (!product) {
@@ -47,9 +47,9 @@ function ProductPage() {
 
   const saved = savedSlugs.includes(product.slug);
   const related = product.related
-    .map((item) => (supplierNotes ? previewOne(item, overrides) : getProduct(item)))
+    .map((item) => previewOne(item, supplierNotes ? overrides : {}))
     .filter((item) => item != null);
-  const buyable = !supplierNotes || canPurchase(product);
+  const buyable = canPurchase(product);
 
   return (
     <main className="mx-auto w-[min(100%-2rem,70rem)] py-10">
@@ -83,7 +83,7 @@ function ProductPage() {
           <p className="mt-2 text-lg text-muted">{product.tagline}</p>
           {buyable ? (
             <p className="mt-5 text-2xl font-medium text-sage-dark">
-              {supplierNotes ? formatMoney(product.price) : formatPrice(product.price)}
+              {formatMoney(product.price)}
             </p>
           ) : (
             <p className="mt-5 text-lg text-muted">

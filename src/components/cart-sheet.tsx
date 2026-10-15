@@ -3,11 +3,12 @@ import { Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
-import { getProduct } from "@/lib/catalog";
+import { canPurchase, previewOne } from "@/lib/catalog-preview";
+import { presentProduct } from "@/lib/customer-copy";
 import { remainingToFreeShipping, shippingOptions } from "@/lib/shipping";
 import { cartCount, cartSubtotal, useShopifyStore } from "@/lib/shopify-store";
 import { useSupplierNotes } from "@/lib/supplier-notes";
-import { formatMoney, formatPrice } from "@/lib/utils";
+import { formatMoney } from "@/lib/utils";
 
 export function CartSheet() {
   const open = useShopifyStore((state) => state.cartOpen);
@@ -21,9 +22,9 @@ export function CartSheet() {
 
   const items = cart
     .map((line) => {
-      const product = getProduct(line.slug);
-      if (!product) return null;
-      return { ...line, product };
+      const raw = previewOne(line.slug);
+      if (!raw || !canPurchase(raw)) return null;
+      return { ...line, product: presentProduct(raw, supplierNotes) };
     })
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
@@ -63,7 +64,7 @@ export function CartSheet() {
                     {item.product.name}
                   </Link>
                   {item.size ? <p className="text-sm text-muted">Size {item.size}</p> : null}
-                  <p className="text-sm text-sage-dark">{formatPrice(item.product.price)}</p>
+                  <p className="text-sm text-sage-dark">{formatMoney(item.product.price)}</p>
                   <div className="mt-2 flex items-center gap-2">
                     <button
                       type="button"
