@@ -51,11 +51,6 @@ function AboutPage() {
         <ul className="space-y-2 text-base">
           <li>Dogs and cats only.</li>
           <li>Quiet stainless is still the fountain path.</li>
-          <li>
-            {supplierNotes
-              ? "Joint chews and drops are warehouse listings — not a vet substitute."
-              : "Joint chews and drops follow the label — not a vet substitute."}
-          </li>
           <li>Dispensers and chews are enrichment. Supervise them.</li>
         </ul>
       </section>

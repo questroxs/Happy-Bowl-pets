@@ -1,8 +1,5 @@
 import type { Product } from "./catalog";
 
-const LABEL =
-  "Follow the package label. Not a veterinary diagnosis or a substitute for vet care. These statements have not been evaluated by the FDA.";
-
 /** New US-warehouse Doba listings. Prices are Doba's published example retail:
  *  round(per-sale dollars / margin). Nothing here replaces an existing SKU. */
 export const MORE_PRODUCTS: Product[] = [
@@ -135,13 +132,14 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "calm-powder",
     sku: "HB-WEL-PWD",
     name: "Calming Powder for Dogs",
-    tagline: "Warehouse powder for dogs. Follow the label. Not a vet visit.",
+    tagline: "A powder for dogs, mixed into a meal.",
     description:
-      "The calming powder the US warehouse lists for dogs. The photo is that pouch. We are not repeating the listing's anxiety claims as our own — read the label and ask your vet if you are unsure.",
+      "Calming Powder for Dogs is a powder supplement meant to be mixed into a meal. The pouch is labeled to ease everyday stress and support a calmer routine.",
     details: [
+      "Powder, for dogs",
+      "Mixed into a meal",
+      "Labeled for stress and relaxation",
       "Calming powder for dogs (Doba D0102XF1252)",
-      "US warehouse. Doba example: up to $20.34 per sale (55% margin)",
-      LABEL,
     ],
     price: 37,
     category: "wellness",
@@ -155,13 +153,15 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "calm-drops-60",
     sku: "HB-WEL-DRP",
     name: "Calming Comfort Drops, 60 mL",
-    tagline: "Welsdom 60 mL drops for cats and dogs. Not CBD.",
+    tagline: "60 ml drops for cats and dogs. Not a CBD product.",
     description:
-      "Welsdom Calming Comfort Drops, 60 mL, listed for cats and dogs. This photo is that bottle. It is not a CBD product. Follow the label.",
+      "Welsdom Calming Comfort Drops are a 60 ml liquid for cats and dogs. The bottle is labeled to ease everyday stress and support a calmer routine. This is not a CBD product.",
     details: [
-      "Welsdom Pets Calming Comfort Drops, 60 mL (Doba D01027X3NIX)",
-      "US warehouse. Doba example: up to $15.01 per sale (67% margin)",
-      LABEL,
+      "60 ml bottle",
+      "For cats and dogs",
+      "Not CBD",
+      "Labeled for relaxation and everyday stress",
+      "Welsdom Calming Comfort Drops (Doba D01027X3NIX)",
     ],
     price: 22,
     category: "wellness",
@@ -176,13 +176,15 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "detox-powder",
     sku: "HB-WEL-DTX",
     name: "Welsdom Detox Powder, 120 g",
-    tagline: "Bacon-flavored powder for cats and dogs. Follow the label.",
+    tagline: "120 g bacon powder for cats and dogs.",
     description:
-      "The Welsdom 120 g powder the warehouse lists for cats and dogs, bacon flavored. This photo is that pouch. The listing mentions liver and immune support — that is their wording, not a promise from us.",
+      "Welsdom Detox Powder is a 120 g bacon-flavored powder for cats and dogs. The pouch is labeled for liver support and immune support.",
     details: [
-      "Welsdom Pets detox powder, 120 g, cats and dogs (Doba D01027X3NGT)",
-      "US warehouse. Doba example: up to $11.57 per sale (57% margin)",
-      LABEL,
+      "120 g powder",
+      "Bacon flavor",
+      "For cats and dogs",
+      "Labeled for liver support and immune support",
+      "Welsdom Detox Powder (Doba D01027X3NGT)",
     ],
     price: 20,
     category: "wellness",
@@ -197,14 +199,15 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "cbd2heal-dogs",
     sku: "HB-WEL-CBD",
     name: "CBD2HEAL Dog Tincture, 1000 mg",
-    tagline: "The bottle in the photo. Dog tincture. US ship-from. Not a medicine.",
+    tagline: "1000 mg dog tincture. The bottle in the photo.",
     description:
-      "CBD2HEAL dog tincture. The warehouse photo is their 1000 mg bottle (bacon and original are both listed as flavors; the picture shows the bacon 1000 mg bottle). Doba's published example for this listing is up to $113.55 per sale (87% margin) — our price is that example retail, not a markup past it. The same listing also names 150, 250, 500, 2000, and 4000 mg. This order is the bottle in the photo.",
+      "CBD2HEAL Dog Tincture is a 1000 mg hemp-extract tincture for dogs. Bacon and original are both listed as flavors; the photo is the bacon 1000 mg bottle. The same listing also names 150, 250, 500, 2000, and 4000 mg. This order is the bottle in the photo.",
     details: [
-      "CBD Oil Tincture for Dogs, CBD2HEAL, photo is the 1000 mg bottle (Doba D010275I40T)",
-      "Doba says it ships from the United States (Amazon multi-channel). Supplier text calls the formula a Canadian brand — we are not hiding that",
-      "Doba example: up to $113.55 per sale (87% margin). Our $131 is that example retail",
-      "Dogs. Not for people. Not a veterinary treatment. " + LABEL,
+      "1000 mg, the bottle in the photo",
+      "For dogs",
+      "Bacon flavor shown; original is also listed",
+      "Dropper tincture, not a treat pouch",
+      "CBD2HEAL dog tincture (Doba D010275I40T)",
     ],
     price: 131,
     category: "wellness",
@@ -607,13 +610,16 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "herbal-harmony",
     sku: "HB-WEL-HH30",
     name: "Herbal Harmony Drops, 30 ml",
-    tagline: "Welsdom 30 ml bacon drops for dogs and cats. Not CBD.",
+    tagline: "30 ml bacon drops for dogs and cats. Not CBD.",
     description:
-      "Welsdom Herbal Harmony Advanced Suspension, 30 ml, bacon flavour, labeled for dogs and cats. The warehouse title is a generic herbal-calming-drops line; the bottle in the photo reads Herbal Harmony. This is not CBD and it is not the 60 ml calming drops. The label makes stress and immune claims — those are the label's words, not ours.",
+      "Welsdom Herbal Harmony is a 30 ml bacon-flavored suspension for dogs and cats. The bottle is labeled for calm and immune support. It is not CBD, and it is not the 60 ml Calming Comfort Drops.",
     details: [
-      "Welsdom Herbal Harmony Advanced Suspension, 30 ml (Doba D0102XFBEP2)",
-      "Ships from a US warehouse. Doba example: up to $20.11 per sale (78% margin)",
-      LABEL,
+      "30 ml bottle",
+      "Bacon flavor",
+      "For dogs and cats",
+      "Not CBD",
+      "Not the 60 ml Calming Comfort Drops",
+      "Welsdom Herbal Harmony Advanced Suspension (Doba D0102XFBEP2)",
     ],
     price: 26,
     category: "wellness",
@@ -689,13 +695,17 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "immune-suspension",
     sku: "HB-WEL-IM60",
     name: "Immune Suspension, 60 ml",
-    tagline: "Welsdom 60 ml bacon drops for dogs and cats. Not CBD.",
+    tagline: "60 ml bacon drops for dogs and cats. Not CBD.",
     description:
-      "Welsdom Immune Suspension, 60 ml, bacon flavour, labeled for dogs and cats, with a measuring cup in the photo. It is not CBD and it is not the 30 ml Herbal Harmony bottle. The box makes relaxation and immune claims and calls itself a veterinary health product — follow the package. We are not repeating those claims.",
+      "Welsdom Immune Suspension is a 60 ml bacon-flavored liquid for dogs and cats, with a measuring cup. The bottle is labeled for immune support. It is not CBD, and it is not the 30 ml Herbal Harmony bottle.",
     details: [
-      "Welsdom Immune Suspension, 60 ml (Doba D0102XF1TPP)",
-      "US warehouse. Doba example: up to $14.65 per sale (55% margin)",
-      LABEL,
+      "60 ml bottle",
+      "Bacon flavor",
+      "For dogs and cats",
+      "Measuring cup included",
+      "Not CBD",
+      "Not the 30 ml Herbal Harmony bottle",
+      "Welsdom Immune Suspension (Doba D0102XF1TPP)",
     ],
     price: 27,
     category: "wellness",
