@@ -67,33 +67,36 @@ function Home() {
         </p>
       ) : null}
 
-      <section>
+      <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
         <img
-          src="/products/our-story.jpg"
-          alt="A small cream dog and a dachshund sitting together in a warm living room"
-          className="h-auto w-full object-cover"
+          src="/products/hero-together.jpg"
+          alt="A golden retriever and a cream cat together with a fountain and bowls"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-      </section>
-
-      <section className="mx-auto w-[min(100%-2rem,70rem)] py-12">
-        <p className="text-sm font-semibold tracking-widest text-terra uppercase">For dogs and cats</p>
-        <h1 className="mt-2 max-w-xl font-display text-4xl leading-tight font-medium tracking-tight md:text-5xl">
-          Fresher water. Calmer days.
-        </h1>
-        <p className="mt-3 max-w-lg text-base text-muted">
-          Quiet stainless fountains, raised beds, treats, toys, and everyday care.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild size="lg">
-            <Link to="/shop" search={{ cat: "hydration" }}>
-              Explore hydration
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link to="/shop" search={{}}>
-              Shop catalog
-            </Link>
-          </Button>
+        <div className="hero-scrim absolute inset-0" />
+        <div className="relative mx-auto flex min-h-[28rem] w-[min(100%-2rem,70rem)] flex-col justify-end pb-10 md:min-h-[36rem] md:pb-14">
+          <p className="text-sm font-semibold tracking-widest text-terra-soft uppercase">
+            For dogs and cats
+          </p>
+          <h1 className="mt-2 max-w-xl font-display text-4xl leading-tight font-medium tracking-tight text-paper md:text-5xl">
+            Fresher water. Calmer days.
+          </h1>
+          <p className="mt-3 max-w-lg text-base text-paper/90">
+            Quiet stainless fountains, raised beds, treats, toys, and everyday care.
+            {supplierNotes ? " The photo is the warehouse item — the one that is actually in stock." : ""}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild size="lg">
+              <Link to="/shop" search={{ cat: "hydration" }}>
+                Explore hydration
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-paper text-paper hover:bg-paper/15">
+              <Link to="/shop" search={{}}>
+                Shop catalog
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
