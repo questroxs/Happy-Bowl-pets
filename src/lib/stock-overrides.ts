@@ -6,17 +6,23 @@ export type StockOverride = { stock: StockState; since: string };
 
 const KEY = "hb-preview-stock-v1";
 
-let cache: Record<string, StockOverride> = {};
+const EMPTY: Record<string, StockOverride> = {};
+
+let cache: Record<string, StockOverride> = EMPTY;
 const listeners = new Set<() => void>();
 
 function read(): Record<string, StockOverride> {
-  if (typeof window === "undefined") return {};
+  if (typeof window === "undefined") return EMPTY;
   try {
     const parsed = JSON.parse(window.localStorage.getItem(KEY) || "{}") as Record<string, StockOverride>;
-    return parsed && typeof parsed === "object" ? parsed : {};
+    return parsed && typeof parsed === "object" ? parsed : EMPTY;
   } catch {
-    return {};
+    return EMPTY;
   }
+}
+
+if (typeof window !== "undefined") {
+  cache = read();
 }
 
 function emit(next: Record<string, StockOverride>) {
@@ -32,11 +38,10 @@ export function useStockOverrides(): Record<string, StockOverride> {
   return useSyncExternalStore(
     (listener) => {
       listeners.add(listener);
-      cache = read();
       return () => listeners.delete(listener);
     },
     () => cache,
-    () => ({}),
+    () => EMPTY,
   );
 }
 
