@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { flagLabel, pricingRows, type PriceFlag } from "@/lib/doba-pricing";
+import { needsReplacement, previewCatalog } from "@/lib/catalog-preview";
+import { setStockOverride, useStockOverrides, type StockState } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatMoney, formatPrice } from "@/lib/utils";
 
@@ -30,6 +32,9 @@ function SupplierCompare() {
   const known = rows.filter((row) => row.dobaCost != null);
   const thin = known.filter((row) => row.flag === "thin" || row.flag === "at-cost");
   const high = known.filter((row) => row.flag === "high");
+  const overrides = useStockOverrides();
+  const preview = previewCatalog(overrides);
+  const stalled = needsReplacement(overrides);
 
   return (
     <main className="mx-auto w-[min(100%-2rem,70rem)] py-10">
@@ -42,6 +47,52 @@ function SupplierCompare() {
         listing publishes “up to $X per sale (Y% margin)” we back out their example retail and
         implied cost. Everything else: open the warehouse link while signed in to Doba.
       </p>
+
+      <section className="mt-8">
+        <h2 className="font-display text-2xl font-medium">Stock</h2>
+        <p className="mt-1 text-sm text-muted">
+          This toggle is saved in this browser. Coming soon items stay off sale. Anything out of
+          stock for more than 7 days drops off the shop and lands in Needs replacement.
+        </p>
+        {stalled.length > 0 ? (
+          <div className="mt-4 rounded-xl border border-terra/40 bg-paper p-4">
+            <h3 className="font-medium">Needs replacement</h3>
+            <ul className="mt-2 space-y-1 text-sm">
+              {stalled.map((product) => (
+                <li key={product.slug}>
+                  {product.name} <span className="text-muted">({product.slug})</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-muted">Needs replacement: none yet.</p>
+        )}
+        <ul className="mt-4 max-h-80 space-y-2 overflow-auto text-sm">
+          {preview.map((product) => (
+            <li key={product.slug} className="flex items-center justify-between gap-3">
+              <span>
+                {product.name}{" "}
+                <span className="text-muted">
+                  {product.stock === "coming_soon" ? "Coming soon" : product.stock}
+                </span>
+              </span>
+              {product.stock === "coming_soon" ? null : (
+                <select
+                  value={product.stock ?? "in_stock"}
+                  onChange={(event) =>
+                    setStockOverride(product.slug, event.target.value as StockState)
+                  }
+                  className="rounded-md border border-line bg-paper px-2 py-1"
+                >
+                  <option value="in_stock">In stock</option>
+                  <option value="out_of_stock">Out of stock</option>
+                </select>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
         <Stat label="Catalog" value={`${rows.length}`} />

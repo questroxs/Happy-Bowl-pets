@@ -1,9 +1,12 @@
 import { getRequest } from "@tanstack/react-start/server";
 import { getProduct } from "./catalog";
+import { canPurchase, previewOne } from "./catalog-preview";
 import { customerCopy } from "./customer-copy";
 import type { CheckoutLine } from "./checkout";
 import { env } from "./env.server";
+import { isSupplierHost } from "./public-host";
 import { dollarsToCents, shippingOptions } from "./shipping";
+import type { StockOverride } from "./stock-overrides";
 import { flattenStripeParams } from "./stripe-form";
 
 type StripeSession = {
@@ -45,11 +48,20 @@ async function postCheckout(payload: Record<string, unknown>): Promise<StripeSes
   return (await response.json()) as StripeSession;
 }
 
-function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean) {
+function checkoutPayload(
+  lines: CheckoutLine[],
+  origin: string,
+  withTax: boolean,
+  preview: boolean,
+  stock: Record<string, StockOverride>,
+) {
   const items = lines
     .map((line) => {
-      const product = getProduct(line.slug);
+      const product = preview ? previewOne(line.slug, stock) : getProduct(line.slug);
       if (!product || line.quantity < 1) return null;
+      if (preview && !canPurchase(product)) {
+        throw new Error(`${product.name} is not available to purchase.`);
+      }
       if (product.sizes?.length && (!line.size || !product.sizes.includes(line.size))) {
         throw new Error(`Choose a size for ${product.name}.`);
       }
@@ -134,14 +146,17 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
 
 export async function createStripeCheckoutUrl(
   lines: CheckoutLine[],
+  stock: Record<string, StockOverride> = {},
 ): Promise<{ url: string; livemode: boolean }> {
   const origin = requestOrigin();
-  let session = await postCheckout(checkoutPayload(lines, origin, true));
+  const host = origin.replace(/^https?:\/\//, "");
+  const preview = isSupplierHost(host);
+  let session = await postCheckout(checkoutPayload(lines, origin, true, preview, stock));
   const taxBlocked =
     session.error?.message?.toLowerCase().includes("automatic tax") ||
     session.error?.message?.toLowerCase().includes("head office");
   if (taxBlocked) {
-    session = await postCheckout(checkoutPayload(lines, origin, false));
+    session = await postCheckout(checkoutPayload(lines, origin, false, preview, stock));
   }
   if (!session.url) {
     throw new Error(session.error?.message || "Stripe did not return a checkout URL.");

@@ -1,15 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
 import { Bookmark, BookmarkCheck, ExternalLink, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
-import { getProduct, relatedProducts, speciesLabel } from "@/lib/catalog";
+import { getProduct, speciesLabel } from "@/lib/catalog";
+import { canPurchase, isPreviewRemoved, previewOne } from "@/lib/catalog-preview";
 import { presentProduct } from "@/lib/customer-copy";
 import { useShopifyStore } from "@/lib/shopify-store";
 import { useShopStore } from "@/lib/store";
+import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
-import { formatPrice } from "@/lib/utils";
+import { formatMoney, formatPrice } from "@/lib/utils";
 
 export const Route = createFileRoute("/product/$slug")({
   component: ProductPage,
@@ -18,12 +20,16 @@ export const Route = createFileRoute("/product/$slug")({
 function ProductPage() {
   const { slug } = Route.useParams();
   const supplierNotes = useSupplierNotes();
-  const raw = getProduct(slug);
-  const product = raw ? presentProduct(raw, supplierNotes) : undefined;
+  const overrides = useStockOverrides();
   const savedSlugs = useShopStore((s) => s.saved);
   const toggleSaved = useShopStore((s) => s.toggleSaved);
   const addToCart = useShopifyStore((s) => s.addToCart);
   const [size, setSize] = useState("M");
+  if (supplierNotes && isPreviewRemoved(slug)) {
+    return <Navigate to="/shop" search={{}} />;
+  }
+  const raw = supplierNotes ? previewOne(slug, overrides) : getProduct(slug);
+  const product = raw ? presentProduct(raw, supplierNotes) : undefined;
 
   if (!product) {
     return (
@@ -40,7 +46,10 @@ function ProductPage() {
   }
 
   const saved = savedSlugs.includes(product.slug);
-  const related = relatedProducts(product);
+  const related = product.related
+    .map((item) => (supplierNotes ? previewOne(item, overrides) : getProduct(item)))
+    .filter((item) => item != null);
+  const buyable = !supplierNotes || canPurchase(product);
 
   return (
     <main className="mx-auto w-[min(100%-2rem,70rem)] py-10">
@@ -65,13 +74,22 @@ function ProductPage() {
         <div>
           <div className="flex flex-wrap gap-2">
             <Badge>{speciesLabel(product.species)}</Badge>
-            {supplierNotes ? <Badge tone="sage">Warehouse photo</Badge> : null}
+            {product.stock === "coming_soon" ? <Badge>Coming soon</Badge> : null}
+            {product.stock === "out_of_stock" ? <Badge>Out of stock</Badge> : null}
           </div>
           <h1 className="mt-3 font-display text-4xl leading-tight font-medium tracking-tight">
             {product.name}
           </h1>
           <p className="mt-2 text-lg text-muted">{product.tagline}</p>
-          <p className="mt-5 text-2xl font-medium text-sage-dark">{formatPrice(product.price)}</p>
+          {buyable ? (
+            <p className="mt-5 text-2xl font-medium text-sage-dark">
+              {supplierNotes ? formatMoney(product.price) : formatPrice(product.price)}
+            </p>
+          ) : (
+            <p className="mt-5 text-lg text-muted">
+              {product.stock === "coming_soon" ? "Coming soon" : "Out of stock"}
+            </p>
+          )}
           {supplierNotes ? (
             <p className="mt-1 text-sm text-muted">
               Price before tax. US shipping from $6.95 (free at $75). State sales tax is calculated
@@ -136,15 +154,17 @@ function ProductPage() {
                 </select>
               </label>
             ) : null}
-            <Button
-              size="lg"
-              onClick={() =>
-                addToCart(product.slug, product.sizes?.includes(size) ? size : product.sizes?.[0])
-              }
-            >
-              <ShoppingBag className="size-4" />
-              Add to cart
-            </Button>
+            {buyable ? (
+              <Button
+                size="lg"
+                onClick={() =>
+                  addToCart(product.slug, product.sizes?.includes(size) ? size : product.sizes?.[0])
+                }
+              >
+                <ShoppingBag className="size-4" />
+                Add to cart
+              </Button>
+            ) : null}
             <Button size="lg" variant="outline" onClick={() => toggleSaved(product.slug)}>
               {saved ? <BookmarkCheck className="size-4" /> : <Bookmark className="size-4" />}
               {saved ? "Saved" : "Save for later"}

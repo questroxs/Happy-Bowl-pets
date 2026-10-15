@@ -3,6 +3,8 @@ import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
+import { agedOut, canPurchase, projectPreview } from "@/lib/catalog-preview";
+import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export const Route = createFileRoute("/")({ component: Home });
@@ -41,9 +43,20 @@ const COLLECTIONS = [
 ];
 
 function Home() {
-  const featured = featuredProducts();
-  const exploring = exploringProducts();
   const supplierNotes = useSupplierNotes();
+  const overrides = useStockOverrides();
+  const gate = (product: NonNullable<ReturnType<typeof getProduct>>) => {
+    if (!supplierNotes) return product;
+    const next = projectPreview(product, overrides);
+    if (!next || agedOut(next) || !canPurchase(next)) return null;
+    return next;
+  };
+  const featured = (supplierNotes ? featuredProducts().map(gate) : featuredProducts()).filter(
+    (item) => item != null,
+  );
+  const exploring = (supplierNotes ? exploringProducts().map(gate) : exploringProducts()).filter(
+    (item) => item != null,
+  );
   const fresh = [
     "remote-dual-45",
     "fold-cat-cave",
@@ -53,6 +66,8 @@ function Home() {
     "bubble-vogue",
   ]
     .map((slug) => getProduct(slug))
+    .filter((item) => item != null)
+    .map((item) => (supplierNotes ? gate(item) : item))
     .filter((item) => item != null);
 
   return (

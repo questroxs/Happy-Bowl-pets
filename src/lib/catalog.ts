@@ -37,6 +37,9 @@ export type Product = {
   related: string[];
   warehouseUrl: string;
   sizes?: string[];
+  stock?: "in_stock" | "out_of_stock" | "coming_soon";
+  stockSince?: string;
+  dobaUrl?: string;
 };
 
 const CORE_PRODUCTS: Product[] = [

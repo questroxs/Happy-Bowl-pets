@@ -1,10 +1,12 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CATEGORIES, PRODUCTS, productsByCategory, searchProducts, type CategoryId, type Species } from "@/lib/catalog";
+import { CATEGORIES, productsByCategory, searchProducts, type CategoryId, type Species } from "@/lib/catalog";
+import { agedOut, canPurchase, previewCatalog, projectPreview } from "@/lib/catalog-preview";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export type ShopSearch = {
@@ -39,6 +41,13 @@ function ShopPage() {
 
   const results = searchProducts(query, category, speciesFilter);
   const supplierNotes = useSupplierNotes();
+  const overrides = useStockOverrides();
+  const visible = supplierNotes
+    ? results
+        .map((product) => projectPreview(product, overrides))
+        .filter((product) => product && !agedOut(product))
+    : results;
+  const tabs = supplierNotes ? previewCatalog(overrides).filter((product) => canPurchase(product)) : null;
   const title = category
     ? (CATEGORIES.find((item) => item.id === category)?.label ?? "Shop")
     : "Catalog";
@@ -49,7 +58,7 @@ function ShopPage() {
       <h1 className="mt-1 font-display text-4xl font-medium tracking-tight">{title}</h1>
       <p className="mt-2 max-w-xl text-muted">
         {supplierNotes
-          ? `${PRODUCTS.length} warehouse-matched pieces. The photo is the item we ship. Pay on Stripe — US shipping and state tax are calculated from your address before you pay.`
+          ? `${previewCatalog(overrides).length} pieces on this preview. Ingestibles are marked Coming soon and cannot be purchased.`
           : "Fountains, beds, treats, costumes, and everyday care for dogs and cats."}
       </p>
 
@@ -67,7 +76,11 @@ function ShopPage() {
         <Chip to="/shop" search={{ q: query || undefined, species }} active={!category}>
           All
         </Chip>
-        {CATEGORIES.filter((item) => productsByCategory(item.id).length > 0).map((item) => (
+        {CATEGORIES.filter((item) =>
+          supplierNotes
+            ? tabs!.some((product) => product.category === item.id)
+            : productsByCategory(item.id).length > 0,
+        ).map((item) => (
           <Chip
             key={item.id}
             to="/shop"
@@ -98,7 +111,7 @@ function ShopPage() {
         </Chip>
       </div>
 
-      {results.length === 0 ? (
+      {visible.length === 0 ? (
         <p className="mt-12 rounded-xl bg-paper px-5 py-10 text-center text-muted shadow-[var(--shadow-card)]">
           Nothing matches that filter. Try another aisle, or{" "}
           <Link to="/shop" search={{}} className="text-sage-dark">
@@ -108,8 +121,8 @@ function ShopPage() {
         </p>
       ) : (
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((product) => (
-            <ProductCard key={product.slug} product={product} featured={product.featured} />
+          {visible.map((product) => (
+            <ProductCard key={product!.slug} product={product!} featured={product!.featured} />
           ))}
         </div>
       )}
