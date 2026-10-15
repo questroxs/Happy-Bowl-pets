@@ -72,16 +72,18 @@ function ProductPage() {
           </h1>
           <p className="mt-2 text-lg text-muted">{product.tagline}</p>
           <p className="mt-5 text-2xl font-medium text-sage-dark">{formatPrice(product.price)}</p>
-          <p className="mt-1 text-sm text-muted">
-            Price before tax. US shipping from $6.95 (free at $75). State sales tax is calculated
-            from your shipping address on Stripe, before you pay.
-          </p>
+          {supplierNotes ? (
+            <p className="mt-1 text-sm text-muted">
+              Price before tax. US shipping from $6.95 (free at $75). State sales tax is calculated
+              from your shipping address on Stripe, before you pay.
+            </p>
+          ) : null}
           <p className="mt-5 text-base">{product.description}</p>
-          <p className="mt-3 rounded-lg bg-sage-soft px-3 py-2 text-sm text-ink">
-            {supplierNotes
-              ? "The photo is the warehouse item. What you see is what we send."
-              : "The photo is the item we ship."}
-          </p>
+          {supplierNotes ? (
+            <p className="mt-3 rounded-lg bg-sage-soft px-3 py-2 text-sm text-ink">
+              The photo is the warehouse item. What you see is what we send.
+            </p>
+          ) : null}
           {product.category === "wellness" || /cbd|hemp|calming/.test(product.slug) ? (
             <p className="mt-3 rounded-lg bg-sand px-3 py-2 text-sm text-muted">
               Not a substitute for veterinary care. These statements have not been evaluated by the
@@ -154,7 +156,7 @@ function ProductPage() {
               {saved ? "Saved" : "Save for later"}
             </Button>
           </div>
-          <p className="mt-4 font-mono text-xs text-muted">{product.sku}</p>
+          {supplierNotes ? <p className="mt-4 font-mono text-xs text-muted">{product.sku}</p> : null}
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { notifyPaidOrder } from "@/lib/notify-paid-order";
 import { useShopifyStore } from "@/lib/shopify-store";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 
 export const Route = createFileRoute("/order-confirmed")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -14,6 +15,7 @@ export const Route = createFileRoute("/order-confirmed")({
 function OrderConfirmedPage() {
   const { session_id: sessionId } = Route.useSearch();
   const clearCart = useShopifyStore((state) => state.clearCart);
+  const supplierNotes = useSupplierNotes();
 
   useEffect(() => {
     if (!sessionId) return;
@@ -28,8 +30,11 @@ function OrderConfirmedPage() {
       <p className="text-sm font-semibold tracking-widest text-terra uppercase">Paid</p>
       <h1 className="mt-2 font-display text-4xl font-medium tracking-tight">Order received.</h1>
       <p className="mt-4 text-lg text-muted">
-        Thank you. Stripe emailed you a receipt with tax and shipping. Happy Bowl Co. received the
-        same paid order — address, tax, and shipping method included. Questions:{" "}
+        Thank you. A receipt with tax and shipping is on its way to your email.
+        {supplierNotes
+          ? " Happy Bowl Co. received the same paid order — address, tax, and shipping method included."
+          : ""}{" "}
+        Questions:{" "}
         <a href="mailto:info@happybowlpets.com" className="font-medium text-sage-dark">
           info@happybowlpets.com
         </a>

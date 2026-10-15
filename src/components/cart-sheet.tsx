@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/
 import { getProduct } from "@/lib/catalog";
 import { remainingToFreeShipping, shippingOptions } from "@/lib/shipping";
 import { cartCount, cartSubtotal, useShopifyStore } from "@/lib/shopify-store";
+import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatMoney, formatPrice } from "@/lib/utils";
 
 export function CartSheet() {
@@ -16,6 +17,7 @@ export function CartSheet() {
   const removeFromCart = useShopifyStore((state) => state.removeFromCart);
   const checkout = useShopifyStore((state) => state.checkout);
   const checkingOut = useShopifyStore((state) => state.checkingOut);
+  const supplierNotes = useSupplierNotes();
 
   const items = cart
     .map((line) => {
@@ -34,8 +36,9 @@ export function CartSheet() {
       <SheetContent className="px-5 pt-6 pb-8">
         <SheetTitle>Cart</SheetTitle>
         <SheetDescription className="mt-1">
-          Pay on Stripe. US shipping and state tax are calculated from the address you enter — you
-          and Happy Bowl Co. both get the receipt by email.
+          {supplierNotes
+            ? "Pay on Stripe. US shipping and state tax are calculated from the address you enter — you and Happy Bowl Co. both get the receipt by email."
+            : "Shipping and tax are added before you pay."}
         </SheetDescription>
         <div className="mt-6 flex flex-1 flex-col gap-3 overflow-y-auto pr-1">
           {items.length === 0 ? (
@@ -120,10 +123,12 @@ export function CartSheet() {
           ) : items.length > 0 ? (
             <p className="mt-3 text-xs text-sage-dark">Standard shipping is free on this cart.</p>
           ) : null}
-          <p className="mt-2 text-xs text-muted">
-            Choose Standard or Expedited on Stripe. Tax is calculated from your US shipping address
-            and shown before you pay. We receive the same order, tax, and shipping in Stripe.
-          </p>
+          {supplierNotes ? (
+            <p className="mt-2 text-xs text-muted">
+              Choose Standard or Expedited on Stripe. Tax is calculated from your US shipping address
+              and shown before you pay. We receive the same order, tax, and shipping in Stripe.
+            </p>
+          ) : null}
           <p className="mt-2 text-sm text-ink">
             Questions about this order?{" "}
             <a href="mailto:info@happybowlpets.com" className="font-medium text-sage-dark">

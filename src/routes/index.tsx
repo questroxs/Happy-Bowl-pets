@@ -22,7 +22,7 @@ const COLLECTIONS = [
   },
   {
     title: "Wellness",
-    copy: "Joint oil, powders, calming drops, herbal drops, and the CBD2HEAL dog tincture. No medical claims.",
+    copy: "Joint oil, powders, calming drops, herbal drops, and the CBD2HEAL dog tincture.",
     cat: "wellness" as const,
     image: "/products/joint-liquid.jpg",
   },
@@ -34,7 +34,7 @@ const COLLECTIONS = [
   },
   {
     title: "Costumes",
-    copy: "Spider, cowboy, snowman, inmate stripes, and a Santa coat. The garment in the photo is the one we ship.",
+    copy: "Spider, cowboy, snowman, inmate stripes, and a Santa coat.",
     cat: "costumes" as const,
     image: "/products/creepy-webs.jpg",
   },
@@ -57,18 +57,15 @@ function Home() {
 
   return (
     <main>
-      <p className="border-b border-sage/40 bg-cream px-4 py-3 text-center text-sm text-ink">
-        Checkout is open. US shipping from $6.95 (free at $75). State tax is calculated on Stripe
-        from your address — you and we both get the receipt.
-        {supplierNotes ? (
-          <>
-            {" "}
-            <Link to="/compare" className="font-medium text-sage-dark">
-              Warehouse vs our prices
-            </Link>
-          </>
-        ) : null}
-      </p>
+      {supplierNotes ? (
+        <p className="border-b border-sage/40 bg-cream px-4 py-3 text-center text-sm text-ink">
+          Checkout is open. US shipping from $6.95 (free at $75). State tax is calculated on Stripe
+          from your address — you and we both get the receipt.{" "}
+          <Link to="/compare" className="font-medium text-sage-dark">
+            Warehouse vs our prices
+          </Link>
+        </p>
+      ) : null}
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
         <img
@@ -85,10 +82,8 @@ function Home() {
             Fresher water. Calmer days.
           </h1>
           <p className="mt-3 max-w-lg text-base text-paper/90">
-            Quiet stainless fountains, raised beds, treats, toys, and everyday care.{" "}
-            {supplierNotes
-              ? "The photo is the warehouse item — the one that is actually in stock."
-              : "The photo is the item we ship."}
+            Quiet stainless fountains, raised beds, treats, toys, and everyday care.
+            {supplierNotes ? " The photo is the warehouse item — the one that is actually in stock." : ""}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -110,9 +105,7 @@ function Home() {
           <div className="rounded-xl bg-paper px-5 py-6 shadow-[var(--shadow-card)]">
             <Droplets className="size-5 text-sage-dark" />
             <h2 className="mt-3 font-display text-xl font-medium">Hydration first</h2>
-            <p className="mt-1 text-sm text-muted">
-              Stainless, quiet, and sized for real kitchens. The fountain in the photo is the one we ship.
-            </p>
+            <p className="mt-1 text-sm text-muted">Stainless, quiet, and sized for real kitchens.</p>
           </div>
           <div className="rounded-xl bg-paper px-5 py-6 shadow-[var(--shadow-card)]">
             <Leaf className="size-5 text-sage-dark" />
@@ -127,7 +120,7 @@ function Home() {
             <p className="mt-1 text-sm text-muted">
               {supplierNotes
                 ? "Treats, shampoo, and beds chosen the same way as the fountain: the warehouse item, photographed as it ships, priced with our margin in."
-                : "Treats, shampoo, and beds chosen the same way as the fountain: photographed as they ship."}
+                : "Treats, shampoo, beds, and costumes for the animals who live here."}
             </p>
           </div>
         </div>

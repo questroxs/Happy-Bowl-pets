@@ -50,7 +50,7 @@ function ShopPage() {
       <p className="mt-2 max-w-xl text-muted">
         {supplierNotes
           ? `${PRODUCTS.length} warehouse-matched pieces. The photo is the item we ship. Pay on Stripe — US shipping and state tax are calculated from your address before you pay.`
-          : `${PRODUCTS.length} pieces for dogs and cats. The photo is the item we ship. Pay on Stripe — US shipping and state tax are calculated from your address before you pay.`}
+          : "Fountains, beds, treats, costumes, and everyday care for dogs and cats."}
       </p>
 
       <div className="mt-6 max-w-md">

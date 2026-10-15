@@ -13,9 +13,8 @@ export function SiteFooter() {
             <p className="font-display text-lg font-medium">Happy Bowl Co.</p>
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted">
-            Wellness shop for dogs and cats. Fountains, beds, treats, toys, and care
-            {supplierNotes ? " — warehouse pieces, photographed on cream." : ", photographed as they ship."} Pay
-            on Stripe.
+            Wellness shop for dogs and cats. Fountains, beds, treats, toys, costumes, and care.
+            {supplierNotes ? " Warehouse pieces, photographed on cream. Pay on Stripe." : ""}
           </p>
         </div>
         <div>
@@ -56,8 +55,12 @@ export function SiteFooter() {
         <div>
           <p className="text-sm font-semibold tracking-wide text-ink uppercase">House notes</p>
           <ul className="mt-3 space-y-2 text-sm text-muted">
-            <li>US shipping from $6.95 — free standard at $75</li>
-            <li>State tax calculated at Stripe checkout</li>
+            {supplierNotes ? (
+              <>
+                <li>US shipping from $6.95 — free standard at $75</li>
+                <li>State tax calculated at Stripe checkout</li>
+              </>
+            ) : null}
             <li>
               <Link to="/about" className="text-sage-dark no-underline">
                 How we choose pieces

@@ -14,7 +14,7 @@ function AboutPage() {
       <p className="mt-4 text-lg text-muted">
         {supplierNotes
           ? "Happy Bowl Co. is a wellness shop for dogs and cats. We still start with water that actually gets drunk — then beds, treats, toys, and shampoo from the same US warehouse, using that warehouse’s own photo so the listing matches the box."
-          : "Happy Bowl Co. is a wellness shop for dogs and cats. We start with water that actually gets drunk — then beds, treats, toys, and shampoo, using the product photo so the listing matches the box."}
+          : "Happy Bowl Co. is a shop for dogs and cats. Quiet fountains, raised beds, treats, toys, costumes, and everyday care."}
       </p>
 
       <img
@@ -33,17 +33,16 @@ function AboutPage() {
         <p>
           {supplierNotes
             ? "If a listing is out of stock, ships from overseas, or the photo isn’t the warehouse item, it does not go on the floor. Joint chews and drops follow the label on the bottle — not a vet visit. Prices already include our margin over warehouse cost."
-            : "If a piece is out of stock or the photo isn’t the item we ship, it does not go on the floor. Joint chews and drops follow the label on the bottle — not a vet visit."}
+            : "Joint chews and drops follow the label on the bottle. They are not a substitute for a vet."}
         </p>
       </section>
 
       <section className="mt-10 space-y-4">
         <h2 className="font-display text-2xl font-medium">How you buy</h2>
         <p>
-          This catalog is the front of house. Add anything to the cart and pay on Stripe. US
-          shipping starts at $6.95 (free standard at $75). State sales tax is calculated from the
-          address you enter, shown before you pay. You get a receipt by email; we receive the same
-          paid order in Stripe.
+          {supplierNotes
+            ? "This catalog is the front of house. Add anything to the cart and pay on Stripe. US shipping starts at $6.95 (free standard at $75). State sales tax is calculated from the address you enter, shown before you pay. You get a receipt by email; we receive the same paid order in Stripe."
+            : "Add a piece to your cart. Shipping and tax are confirmed before you pay, and a receipt is emailed to you."}
         </p>
       </section>
 
