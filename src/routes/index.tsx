@@ -80,7 +80,7 @@ function Home() {
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
         <img
-          src="/products/hero-together.jpg?v=20261015"
+          src="/products/home-pets.jpg"
           alt="A golden retriever and a cream cat together with a fountain and bowls"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -181,7 +181,7 @@ function Home() {
 
       <section className="relative isolate pb-14">
         <img
-          src="/products/our-story.jpg?v=20261015"
+          src="/products/story-dogs.jpg"
           alt="A cream Shih Tzu and a dachshund sitting together in the living room"
           className="h-auto w-full"
         />
