@@ -8,20 +8,20 @@ function AboutPage() {
   const supplierNotes = useSupplierNotes();
 
   return (
-    <main className="mx-auto w-[min(100%-2rem,42rem)] py-12">
-      <p className="text-sm font-semibold tracking-widest text-terra uppercase">The house</p>
+    <main>
+      <img
+        src="/products/our-story.jpg"
+        alt="A small cream dog and a dachshund sitting together in a warm living room"
+        className="h-auto w-full object-cover"
+      />
+      <div className="mx-auto w-[min(100%-2rem,42rem)] py-12">
+      <p className="text-sm font-semibold tracking-widest text-terra uppercase">Our story</p>
       <h1 className="mt-2 font-display text-4xl font-medium tracking-tight">A quieter bowl.</h1>
       <p className="mt-4 text-lg text-muted">
         {supplierNotes
           ? "Happy Bowl Co. is a wellness shop for dogs and cats. We still start with water that actually gets drunk — then beds, treats, toys, and shampoo from the same US warehouse, using that warehouse’s own photo so the listing matches the box."
           : "Happy Bowl Co. is a shop for dogs and cats. Quiet fountains, raised beds, treats, toys, costumes, and everyday care."}
       </p>
-
-      <img
-        src="/products/hero.jpg"
-        alt="An orange cat drinking from the quiet stainless fountain"
-        className="product-photo mt-8 w-full rounded-xl object-cover"
-      />
 
       <section className="mt-10 space-y-4 text-base">
         <h2 className="font-display text-2xl font-medium">What we put on the floor</h2>
@@ -67,6 +67,7 @@ function AboutPage() {
           </Link>
         </Button>
       </div>
+    </div>
     </main>
   );
 }

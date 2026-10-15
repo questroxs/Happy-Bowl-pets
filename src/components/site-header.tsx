@@ -95,7 +95,7 @@ export function SiteHeader() {
             to="/about"
             className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
           >
-            About
+            Our story
           </Link>
         </nav>
         <div className="ml-auto flex items-center gap-1">
@@ -222,7 +222,7 @@ export function SiteHeader() {
               className="rounded-lg px-3 py-3 text-base font-medium text-ink no-underline hover:bg-sand"
               onClick={() => setMenuOpen(false)}
             >
-              About
+              Our story
             </Link>
           </nav>
           <form
