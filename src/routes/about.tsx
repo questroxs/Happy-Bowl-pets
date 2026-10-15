@@ -10,7 +10,7 @@ function AboutPage() {
   return (
     <main>
       <img
-        src="/products/our-story.jpg"
+        src="/products/our-story.jpg?v=20261015"
         alt="A cream dog and a dachshund on a rug in a warm living room, Happy Bowl Pets Co."
         className="h-auto w-full object-cover"
       />
@@ -68,7 +68,7 @@ function AboutPage() {
         </Button>
       </div>
       <video
-        src="/products/our-story.mp4"
+        src="/products/our-story.mp4?v=20261015"
         autoPlay
         loop
         muted
