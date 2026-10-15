@@ -36,6 +36,7 @@ export type Product = {
   material?: string;
   related: string[];
   warehouseUrl: string;
+  sizes?: string[];
 };
 
 const CORE_PRODUCTS: Product[] = [

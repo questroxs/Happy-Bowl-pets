@@ -16,6 +16,7 @@ import {
 export type CartLine = {
   slug: string;
   quantity: number;
+  size?: string;
 };
 
 type ShopifyState = {
@@ -31,9 +32,9 @@ type ShopifyState = {
   connect: (shop: string, token: string) => Promise<void>;
   disconnect: () => void;
   refresh: () => Promise<void>;
-  addToCart: (slug: string) => void;
-  setQuantity: (slug: string, quantity: number) => void;
-  removeFromCart: (slug: string) => void;
+  addToCart: (slug: string, size?: string) => void;
+  setQuantity: (slug: string, quantity: number, size?: string) => void;
+  removeFromCart: (slug: string, size?: string) => void;
   clearCart: () => void;
   setCartOpen: (open: boolean) => void;
   checkout: () => Promise<void>;
@@ -115,35 +116,45 @@ export const useShopifyStore = create<ShopifyState>()(
           set({ status: "error", error: message, matches: {} });
         }
       },
-      addToCart: (slug) => {
-        if (!getProduct(slug)) {
+      addToCart: (slug, size) => {
+        const product = getProduct(slug);
+        if (!product) {
           toast.error("That piece is not in the catalog.");
           return;
         }
+        const picked = size?.trim().toUpperCase();
+        if (product.sizes?.length && (!picked || !product.sizes.includes(picked))) {
+          toast.error(`Choose a size for ${product.name}.`);
+          return;
+        }
         const cart = get().cart;
-        const existing = cart.find((line) => line.slug === slug);
+        const existing = cart.find((line) => line.slug === slug && line.size === picked);
         const next = existing
           ? cart.map((line) =>
-              line.slug === slug ? { ...line, quantity: Math.min(9, line.quantity + 1) } : line,
+              line.slug === slug && line.size === picked
+                ? { ...line, quantity: Math.min(9, line.quantity + 1) }
+                : line,
             )
-          : [...cart, { slug, quantity: 1 }];
+          : [...cart, { slug, quantity: 1, ...(picked ? { size: picked } : {}) }];
         set({ cart: next, cartOpen: true });
-        const product = getProduct(slug);
-        toast.success(product ? `${product.name} added` : "Added to cart");
+        toast.success(picked ? `${product.name} (${picked}) added` : `${product.name} added`);
       },
-      setQuantity: (slug, quantity) => {
+      setQuantity: (slug, quantity, size) => {
+        const picked = size?.trim().toUpperCase();
+        const same = (line: CartLine) => line.slug === slug && line.size === picked;
         if (quantity < 1) {
-          set({ cart: get().cart.filter((line) => line.slug !== slug) });
+          set({ cart: get().cart.filter((line) => !same(line)) });
           return;
         }
         set({
           cart: get().cart.map((line) =>
-            line.slug === slug ? { ...line, quantity: Math.min(9, quantity) } : line,
+            same(line) ? { ...line, quantity: Math.min(9, quantity) } : line,
           ),
         });
       },
-      removeFromCart: (slug) => {
-        set({ cart: get().cart.filter((line) => line.slug !== slug) });
+      removeFromCart: (slug, size) => {
+        const picked = size?.trim().toUpperCase();
+        set({ cart: get().cart.filter((line) => !(line.slug === slug && line.size === picked)) });
       },
       clearCart: () => set({ cart: [], cartOpen: false }),
       setCartOpen: (cartOpen) => set({ cartOpen }),

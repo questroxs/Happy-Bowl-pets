@@ -19,6 +19,7 @@ export const WEAR_PRODUCTS: Product[] = [
     category: "costumes",
     species: "dogs",
     image: "/products/creepy-webs.jpg",
+    sizes: ["XS", "S", "M", "L", "XL"],
     related: ["rodeo-bones", "snowman-hoodie", "inmate-stripes"],
     warehouseUrl:
       "https://www.doba.com/product/gObpCrqtAYDV/dropshipping-pet-life-creepy-webs-holiday-spider-pet-dog-costume.html",
@@ -40,6 +41,7 @@ export const WEAR_PRODUCTS: Product[] = [
     species: "dogs",
     image: "/products/rodeo-bones.jpg",
     material: "Denim",
+    sizes: ["XS", "S", "M", "L", "XL"],
     related: ["creepy-webs", "inmate-stripes", "santa-coat"],
     warehouseUrl:
       "https://www.doba.com/product/BybNeWVjAPDJ/dropshipping-pet-life-rodeo-bones-cowboy-pet-dog-costume-uniform.html",
@@ -48,12 +50,12 @@ export const WEAR_PRODUCTS: Product[] = [
     slug: "snowman-hoodie",
     sku: "HB-COS-SNO",
     name: "Light-Up Snowman Hoodie",
-    tagline: "Pet Life LED snowman hooded sweater. Sizes X-small through large.",
+    tagline: "Pet Life LED snowman hooded sweater. Choose XS, S, M, L, or XL.",
     description:
-      "The Pet Life light-up snowman hoodie the warehouse ships: a hooded sweater with a snowman face and lights, polyester and cotton. Sizes run X-small through large. This photo is that sweater.",
+      "The Pet Life light-up snowman hoodie the warehouse ships: a hooded sweater with a snowman face and lights, polyester and cotton. Choose XS, S, M, L, or XL. This photo is that sweater.",
     details: [
       "Pet Life LED snowman hooded sweater (Doba D0102H70F2V)",
-      "Polyester and cotton. Sizes X-small, small, medium, and large",
+      "Polyester and cotton. Sizes XS, S, M, L, and XL",
       "US warehouse, in stock. Doba example: up to $13.20 per sale (38% margin)",
     ],
     price: 35,
@@ -61,6 +63,7 @@ export const WEAR_PRODUCTS: Product[] = [
     species: "dogs",
     image: "/products/snowman-hoodie.jpg",
     material: "Polyester and cotton",
+    sizes: ["XS", "S", "M", "L", "XL"],
     related: ["santa-coat", "creepy-webs", "inmate-stripes"],
     warehouseUrl:
       "https://www.doba.com/product/ZbVkvmEqgPqY/dropshipping-pet-life-led-lighting-halloween-happy-snowman-hooded-sweater-pet-costume.html",
@@ -81,6 +84,7 @@ export const WEAR_PRODUCTS: Product[] = [
     category: "costumes",
     species: "dogs",
     image: "/products/inmate-stripes.jpg",
+    sizes: ["XS", "S", "M", "L", "XL"],
     related: ["rodeo-bones", "creepy-webs", "santa-coat"],
     warehouseUrl:
       "https://www.doba.com/product/ghVtervRAcqF/dropshipping-pet-life-striped-retro-inmate-prisoner-pet-dog-costume-uniform.html",
@@ -89,18 +93,19 @@ export const WEAR_PRODUCTS: Product[] = [
     slug: "santa-coat",
     sku: "HB-CLT-SAN",
     name: "Santa Coat with Antlers",
-    tagline: "Red coat and antlers for small and medium dogs and cats. Sizes S–XL.",
+    tagline: "Red coat and antlers for dogs and cats. Choose XS, S, M, L, or XL.",
     description:
-      "The red Santa coat the warehouse ships, with plaid trim and reindeer antlers, for small and medium dogs and cats. Sizes run S through XL. This photo is that coat.",
+      "The red Santa coat the warehouse ships, with plaid trim and reindeer antlers, for dogs and cats. Choose XS, S, M, L, or XL. This photo is that coat.",
     details: [
       "Santa coat with reindeer antlers (Doba D0102X3ZC0V)",
-      "Listed for small and medium dogs and cats. Sizes S, M, L, and XL",
+      "Sizes XS, S, M, L, and XL",
       "US warehouse, in stock. Doba example: up to $16.75 per sale (50% margin)",
     ],
     price: 34,
     category: "costumes",
     species: "both",
     image: "/products/santa-coat.jpg",
+    sizes: ["XS", "S", "M", "L", "XL"],
     related: ["snowman-hoodie", "creepy-webs", "rodeo-bones"],
     warehouseUrl:
       "https://www.doba.com/product/tNQbvnMjUcDA/dropshipping-pet-christmas-clothes-santa-claus-reindeer-antlers-costume-winter-outfit-new-year-coat-for-small-medium-dogs-cats-available-in-smlxl.html",

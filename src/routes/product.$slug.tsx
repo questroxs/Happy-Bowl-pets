@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Bookmark, BookmarkCheck, ExternalLink, ShoppingBag } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
@@ -22,6 +23,7 @@ function ProductPage() {
   const savedSlugs = useShopStore((s) => s.saved);
   const toggleSaved = useShopStore((s) => s.toggleSaved);
   const addToCart = useShopifyStore((s) => s.addToCart);
+  const [size, setSize] = useState("M");
 
   if (!product) {
     return (
@@ -121,8 +123,29 @@ function ProductPage() {
               ) : null}
             </dl>
           )}
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button size="lg" onClick={() => addToCart(product.slug)}>
+          <div className="mt-8 flex flex-wrap items-end gap-3">
+            {product.sizes?.length ? (
+              <label className="block min-w-40 text-sm font-medium text-ink">
+                Size
+                <select
+                  value={product.sizes.includes(size) ? size : product.sizes[0]}
+                  onChange={(event) => setSize(event.target.value)}
+                  className="mt-2 block w-full rounded-lg border border-line bg-paper px-3 py-3 text-base text-ink"
+                >
+                  {product.sizes.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+            <Button
+              size="lg"
+              onClick={() =>
+                addToCart(product.slug, product.sizes?.includes(size) ? size : product.sizes?.[0])
+              }
+            >
               <ShoppingBag className="size-4" />
               Add to cart
             </Button>

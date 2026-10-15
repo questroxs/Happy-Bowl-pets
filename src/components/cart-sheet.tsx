@@ -44,7 +44,7 @@ export function CartSheet() {
             </p>
           ) : (
             items.map((item) => (
-              <div key={item.slug} className="flex gap-3 rounded-lg bg-sand p-2">
+              <div key={`${item.slug}-${item.size ?? ""}`} className="flex gap-3 rounded-lg bg-sand p-2">
                 <img
                   src={item.product.image}
                   alt=""
@@ -59,13 +59,14 @@ export function CartSheet() {
                   >
                     {item.product.name}
                   </Link>
+                  {item.size ? <p className="text-sm text-muted">Size {item.size}</p> : null}
                   <p className="text-sm text-sage-dark">{formatPrice(item.product.price)}</p>
                   <div className="mt-2 flex items-center gap-2">
                     <button
                       type="button"
                       className="grid size-11 place-items-center rounded-full bg-paper text-ink"
                       aria-label="Decrease quantity"
-                      onClick={() => setQuantity(item.slug, item.quantity - 1)}
+                      onClick={() => setQuantity(item.slug, item.quantity - 1, item.size)}
                     >
                       <Minus className="size-3.5" />
                     </button>
@@ -74,14 +75,14 @@ export function CartSheet() {
                       type="button"
                       className="grid size-11 place-items-center rounded-full bg-paper text-ink"
                       aria-label="Increase quantity"
-                      onClick={() => setQuantity(item.slug, item.quantity + 1)}
+                      onClick={() => setQuantity(item.slug, item.quantity + 1, item.size)}
                     >
                       <Plus className="size-3.5" />
                     </button>
                     <button
                       type="button"
                       className="ml-auto text-xs font-medium text-muted underline-offset-2 hover:underline"
-                      onClick={() => removeFromCart(item.slug)}
+                      onClick={() => removeFromCart(item.slug, item.size)}
                     >
                       Remove
                     </button>

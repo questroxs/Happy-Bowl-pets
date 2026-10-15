@@ -49,9 +49,17 @@ export function ProductCard({
         </div>
       </Link>
       <div className="px-4 pb-4">
-        <Button className="w-full" variant="secondary" onClick={() => addToCart(product.slug)}>
-          Add to cart
-        </Button>
+        {product.sizes?.length ? (
+          <Button asChild className="w-full" variant="secondary">
+            <Link to="/product/$slug" params={{ slug: product.slug }}>
+              Choose a size
+            </Link>
+          </Button>
+        ) : (
+          <Button className="w-full" variant="secondary" onClick={() => addToCart(product.slug)}>
+            Add to cart
+          </Button>
+        )}
       </div>
     </article>
   );

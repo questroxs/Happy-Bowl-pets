@@ -23,6 +23,17 @@ describe("parseCheckoutLines", () => {
     assert.deepEqual(lines, [{ slug: "slow-meal-mat", quantity: 9 }]);
   });
 
+  it("keeps a costume size and drops a size that is not offered", () => {
+    const lines = parseCheckoutLines([
+      { slug: "creepy-webs", quantity: 1, size: "xl" },
+      { slug: "quiet-stainless-2l", quantity: 1, size: "xxl" },
+    ]);
+    assert.deepEqual(lines, [
+      { slug: "creepy-webs", quantity: 1, size: "XL" },
+      { slug: "quiet-stainless-2l", quantity: 1 },
+    ]);
+  });
+
   it("rejects an empty cart", () => {
     assert.throws(() => parseCheckoutLines({ lines: [] }), /empty/);
   });

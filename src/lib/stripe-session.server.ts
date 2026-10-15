@@ -50,7 +50,10 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
     .map((line) => {
       const product = getProduct(line.slug);
       if (!product || line.quantity < 1) return null;
-      return { product, quantity: Math.min(9, Math.floor(line.quantity)) };
+      if (product.sizes?.length && (!line.size || !product.sizes.includes(line.size))) {
+        throw new Error(`Choose a size for ${product.name}.`);
+      }
+      return { product, quantity: Math.min(9, Math.floor(line.quantity)), size: line.size };
     })
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
@@ -59,7 +62,9 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
   }
 
   const subtotal = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-  const skus = items.map((item) => `${item.product.sku}×${item.quantity}`).join(", ");
+  const skus = items
+    .map((item) => `${item.product.sku}${item.size ? ` ${item.size}` : ""}×${item.quantity}`)
+    .join(", ");
 
   return {
     mode: "payment",
@@ -113,10 +118,14 @@ function checkoutPayload(lines: CheckoutLine[], origin: string, withTax: boolean
         unit_amount: dollarsToCents(item.product.price),
         tax_behavior: "exclusive",
         product_data: {
-          name: item.product.name,
-          description: `${item.product.sku} — ${customerCopy(item.product.tagline)}`,
+          name: item.size ? `${item.product.name} (${item.size})` : item.product.name,
+          description: `${item.product.sku}${item.size ? ` · ${item.size}` : ""} — ${customerCopy(item.product.tagline)}`,
           images: [`${origin}${item.product.image}`],
-          metadata: { sku: item.product.sku, slug: item.product.slug },
+          metadata: {
+            sku: item.product.sku,
+            slug: item.product.slug,
+            ...(item.size ? { size: item.size } : {}),
+          },
         },
       },
     })),
