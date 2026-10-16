@@ -70,7 +70,7 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "bone-pad-bed",
     sku: "HB-BED-BONE",
     name: "Orthopedic Dog Bed",
-    tagline: "Memory-foam dog bed. The photo is the warehouse listing.",
+    tagline: "Memory-foam dog bed.",
     description:
       "The warehouse orthopedic dog bed for large dogs. Doba lists it as gray/beige, 35D memory foam with TPU and polyester, 43 × 26 × 2 in, about 3 lb. This photo is the image on that listing — what you see is what the warehouse shows.",
     details: [

@@ -7,7 +7,7 @@ export const WEAR_PRODUCTS: Product[] = [
     slug: "creepy-webs",
     sku: "HB-COS-WEB",
     name: "Creepy Webs Spider Costume",
-    tagline: "Pet Life hooded spider costume for dogs. The photo is the warehouse listing.",
+    tagline: "Pet Life hooded spider costume for dogs.",
     description:
       "The Pet Life Creepy Webs costume the warehouse ships: a hooded spider outfit with webbed legs, for dogs. Sizes run X-small through X-large.",
     details: [

@@ -15,7 +15,7 @@ export function customerCopy(input: string): string {
   const kept = chunks
     .flatMap((chunk) => chunk.split(/(?<=[.!?])\s+/))
     .map((sentence) => salvage(sentence))
-    .filter((sentence) => sentence && !BANNED.test(sentence));
+    .filter((sentence) => sentence && !BANNED.test(sentence) && !/^the photo is the product\.?$/i.test(sentence));
 
   return tidy(kept.join(" "));
 }
