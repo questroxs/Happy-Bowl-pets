@@ -220,7 +220,7 @@ const CORE_PRODUCTS: Product[] = [
     name: "Oak Feeding Station",
     tagline: "PawHut oak stand, two 0.5 gal stainless bowls, cabinet underneath.",
     description:
-      "The warehouse ships the PawHut oak feeding station: particle-board cabinet in oak, two 9.3 in stainless bowls (0.5 gal each), storage behind the doors, slow-feeder insert in the box. Sized for large dogs with a 21.7–25.6 in shoulder. This photo is that stand.",
+      "The warehouse ships the PawHut oak feeding station: particle-board cabinet in oak, two 9.3 in stainless bowls (0.5 gal each), storage behind the doors, slow-feeder insert in the box. Sized for large dogs with a 21.7–25.6 in shoulder.",
     details: [
       "PawHut / Aosom D08-085V00AK — oak, 23.6 × 11.8 × 14 in (Doba D0102X3UQWV)",
       "Two 0.5 gal stainless bowls + slow-feeder; 10.6 gal cabinet below",
@@ -229,7 +229,7 @@ const CORE_PRODUCTS: Product[] = [
     price: 72,
     category: "mealtime",
     species: "dogs",
-    image: "/products/elevated.jpg",
+    image: "/products/elevated-plain.jpg",
     capacity: "0.5 gal × 2",
     material: "Oak particle board + stainless",
     related: ["slow-meal-mat", "puzzle-feeder", "calm-mealtime-kit"],
