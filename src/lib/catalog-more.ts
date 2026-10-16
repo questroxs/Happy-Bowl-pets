@@ -523,7 +523,7 @@ export const MORE_PRODUCTS: Product[] = [
     price: 90,
     category: "beds",
     species: "both",
-    image: "/products/fold-cat-cave.jpg",
+    image: "/products/fold-cat-cave-plain.jpg",
     related: ["blue-bolster-bed", "rattan-chaise", "travel-nest"],
     warehouseUrl:
       "https://www.doba.com/product/KvFjVoTBMYbP/dropshipping-foldable-cat-cave.html",
