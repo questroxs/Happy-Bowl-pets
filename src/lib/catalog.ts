@@ -115,7 +115,7 @@ const CORE_PRODUCTS: Product[] = [
     name: "Stainless Fountain XL",
     tagline: "PawHut 7 L / 246 oz tank for multi-pet homes.",
     description:
-      "The larger stainless fountain the warehouse ships — PawHut 1.8 gallon, 304 steel, water-level window, quiet pump. This is the photo of that unit, not a styled stand-in.",
+      "The larger stainless fountain the warehouse ships — PawHut 1.8 gallon, 304 steel, water-level window, quiet pump.",
     details: [
       "304 stainless, 7 L / 246 oz (12.6 × 8.7 × 8.8 in)",
       "Window with LED, two flow modes, pump under 35 dB",
