@@ -36,5 +36,9 @@ describe("customer copy", () => {
       customerCopy("Memory-foam dog bed. The photo is the warehouse listing."),
       "Memory-foam dog bed.",
     );
+    assert.equal(
+      customerCopy("Soft foam. This photo is that bed."),
+      "Soft foam.",
+    );
   });
 });
