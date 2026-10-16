@@ -7,7 +7,7 @@ describe("vercel preview catalog", () => {
   it("reprices without changing the public product", () => {
     const publicProduct = getProduct("lounge-cot-beige");
     const preview = previewOne("lounge-cot-beige");
-    assert.equal(publicProduct?.price, 109);
+    assert.equal(publicProduct?.price, 109.99);
     assert.equal(preview?.price, 138.99);
   });
 

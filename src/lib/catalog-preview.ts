@@ -427,6 +427,11 @@ function cleanSentence(text: string): string {
     .trim();
 }
 
+function priceTo99(price: number): number {
+  const dollars = Math.floor(Math.round(price * 100) / 100);
+  return Number((dollars + 0.99).toFixed(2));
+}
+
 function ingestible(product: Product): boolean {
   return product.category === "treats" || product.category === "wellness";
 }
@@ -510,6 +515,7 @@ export function projectPreview(
   }
 
   next.dobaUrl = next.warehouseUrl;
+  next.price = priceTo99(next.price);
   return next;
 }
 
