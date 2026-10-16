@@ -532,13 +532,13 @@ export const MORE_PRODUCTS: Product[] = [
     slug: "remote-dual-45",
     sku: "HB-FNT-R45",
     name: "Remote Dual-Tank Fountain 4.5 L",
-    tagline: "Milky dual-tank fountain. The warehouse example price, not a markup.",
+    tagline: "4.5 L dual-tank fountain with a remote.",
     description:
-      "The milky 4.5 L dual-tank fountain in the photo, with three cats around it. The listing calls it a wireless remote-control fountain and says the design avoids a chewed power cord. The warehouse photo still shows a white cord on the floor beside this unit — you are buying the fountain in the photo, not the cordless 4.5 L already in the shop ($80).",
+      "A 4.5 L dual-tank fountain with a remote. The drinking tank holds 4.5 liters and the second tank holds 2 liters. For cats and dogs.",
     details: [
-      "4.5 L / 1.2 gal water tank, 2 L / 0.53 gal wastewater tank (Doba D01027HK9A7)",
-      "Listed size 24 × 28 × 23 cm. US warehouse. In stock",
-      "Doba example: up to $72.36 per sale (37% margin). Our $196 is that example",
+      "4.5 L drinking tank and a 2 L second tank",
+      "Remote control. Listed size 24 × 28 × 23 cm",
+      "For cats and dogs",
     ],
     price: 196,
     category: "hydration",

@@ -30,7 +30,7 @@ describe("customer copy", () => {
       customerCopy(
         "The photo still shows a white cord. Doba example: up to $72.36 per sale (37% margin).",
       ),
-      "The photo still shows a white cord.",
+      "",
     );
     assert.equal(
       customerCopy("Memory-foam dog bed. The photo is the warehouse listing."),

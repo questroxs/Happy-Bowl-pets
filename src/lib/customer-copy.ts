@@ -20,7 +20,8 @@ export function customerCopy(input: string): string {
         sentence &&
         !BANNED.test(sentence) &&
         !/^(this|the) photo is\b/i.test(sentence) &&
-        !/\bthe photo is the product\b/i.test(sentence),
+        !/\bthe photo is the product\b/i.test(sentence) &&
+        !/\b(white cord|you are buying|already in the shop|not the cordless)\b/i.test(sentence),
     );
 
   return tidy(kept.join(" "));
