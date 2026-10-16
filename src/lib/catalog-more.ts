@@ -518,9 +518,9 @@ export const MORE_PRODUCTS: Product[] = [
     details: [
       "Foldable cat cave, cats or small dogs (Doba D01027HZAH7)",
       "15.70 × 15.70 × 14.10 in, about 1.99 lb, PP-cotton fill",
-      "US warehouse. Doba example: up to $47.89 per sale (53% margin)",
+      "US warehouse. Doba cost $53.69. Retail is cost ÷ 0.70 (30% margin)",
     ],
-    price: 90,
+    price: 76.7,
     category: "beds",
     species: "both",
     image: "/products/fold-cat-cave-plain.jpg",
@@ -683,13 +683,13 @@ export const MORE_PRODUCTS: Product[] = [
     name: "Rattan Pet Chaise",
     tagline: "Black chaise. The warehouse example price, not a markup.",
     description:
-      "The black chaise in the photo, with a pug on the same sofa. Eucalyptus, flannel, and foam. Overall 29.9 × 17.7 × 16.9 in. The listing's weight capacity is 33 lb — cats and small dogs, not a large dog. Our price is Doba's published example. The supplier note says Amazon shipping and prohibited on Walmart; that is their channel note, not a limit on this shop.",
+      "The black chaise in the photo, with a pug on the same sofa. Eucalyptus, flannel, and foam. Overall 29.9 × 17.7 × 16.9 in. The listing's weight capacity is 33 lb — cats and small dogs, not a large dog. The supplier note says Amazon shipping and prohibited on Walmart; that is their channel note, not a limit on this shop.",
     details: [
       "Rattan pet sofa, black (Doba D01027RMCST)",
       "29.9 × 17.7 × 16.9 in, weight capacity 33 lb",
-      "US warehouse, in stock. Doba example: up to $137.59 per sale (47% margin). Our $293 is that example",
+      "US warehouse, in stock. Doba cost $155.41. Retail is cost ÷ 0.70 (30% margin)",
     ],
-    price: 293,
+    price: 222.01,
     category: "beds",
     species: "both",
     image: "/products/rattan-chaise.jpg",
