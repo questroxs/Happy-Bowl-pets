@@ -514,7 +514,7 @@ export const MORE_PRODUCTS: Product[] = [
     name: "Foldable Cat Cave",
     tagline: "Grey cave with a removable cushion. Cats and small dogs.",
     description:
-      "The grey foldable cave in the photo, with the zippered cushion beside it. The warehouse title also names kittens and rabbits. Anti-slip, water-resistant bottom. This photo is that cave — including the supplier caption already printed on it.",
+      "The grey foldable cave in the photo, with the zippered cushion beside it. The warehouse title also names kittens and rabbits. Anti-slip, water-resistant bottom.",
     details: [
       "Foldable cat cave, cats or small dogs (Doba D01027HZAH7)",
       "15.70 × 15.70 × 14.10 in, about 1.99 lb, PP-cotton fill",
