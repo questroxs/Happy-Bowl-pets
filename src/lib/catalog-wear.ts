@@ -9,7 +9,7 @@ export const WEAR_PRODUCTS: Product[] = [
     name: "Creepy Webs Spider Costume",
     tagline: "Pet Life hooded spider costume for dogs. The photo is the warehouse listing.",
     description:
-      "The Pet Life Creepy Webs costume the warehouse ships: a hooded spider outfit with webbed legs, for dogs. Sizes run X-small through X-large. This photo is that costume.",
+      "The Pet Life Creepy Webs costume the warehouse ships: a hooded spider outfit with webbed legs, for dogs. Sizes run X-small through X-large.",
     details: [
       "Pet Life Creepy Webs holiday spider costume (Doba D0102HAXPGY)",
       "Sizes X-small, small, medium, large, and X-large",
@@ -18,7 +18,7 @@ export const WEAR_PRODUCTS: Product[] = [
     price: 35,
     category: "costumes",
     species: "dogs",
-    image: "/products/creepy-webs.jpg",
+    image: "/products/creepy-webs-plain.jpg",
     sizes: ["XS", "S", "M", "L", "XL"],
     related: ["rodeo-bones", "snowman-hoodie", "inmate-stripes"],
     warehouseUrl:

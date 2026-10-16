@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, Leaf, PawPrint } from "lucide-react";
+import { VisitorGate } from "@/components/visitor-gate";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
@@ -38,7 +39,7 @@ const COLLECTIONS = [
     title: "Costumes",
     copy: "Spider, cowboy, snowman, inmate stripes, and a Santa coat.",
     cat: "costumes" as const,
-    image: "/products/creepy-webs.jpg",
+    image: "/products/creepy-webs-plain.jpg",
   },
 ];
 
@@ -258,6 +259,9 @@ function Home() {
           ))}
         </div>
       </section>
+      <div className="mx-auto flex w-[min(100%-2rem,70rem)] justify-end pb-8">
+        <VisitorGate />
+      </div>
     </main>
   );
 }

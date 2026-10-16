@@ -56,7 +56,6 @@ const PRICES: Record<string, number> = {
 const PHOTO = (slug: string) => `/products/preview/${slug}.jpg`;
 
 const PHOTOS = new Set([
-  "creepy-webs",
   "rodeo-bones",
   "snowman-hoodie",
   "inmate-stripes",
