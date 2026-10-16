@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
-import { pageHead, SHOP_DESCRIPTION, SHOP_TITLE } from "@/lib/seo";
 
 export type ShopSearch = {
   cat?: string;
@@ -22,13 +21,6 @@ export const Route = createFileRoute("/shop")({
     q: typeof search.q === "string" ? search.q : undefined,
     species: typeof search.species === "string" ? search.species : undefined,
   }),
-  head: () =>
-    pageHead({
-      title: SHOP_TITLE,
-      description: SHOP_DESCRIPTION,
-      path: "/shop",
-      image: "/products/fountain-2l.jpg",
-    }),
   component: ShopPage,
 });
 

@@ -30,7 +30,7 @@ export function ProductCard({
     <article className="group flex flex-col overflow-hidden rounded-xl bg-card shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5">
       <Link
         to="/product/$slug"
-        params={{ slug: projected.slug }}
+        params={{ slug: product.slug }}
         className="flex h-full flex-col text-inherit no-underline"
       >
         <div className="flex aspect-4/3 items-center justify-center overflow-hidden bg-cream">
@@ -87,7 +87,7 @@ export function ProductCard({
               </Link>
             </Button>
           ) : (
-            <Button className="w-full" variant="secondary" onClick={() => addToCart(projected.slug)}>
+            <Button className="w-full" variant="secondary" onClick={() => addToCart(product.slug)}>
               Add to cart
             </Button>
           )}

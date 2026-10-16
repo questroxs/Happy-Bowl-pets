@@ -1,85 +1,21 @@
-import { createFileRoute, Link, Navigate, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
 import { Bookmark, BookmarkCheck, ExternalLink, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { speciesLabel } from "@/lib/catalog";
-import { canPurchase, isPreviewRemoved, previewOne, TRAVEL_BOWL_SLUG } from "@/lib/catalog-preview";
+import { canPurchase, isPreviewRemoved, previewOne } from "@/lib/catalog-preview";
 import { presentProduct } from "@/lib/customer-copy";
 import { useShopifyStore } from "@/lib/shopify-store";
 import { useShopStore } from "@/lib/store";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatMoney } from "@/lib/utils";
-import {
-  breadcrumbLd,
-  categoryLabelFor,
-  categoryPathFor,
-  pageHead,
-  productLd,
-  productMetaDescription,
-  productTitle,
-} from "@/lib/seo";
 
 export const Route = createFileRoute("/product/$slug")({
-  beforeLoad: ({ params }) => {
-    if (params.slug === "slow-meal-mat") {
-      throw redirect({
-        to: "/product/$slug",
-        params: { slug: TRAVEL_BOWL_SLUG },
-        statusCode: 301,
-      });
-    }
-  },
-  loader: ({ params }) => {
-    const product = isPreviewRemoved(params.slug) ? null : previewOne(params.slug);
-    return { product };
-  },
-  head: ({ loaderData }) => {
-    const product = loaderData?.product;
-    if (!product) {
-      return pageHead({
-        title: "Product | Happy Bowl Pets Co.",
-        description: "This piece is not in the Happy Bowl Pets Co. catalog.",
-        path: "/shop",
-      });
-    }
-    const shown = presentProduct(product, false);
-    return pageHead({
-      title: productTitle(shown),
-      description: productMetaDescription(shown),
-      path: `/product/${shown.slug}`,
-      image: shown.image,
-      type: "product",
-      jsonLd: [
-        productLd(shown),
-        breadcrumbLd([
-          { name: "Home", path: "/" },
-          { name: categoryLabelFor(shown), path: categoryPathFor(shown) },
-          { name: shown.name, path: `/product/${shown.slug}` },
-        ]),
-      ],
-    });
-  },
   component: ProductPage,
 });
-
-function CategoryCrumb({ product }: { product: NonNullable<ReturnType<typeof previewOne>> }) {
-  const className = "text-sage-dark no-underline";
-  const label = categoryLabelFor(product);
-  if (product.category === "hydration") return <Link to="/fountains" className={className}>{label}</Link>;
-  if (product.category === "filters") return <Link to="/fountain-filters" className={className}>{label}</Link>;
-  if (product.category === "play" || product.slug === "puzzle-feeder") {
-    return <Link to="/enrichment-toys" className={className}>{label}</Link>;
-  }
-  if (product.category === "mealtime") return <Link to="/bowls" className={className}>{label}</Link>;
-  return (
-    <Link to="/shop" search={{ cat: product.category }} className={className}>
-      {label}
-    </Link>
-  );
-}
 
 function ProductPage() {
   const { slug } = Route.useParams();
@@ -118,11 +54,9 @@ function ProductPage() {
   return (
     <main className="mx-auto w-[min(100%-2rem,70rem)] py-10">
       <p className="text-sm text-muted">
-        <Link to="/" className="text-sage-dark no-underline">
-          Home
+        <Link to="/shop" search={{ cat: product.category }} className="text-sage-dark no-underline">
+          {product.category[0].toUpperCase() + product.category.slice(1)}
         </Link>
-        <span className="mx-2">/</span>
-        <CategoryCrumb product={product} />
         <span className="mx-2">/</span>
         {product.name}
       </p>

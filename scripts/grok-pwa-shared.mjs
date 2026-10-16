@@ -101,7 +101,6 @@ export function publicAppHost(hostHeader) {
   if (!host || !/^[a-z0-9.-]+$/.test(host) || !host.includes(".")) return "";
   if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) return "";
   if (isVercelSystemHost(host)) return "";
-  if (host === "www.happybowlpets.com") return "happybowlpets.com";
   return host;
 }
 

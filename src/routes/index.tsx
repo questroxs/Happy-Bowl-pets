@@ -5,21 +5,10 @@ import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
 import { agedOut, canPurchase, projectPreview } from "@/lib/catalog-preview";
-import { HOME_DESCRIPTION, HOME_TITLE, organizationLd, pageHead, websiteLd } from "@/lib/seo";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 
-export const Route = createFileRoute("/")({
-  head: () =>
-    pageHead({
-      title: HOME_TITLE,
-      description: HOME_DESCRIPTION,
-      path: "/",
-      image: "/products/home-pets.jpg",
-      jsonLd: [organizationLd(), websiteLd()],
-    }),
-  component: Home,
-});
+export const Route = createFileRoute("/")({ component: Home });
 
 const COLLECTIONS = [
   {
@@ -27,35 +16,30 @@ const COLLECTIONS = [
     copy: "Mesh cots, bolsters, the cat cave, the rattan chaise, and the orthopedic pad.",
     cat: "beds" as const,
     image: "/products/elevated-mesh.jpg",
-    alt: "Elevated mesh cot for a dog",
   },
   {
     title: "Treats",
     copy: "Calming chews still in stock, plus the 25-count pig-ear bag.",
     cat: "treats" as const,
     image: "/products/calming-chews.jpg",
-    alt: "Pouch of soft chews for dogs",
   },
   {
     title: "Wellness",
     copy: "Joint oil, powders, calming drops, herbal drops, and the CBD2HEAL dog tincture.",
     cat: "wellness" as const,
     image: "/products/joint-liquid.jpg",
-    alt: "Bottle of joint oil for dogs and cats",
   },
   {
     title: "Care",
     copy: "Shampoo, the lavender bottle, paw balm, oral foam, and the steam brush.",
     cat: "care" as const,
     image: "/products/oat-shampoo.jpg",
-    alt: "Oat shampoo bar for dogs and cats",
   },
   {
     title: "Costumes",
     copy: "Spider, cowboy, snowman, inmate stripes, and a Santa coat.",
     cat: "costumes" as const,
     image: "/products/creepy-webs-plain.jpg",
-    alt: "Spider costume on a small dog",
   },
 ];
 
@@ -217,7 +201,7 @@ function Home() {
             </p>
             <p>
               So we built Happy Bowl Pets Co around one idea: wellness shouldn't be complicated.
-              From clean, filtered water to thoughtfully chosen treats, toys, and everyday care
+              From clean, filtered water to thoughtfully chosen treats, toys, and holistic care
               essentials, every product we offer is picked with the same question in mind — would we
               give this to our own pets?
             </p>
@@ -251,7 +235,7 @@ function Home() {
             >
               <img
                 src={collection.image}
-                alt={collection.alt}
+                alt=""
                 className="absolute inset-0 h-full w-full object-contain bg-cream p-6 transition-transform duration-300 group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-ink/50" />

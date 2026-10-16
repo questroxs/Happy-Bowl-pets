@@ -70,12 +70,6 @@ export default async function grokPwaMiddleware(
   const path = event.url.pathname;
   const urlWithQuery = path + event.url.search;
 
-  const host = requestHost(event).split(",")[0]?.trim().split(":")[0]?.toLowerCase() ?? "";
-  if (host === "www.happybowlpets.com") {
-    const destination = `https://happybowlpets.com${event.url.pathname}${event.url.search}`;
-    return new Response(null, { status: 301, headers: { location: destination, "cache-control": "public, max-age=3600" } });
-  }
-
   if (path === "/__grok/manifest.webmanifest" || path === "/__grok/manifest.json") {
     return new Response(renderWebManifest(requestHost(event)), {
       headers: {

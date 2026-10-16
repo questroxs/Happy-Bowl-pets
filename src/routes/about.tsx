@@ -1,19 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useSupplierNotes } from "@/lib/supplier-notes";
-import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/about")({
-  head: () =>
-    pageHead({
-      title: "Our Story | Happy Bowl Pets Co.",
-      description:
-        "Happy Bowl Pets Co. started in Miami with a quieter bowl in mind. Stainless fountains, bowls, toys, and everyday care for dogs and cats.",
-      path: "/about",
-      image: "/products/story-banner.jpg",
-    }),
-  component: AboutPage,
-});
+export const Route = createFileRoute("/about")({ component: AboutPage });
 
 function AboutPage() {
   const supplierNotes = useSupplierNotes();
@@ -44,7 +33,7 @@ function AboutPage() {
         <p>
           {supplierNotes
             ? "If a listing is out of stock, ships from overseas, or the photo isn’t the warehouse item, it does not go on the floor. Joint chews and drops follow the label on the bottle — not a vet visit. Prices already include our margin over warehouse cost."
-            : "Chews and drops follow the label printed on the bottle."}
+            : "Joint chews and drops follow the label on the bottle. They are not a substitute for a vet."}
         </p>
       </section>
 
