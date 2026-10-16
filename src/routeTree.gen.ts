@@ -11,10 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BowlsRouteImport } from './routes/bowls'
 import { Route as CompareRouteImport } from './routes/compare'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EnrichmentToysRouteImport } from './routes/enrichment-toys'
+import { Route as FountainFiltersRouteImport } from './routes/fountain-filters'
+import { Route as FountainsRouteImport } from './routes/fountains'
 import { Route as OrderConfirmedRouteImport } from './routes/order-confirmed'
+import { Route as ReturnsRouteImport } from './routes/returns'
+import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ShopifyRouteImport } from './routes/shopify'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe/webhook'
 
@@ -28,14 +36,49 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BowlsRoute = BowlsRouteImport.update({
+  id: '/bowls',
+  path: '/bowls',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompareRoute = CompareRouteImport.update({
   id: '/compare',
   path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnrichmentToysRoute = EnrichmentToysRouteImport.update({
+  id: '/enrichment-toys',
+  path: '/enrichment-toys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FountainFiltersRoute = FountainFiltersRouteImport.update({
+  id: '/fountain-filters',
+  path: '/fountain-filters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FountainsRoute = FountainsRouteImport.update({
+  id: '/fountains',
+  path: '/fountains',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrderConfirmedRoute = OrderConfirmedRouteImport.update({
   id: '/order-confirmed',
   path: '/order-confirmed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnsRoute = ReturnsRouteImport.update({
+  id: '/returns',
+  path: '/returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -46,6 +89,11 @@ const ShopRoute = ShopRouteImport.update({
 const ShopifyRoute = ShopifyRouteImport.update({
   id: '/shopify',
   path: '/shopify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
@@ -62,20 +110,36 @@ const ApiStripeWebhookRoute = ApiStripeWebhookRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bowls': typeof BowlsRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/enrichment-toys': typeof EnrichmentToysRoute
+  '/fountain-filters': typeof FountainFiltersRoute
+  '/fountains': typeof FountainsRoute
   '/order-confirmed': typeof OrderConfirmedRoute
+  '/returns': typeof ReturnsRoute
+  '/shipping': typeof ShippingRoute
   '/shop': typeof ShopRoute
   '/shopify': typeof ShopifyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bowls': typeof BowlsRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/enrichment-toys': typeof EnrichmentToysRoute
+  '/fountain-filters': typeof FountainFiltersRoute
+  '/fountains': typeof FountainsRoute
   '/order-confirmed': typeof OrderConfirmedRoute
+  '/returns': typeof ReturnsRoute
+  '/shipping': typeof ShippingRoute
   '/shop': typeof ShopRoute
   '/shopify': typeof ShopifyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
@@ -83,10 +147,18 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bowls': typeof BowlsRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/enrichment-toys': typeof EnrichmentToysRoute
+  '/fountain-filters': typeof FountainFiltersRoute
+  '/fountains': typeof FountainsRoute
   '/order-confirmed': typeof OrderConfirmedRoute
+  '/returns': typeof ReturnsRoute
+  '/shipping': typeof ShippingRoute
   '/shop': typeof ShopRoute
   '/shopify': typeof ShopifyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
@@ -95,30 +167,54 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/bowls'
     | '/compare'
+    | '/contact'
+    | '/enrichment-toys'
+    | '/fountain-filters'
+    | '/fountains'
     | '/order-confirmed'
+    | '/returns'
+    | '/shipping'
     | '/shop'
     | '/shopify'
+    | '/sitemap.xml'
     | '/product/$slug'
     | '/api/stripe/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/bowls'
     | '/compare'
+    | '/contact'
+    | '/enrichment-toys'
+    | '/fountain-filters'
+    | '/fountains'
     | '/order-confirmed'
+    | '/returns'
+    | '/shipping'
     | '/shop'
     | '/shopify'
+    | '/sitemap.xml'
     | '/product/$slug'
     | '/api/stripe/webhook'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/bowls'
     | '/compare'
+    | '/contact'
+    | '/enrichment-toys'
+    | '/fountain-filters'
+    | '/fountains'
     | '/order-confirmed'
+    | '/returns'
+    | '/shipping'
     | '/shop'
     | '/shopify'
+    | '/sitemap.xml'
     | '/product/$slug'
     | '/api/stripe/webhook'
   fileRoutesById: FileRoutesById
@@ -126,10 +222,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BowlsRoute: typeof BowlsRoute
   CompareRoute: typeof CompareRoute
+  ContactRoute: typeof ContactRoute
+  EnrichmentToysRoute: typeof EnrichmentToysRoute
+  FountainFiltersRoute: typeof FountainFiltersRoute
+  FountainsRoute: typeof FountainsRoute
   OrderConfirmedRoute: typeof OrderConfirmedRoute
+  ReturnsRoute: typeof ReturnsRoute
+  ShippingRoute: typeof ShippingRoute
   ShopRoute: typeof ShopRoute
   ShopifyRoute: typeof ShopifyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
 }
@@ -150,6 +254,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bowls': {
+      id: '/bowls'
+      path: '/bowls'
+      fullPath: '/bowls'
+      preLoaderRoute: typeof BowlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compare': {
       id: '/compare'
       path: '/compare'
@@ -157,11 +268,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enrichment-toys': {
+      id: '/enrichment-toys'
+      path: '/enrichment-toys'
+      fullPath: '/enrichment-toys'
+      preLoaderRoute: typeof EnrichmentToysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fountain-filters': {
+      id: '/fountain-filters'
+      path: '/fountain-filters'
+      fullPath: '/fountain-filters'
+      preLoaderRoute: typeof FountainFiltersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fountains': {
+      id: '/fountains'
+      path: '/fountains'
+      fullPath: '/fountains'
+      preLoaderRoute: typeof FountainsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/order-confirmed': {
       id: '/order-confirmed'
       path: '/order-confirmed'
       fullPath: '/order-confirmed'
       preLoaderRoute: typeof OrderConfirmedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/returns': {
+      id: '/returns'
+      path: '/returns'
+      fullPath: '/returns'
+      preLoaderRoute: typeof ReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -176,6 +329,13 @@ declare module '@tanstack/react-router' {
       path: '/shopify'
       fullPath: '/shopify'
       preLoaderRoute: typeof ShopifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product/$slug': {
@@ -198,10 +358,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BowlsRoute: BowlsRoute,
   CompareRoute: CompareRoute,
+  ContactRoute: ContactRoute,
+  EnrichmentToysRoute: EnrichmentToysRoute,
+  FountainFiltersRoute: FountainFiltersRoute,
+  FountainsRoute: FountainsRoute,
   OrderConfirmedRoute: OrderConfirmedRoute,
+  ReturnsRoute: ReturnsRoute,
+  ShippingRoute: ShippingRoute,
   ShopRoute: ShopRoute,
   ShopifyRoute: ShopifyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProductSlugRoute: ProductSlugRoute,
   ApiStripeWebhookRoute: ApiStripeWebhookRoute,
 }

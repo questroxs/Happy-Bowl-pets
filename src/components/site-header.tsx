@@ -50,6 +50,12 @@ export function SiteHeader() {
         </Link>
         <nav className="ml-6 hidden items-center gap-1 md:flex">
           <Link
+            to="/fountains"
+            className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
+          >
+            Fountains
+          </Link>
+          <Link
             to="/shop"
             search={{}}
             className="rounded-full px-3 py-2 text-sm font-medium text-sage-dark no-underline hover:bg-sage-soft"
@@ -169,6 +175,13 @@ export function SiteHeader() {
         <SheetContent side="left" className="px-5 pt-6">
           <SheetTitle>Menu</SheetTitle>
           <nav className="mt-6 flex flex-col gap-1">
+            <Link
+              to="/fountains"
+              className="rounded-lg px-3 py-3 text-base font-medium text-ink no-underline hover:bg-sand"
+              onClick={() => setMenuOpen(false)}
+            >
+              Fountains
+            </Link>
             <Link
               to="/shop"
               search={{}}

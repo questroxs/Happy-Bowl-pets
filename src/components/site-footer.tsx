@@ -21,6 +21,26 @@ export function SiteFooter() {
           <p className="text-sm font-semibold tracking-wide text-ink uppercase">Catalog</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
+              <Link to="/fountains" className="text-sage-dark no-underline">
+                Fountains
+              </Link>
+            </li>
+            <li>
+              <Link to="/fountain-filters" className="text-sage-dark no-underline">
+                Filters
+              </Link>
+            </li>
+            <li>
+              <Link to="/bowls" className="text-sage-dark no-underline">
+                Bowls
+              </Link>
+            </li>
+            <li>
+              <Link to="/enrichment-toys" className="text-sage-dark no-underline">
+                Toys
+              </Link>
+            </li>
+            <li>
               <Link to="/shop" search={{ cat: "beds" }} className="text-sage-dark no-underline">
                 Beds
               </Link>
@@ -61,6 +81,21 @@ export function SiteFooter() {
                 <li>State tax calculated at Stripe checkout</li>
               </>
             ) : null}
+            <li>
+              <Link to="/shipping" className="text-sage-dark no-underline">
+                Shipping
+              </Link>
+            </li>
+            <li>
+              <Link to="/returns" className="text-sage-dark no-underline">
+                Returns
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="text-sage-dark no-underline">
+                Contact
+              </Link>
+            </li>
             <li>
               <Link to="/about" className="text-sage-dark no-underline">
                 How we choose pieces

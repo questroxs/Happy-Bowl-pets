@@ -22,9 +22,11 @@ describe("vercel preview catalog", () => {
   it("replaces the lick mat and keeps it featured", () => {
     const bowl = previewOne("slow-meal-mat");
     assert.equal(bowl?.name, "3-in-1 Travel Bowl");
+    assert.equal(bowl?.slug, "travel-bowl-3in1");
     assert.equal(bowl?.price, 18.99);
     assert.equal(bowl?.featured, true);
     assert.equal(bowl?.image, "/products/preview/slow-meal-mat.jpg");
+    assert.equal(previewOne("travel-bowl-3in1")?.name, "3-in-1 Travel Bowl");
   });
 
   it("renames the snowman listing to the hoodie that ships", () => {

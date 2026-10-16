@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.happybowlpets.com" }],
+      "destination": "https://happybowlpets.com/:path*",
+      "permanent": true
+    }
+  ]
+}
