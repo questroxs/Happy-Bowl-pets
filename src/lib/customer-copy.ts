@@ -3,6 +3,9 @@ import type { Product } from "./catalog";
 const BANNED =
   /\b(doba|warehouse|warehouses|dropship(?:ping|per|ped)?|margin|markup|per sale|wholesale|example retail|example price|supplier)\b/i;
 
+const NOTE =
+  /\b(already in the shop|you are buying|this photo|the photo|in the photo|the listing|we pulled|ships from china|this order is|this is that|stand-in|do not fit|does not fit|do not use|we do not sell|not the )\b/i;
+
 const ECONOMICS =
   /\b(doba|per sale|margin|markup|published example|example retail|example price|supplier note|wholesale|dropship|our \$[\d.,]+ is that example|our price is)\b/i;
 
@@ -19,6 +22,7 @@ export function customerCopy(input: string): string {
       (sentence) =>
         sentence &&
         !BANNED.test(sentence) &&
+        !NOTE.test(sentence) &&
         !/^(this|the) photo is\b/i.test(sentence) &&
         !/\bthe photo is the product\b/i.test(sentence) &&
         !/\b(white cord|you are buying|already in the shop|not the cordless)\b/i.test(sentence),
@@ -32,14 +36,14 @@ function salvage(sentence: string): string {
     .replace(/\s*\([^)]*\b(margin|markup|doba|per sale)\b[^)]*\)/gi, "")
     .replace(/Doba lists it as\s*/gi, "Labeled ")
     .replace(/Doba says it ships from the United States\.?/gi, "Ships from the United States.");
-  if (ECONOMICS.test(stripped)) return "";
+  if (ECONOMICS.test(stripped) || NOTE.test(stripped)) return "";
   let text = applyPhrases(stripped);
   if (!BANNED.test(text)) return cap(tidy(text));
 
   const bits = text.split(/\s*[;]\s*|\s+[—–-]\s+/);
   const ok = bits
     .map((bit) => applyPhrases(bit))
-    .filter((bit) => bit && !BANNED.test(bit) && !ECONOMICS.test(bit));
+    .filter((bit) => bit && !BANNED.test(bit) && !ECONOMICS.test(bit) && !NOTE.test(bit));
   return cap(tidy(ok.join(". ")));
 }
 

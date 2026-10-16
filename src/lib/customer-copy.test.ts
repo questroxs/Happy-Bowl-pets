@@ -37,8 +37,12 @@ describe("customer copy", () => {
       "Memory-foam dog bed.",
     );
     assert.equal(
-      customerCopy("Soft foam. This photo is that bed."),
-      "Soft foam.",
+      customerCopy("A 4.5 L fountain. You are buying the fountain in the photo, not the cordless 4.5 L already in the shop."),
+      "A 4.5 L fountain.",
+    );
+    assert.equal(
+      customerCopy("Three filters for the Moda-Pure fountain. They do not fit the 2 L stainless fountain."),
+      "Three filters for the Moda-Pure fountain.",
     );
   });
 });

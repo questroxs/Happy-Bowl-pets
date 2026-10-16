@@ -4,5 +4,10 @@ export function bareHost(host: string | null | undefined): string {
 }
 
 export function isSupplierHost(host: string | null | undefined): boolean {
-  return bareHost(host) === "happybowlpets.vercel.app";
+  const names = String(host ?? "")
+    .split(",")
+    .map((part) => bareHost(part))
+    .filter(Boolean);
+  if (names.some((name) => name === "happybowlpets.com" || name === "www.happybowlpets.com")) return false;
+  return names.includes("happybowlpets.vercel.app");
 }
