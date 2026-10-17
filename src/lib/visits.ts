@@ -23,17 +23,18 @@ export function nextTotal(current: number | null, bump: boolean): number {
   return bump ? base + 1 : base;
 }
 
-/** Add every saved total that grew past the starting floor. Never drop one. */
-export function sumNewCounts(keeperVisits: number, extraVisits: number[]): number {
-  const keeper = Math.floor(keeperVisits);
-  const extras = extraVisits.filter((value) => Number.isFinite(value) && Math.floor(value) > START);
-  return extras.reduce((sum, value) => sum + Math.floor(value), keeper);
+/** One lifetime total. The starting 50 is counted once. Every later visit is counted once. */
+export function foreverTotal(counts: number[]): number {
+  const saved = counts.filter((value) => Number.isFinite(value)).map((value) => Math.floor(value));
+  if (!saved.length) return START;
+  const visits = saved.reduce((sum, value) => sum + Math.max(0, value - START), 0);
+  return START + visits;
 }
 
 type CounterCustomer = {
   id: string;
   created?: number;
-  metadata?: { visits?: string; visitToken?: string; folded?: string };
+  metadata?: { visits?: string; visitToken?: string; folded?: string; basis?: string };
 };
 
 const memory = globalThis as typeof globalThis & { __hbVisits?: number };
@@ -111,19 +112,29 @@ async function foldCounts(key: string, customers: CounterCustomer[]): Promise<Co
   const { keeper, extras } = keeperAndExtras(customers);
   if (!keeper) return null;
   const liveKeeper = (await stripeCustomer(key, `/customers/${keeper.id}`)) ?? keeper;
-  const current = storedVisits(liveKeeper) ?? START;
-  const extraValues = extras.map((customer) => storedVisits(customer) ?? 0);
-  const combined = sumNewCounts(current, extraValues);
-  if (!extras.length || combined <= current) return liveKeeper;
+  if (liveKeeper.metadata?.basis === "lifetime") return liveKeeper;
 
-  const folded = new Set(foldedIds(liveKeeper));
-  for (const extra of extras) folded.add(extra.id);
+  const current = storedVisits(liveKeeper) ?? START;
+  const already = foldedIds(liveKeeper);
+  const pending = extras.filter((customer) => !already.has(customer.id));
+  const parts = [current, ...pending.map((customer) => storedVisits(customer) ?? 0)];
+  let combined = foreverTotal(parts);
+  if (already.size && pending.length === 0) {
+    combined = Math.max(START, current - START * already.size);
+  }
+  const highest = Math.max(current, ...pending.map((customer) => storedVisits(customer) ?? 0));
+  if (combined < highest) combined = highest;
+  if (combined < current) combined = current;
+
+  const folded = new Set(already);
+  for (const extra of pending) folded.add(extra.id);
   const saved = await stripeRequest(
     key,
     `/customers/${liveKeeper.id}`,
     new URLSearchParams({
       "metadata[visits]": String(combined),
       "metadata[folded]": [...folded].join(","),
+      "metadata[basis]": "lifetime",
     }),
   );
   if (!saved.ok) return liveKeeper;
@@ -180,6 +191,7 @@ async function readTotal(bump: boolean): Promise<number> {
       new URLSearchParams({
         "metadata[visits]": String(total),
         "metadata[visitToken]": token,
+        "metadata[basis]": "lifetime",
       }),
     );
     if (!saved.ok) continue;
