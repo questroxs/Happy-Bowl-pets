@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
+import { pageHead } from "@/lib/seo";
 
 export type ShopSearch = {
   cat?: string;
@@ -21,6 +22,14 @@ export const Route = createFileRoute("/shop")({
     q: typeof search.q === "string" ? search.q : undefined,
     species: typeof search.species === "string" ? search.species : undefined,
   }),
+  head: () =>
+    pageHead({
+      title: "Shop pet fountains, beds, treats, and toys | Happy Bowl Pets Co.",
+      description:
+        "Browse stainless fountains, filters, beds, treats, toys, and costumes for dogs and cats. Ships in the United States.",
+      path: "/shop",
+      image: "/og.jpg",
+    }),
   component: ShopPage,
 });
 

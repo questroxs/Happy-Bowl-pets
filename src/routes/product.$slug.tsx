@@ -12,8 +12,17 @@ import { useShopStore } from "@/lib/store";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatMoney } from "@/lib/utils";
+import { productSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/product/$slug")({
+  head: ({ params }) => {
+    if (isPreviewRemoved(params.slug)) {
+      return { meta: [{ title: "Shop | Happy Bowl Pets Co." }] };
+    }
+    const product = previewOne(params.slug);
+    if (!product) return { meta: [{ title: "Not in the catalog | Happy Bowl Pets Co." }] };
+    return productSeo(product);
+  },
   component: ProductPage,
 });
 

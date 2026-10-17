@@ -1,8 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useSupplierNotes } from "@/lib/supplier-notes";
+import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/about")({ component: AboutPage });
+export const Route = createFileRoute("/about")({
+  head: () =>
+    pageHead({
+      title: "Our story | Happy Bowl Pets Co.",
+      description:
+        "Happy Bowl Pets Co. is a Miami shop for dogs and cats. Fountains, beds, treats, toys, and everyday care.",
+      path: "/about",
+      image: "/products/story-banner.jpg",
+    }),
+  component: AboutPage,
+});
 
 function AboutPage() {
   const supplierNotes = useSupplierNotes();

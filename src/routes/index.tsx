@@ -7,8 +7,20 @@ import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
 import { agedOut, canPurchase, projectPreview } from "@/lib/catalog-preview";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
+import { homeJsonLd, pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+  head: () =>
+    pageHead({
+      title: "Pet water fountains, beds, and toys | Happy Bowl Pets Co.",
+      description:
+        "Quiet stainless pet fountains, raised beds, treats, toys, and everyday care for dogs and cats. Shop Happy Bowl Pets Co.",
+      path: "/",
+      image: "/og.jpg",
+      jsonLd: homeJsonLd(),
+    }),
+  component: Home,
+});
 
 const COLLECTIONS = [
   {
@@ -235,7 +247,7 @@ function Home() {
             >
               <img
                 src={collection.image}
-                alt=""
+                alt={collection.title}
                 className="absolute inset-0 h-full w-full object-contain bg-cream p-6 transition-transform duration-300 group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-ink/50" />
