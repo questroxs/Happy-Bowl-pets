@@ -40,6 +40,10 @@ export const Route = createRootRoute({
           "Happy Bowl Pets Co. — quiet stainless fountains, calmer mealtimes, and thoughtful extras for dogs and cats.",
       },
       { name: "theme-color", content: "#f4efe6" },
+      {
+        name: "google-site-verification",
+        content: "J73VMfA6x35pelVjjbTdacfV5RXxL8jPZOgldZ5bq_o",
+      },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
