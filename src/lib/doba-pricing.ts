@@ -1,3 +1,4 @@
+import { ACCESSORY_HINTS } from "./catalog-accessories";
 import { PRODUCTS, type Product } from "./catalog";
 
 /** Doba hides wholesale dollars behind login. When a listing publishes
@@ -76,7 +77,7 @@ export const DOBA_HINTS: DobaHint[] = [
   { slug: "santa-coat", perSale: 16.75, marginPct: 50 },
 ];
 
-const HINT_BY_SLUG = new Map(DOBA_HINTS.map((hint) => [hint.slug, hint]));
+const HINT_BY_SLUG = new Map([...DOBA_HINTS, ...ACCESSORY_HINTS].map((hint) => [hint.slug, hint]));
 
 export type PriceFlag = "healthy" | "ok" | "thin" | "at-cost" | "high" | "unknown";
 

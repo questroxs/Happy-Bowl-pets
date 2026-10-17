@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CATEGORIES, searchProducts, type CategoryId, type Species } from "@/lib/catalog";
+import { PENDING_APPROVAL } from "@/lib/catalog-accessories";
 import { agedOut, canPurchase, previewCatalog, projectPreview } from "@/lib/catalog-preview";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
@@ -43,19 +44,24 @@ function ShopPage() {
   const speciesFilter: Species | undefined =
     species === "dogs" || species === "cats" ? species : undefined;
   const [query, setQuery] = useState(q ?? "");
+  const supplierNotes = useSupplierNotes();
+  const overrides = useStockOverrides();
 
   useEffect(() => {
     setQuery(q ?? "");
   }, [q]);
 
-  const results = searchProducts(query, category, speciesFilter);
-  const supplierNotes = useSupplierNotes();
-  const overrides = useStockOverrides();
+  const results = searchProducts(query, category, speciesFilter).filter(
+    (product) => supplierNotes || !PENDING_APPROVAL.has(product.slug),
+  );
   const stock = supplierNotes ? overrides : {};
   const visible = results
     .map((product) => projectPreview(product, stock))
     .filter((product) => product && product.stock !== "out_of_stock" && !agedOut(product));
-  const tabs = previewCatalog(stock).filter((product) => canPurchase(product));
+  const tabs = previewCatalog(stock).filter(
+    (product) =>
+      canPurchase(product) && (supplierNotes || !PENDING_APPROVAL.has(product.slug)),
+  );
   const title = category
     ? (CATEGORIES.find((item) => item.id === category)?.label ?? "Shop")
     : "Catalog";
@@ -66,7 +72,7 @@ function ShopPage() {
       <h1 className="mt-1 font-display text-4xl font-medium tracking-tight">{title}</h1>
       <p className="mt-2 max-w-xl text-muted">
         {supplierNotes
-          ? `${previewCatalog(overrides).length} pieces on this preview. Ingestibles are marked Coming soon and cannot be purchased.`
+          ? `${previewCatalog(overrides).length} pieces on this preview. The new collars, harnesses, leash, and glove are here for approval only — they are not on happybowlpets.com. Ingestibles marked Coming soon cannot be purchased.`
           : "Fountains, beds, treats, costumes, and everyday care for dogs and cats."}
       </p>
 

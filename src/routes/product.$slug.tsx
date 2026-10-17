@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { speciesLabel } from "@/lib/catalog";
+import { PENDING_APPROVAL } from "@/lib/catalog-accessories";
 import { canPurchase, isPreviewRemoved, previewOne } from "@/lib/catalog-preview";
 import { presentProduct } from "@/lib/customer-copy";
 import { useShopifyStore } from "@/lib/shopify-store";
@@ -21,6 +22,14 @@ export const Route = createFileRoute("/product/$slug")({
     }
     const product = previewOne(params.slug);
     if (!product) return { meta: [{ title: "Not in the catalog | Happy Bowl Pets Co." }] };
+    if (PENDING_APPROVAL.has(params.slug)) {
+      return {
+        meta: [
+          { title: `${product.name} | Happy Bowl Pets Co.` },
+          { name: "robots", content: "noindex, nofollow" },
+        ],
+      };
+    }
     return productSeo(product);
   },
   component: ProductPage,
@@ -34,7 +43,7 @@ function ProductPage() {
   const toggleSaved = useShopStore((s) => s.toggleSaved);
   const addToCart = useShopifyStore((s) => s.addToCart);
   const [size, setSize] = useState("M");
-  if (isPreviewRemoved(slug)) {
+  if (isPreviewRemoved(slug) || (PENDING_APPROVAL.has(slug) && !supplierNotes)) {
     return <Navigate to="/shop" search={{}} />;
   }
   const raw = previewOne(slug, supplierNotes ? overrides : {});
@@ -57,7 +66,7 @@ function ProductPage() {
   const saved = savedSlugs.includes(product.slug);
   const related = product.related
     .map((item) => previewOne(item, supplierNotes ? overrides : {}))
-    .filter((item) => item != null);
+    .filter((item): item is NonNullable<typeof item> => item != null && (supplierNotes || !PENDING_APPROVAL.has(item.slug)));
   const buyable = canPurchase(product);
 
   return (

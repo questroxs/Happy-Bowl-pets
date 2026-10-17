@@ -1,3 +1,4 @@
+import { ACCESSORY_PRODUCTS } from "./catalog-accessories";
 import { EXTRA_PRODUCTS } from "./catalog-extra";
 import { MORE_PRODUCTS } from "./catalog-more";
 import { WEAR_PRODUCTS } from "./catalog-wear";
@@ -355,6 +356,7 @@ export const PRODUCTS: Product[] = [
   ...EXTRA_PRODUCTS,
   ...MORE_PRODUCTS,
   ...WEAR_PRODUCTS,
+  ...ACCESSORY_PRODUCTS,
 ].filter((product) => !UNAVAILABLE.has(product.slug));
 
 export function getProduct(slug: string) {

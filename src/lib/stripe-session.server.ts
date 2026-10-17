@@ -1,4 +1,5 @@
 import { getRequest } from "@tanstack/react-start/server";
+import { PENDING_APPROVAL } from "./catalog-accessories";
 import { canPurchase, previewOne } from "./catalog-preview";
 import { customerCopy } from "./customer-copy";
 import type { CheckoutLine } from "./checkout";
@@ -56,6 +57,7 @@ function checkoutPayload(
 ) {
   const items = lines
     .map((line) => {
+      if (!preview && PENDING_APPROVAL.has(line.slug)) return null;
       const product = previewOne(line.slug, preview ? stock : {});
       if (!product || line.quantity < 1) return null;
       if (!canPurchase(product)) {

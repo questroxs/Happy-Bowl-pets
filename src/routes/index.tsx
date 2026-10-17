@@ -4,6 +4,7 @@ import { VisitorGate } from "@/components/visitor-gate";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
+import { ACCESSORY_PRODUCTS } from "@/lib/catalog-accessories";
 import { agedOut, canPurchase, projectPreview } from "@/lib/catalog-preview";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
@@ -191,6 +192,33 @@ function Home() {
           ))}
         </div>
       </section>
+
+      {supplierNotes ? (
+        <section className="mx-auto w-[min(100%-2rem,70rem)] pb-14">
+          <div className="mb-6 flex items-end justify-between gap-4">
+            <div>
+              <h2 className="font-display text-2xl font-medium tracking-tight">
+                For approval — not on the public shop
+              </h2>
+              <p className="mt-1 text-muted">
+                {ACCESSORY_PRODUCTS.length} accessories from the US warehouse. Prices are 35–40% and end in .99.
+                They stay on this preview until you approve them for happybowlpets.com.
+              </p>
+            </div>
+            <Button asChild variant="ghost">
+              <Link to="/shop" search={{ cat: "accessories" }}>
+                Review them
+              </Link>
+            </Button>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {ACCESSORY_PRODUCTS.map((product) => {
+              const next = projectPreview(product, stock);
+              return next ? <ProductCard key={product.slug} product={next} /> : null;
+            })}
+          </div>
+        </section>
+      ) : null}
 
       <section className="relative isolate pb-14">
         <img
