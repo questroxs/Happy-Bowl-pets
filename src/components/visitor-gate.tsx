@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
-import { recordVisit, revealVisits } from "@/lib/visits";
+import { useState } from "react";
+import { revealVisits } from "@/lib/visits";
 
 export function VisitorGate() {
   const [code, setCode] = useState("");
   const [total, setTotal] = useState<number | null>(null);
   const [miss, setMiss] = useState(false);
-
-  useEffect(() => {
-    void recordVisit().catch(() => undefined);
-  }, []);
 
   const punch = (value: string) => {
     const next = value.replace(/\D/g, "").slice(0, 4);

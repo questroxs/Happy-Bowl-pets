@@ -9,8 +9,10 @@ import { agedOut, canPurchase, projectPreview } from "@/lib/catalog-preview";
 import { useStockOverrides } from "@/lib/stock-overrides";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 import { homeJsonLd, pageHead } from "@/lib/seo";
+import { recordVisit } from "@/lib/visits";
 
 export const Route = createFileRoute("/")({
+  loader: () => recordVisit(),
   head: () =>
     pageHead({
       title: "Pet water fountains, beds, and toys | Happy Bowl Pets Co.",
