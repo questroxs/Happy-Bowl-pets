@@ -1,6 +1,6 @@
 import type { Product } from "./catalog";
 
-/** US-warehouse Doba accessories. Preview only until approved for happybowlpets.com. */
+/** Accessories on the public shop. Customer copy only — no warehouse notes in these fields. */
 const ACCESSORY_DRAFT: Product[] = [
   {
     slug: "aero-mesh-collar",
@@ -9,8 +9,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Breathable mesh collar for dogs.",
     description: "A dual-sided mesh dog collar with a buckle and a leash ring. Sizes small, medium, and large.",
     details: [
-      "Aero Mesh Dog Collar (Doba D0102H70HDG)",
-      "US warehouse. In stock. Doba example: up to $4.88 per sale (29% margin). Warehouse cost about $11.95",
+      "A dual-sided mesh dog collar with a buckle and a leash ring.",
+      "Sizes small, medium, and large.",
     ],
     price: 18.99,
     category: "accessories",
@@ -27,8 +27,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Waterproof green and pink collar.",
     description: "An adjustable quick-release collar in green and pink for small and medium dogs.",
     details: [
-      "Colorblock Dog Collar (Doba D01027H1M7Y)",
-      "US warehouse. In stock. Doba example: up to $2.21 per sale (14% margin). Warehouse cost about $13.58",
+      "An adjustable quick-release collar in green and pink for small and medium dogs.",
     ],
     price: 21.99,
     category: "accessories",
@@ -45,8 +44,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Reflective red collar.",
     description: "A red reflective dog collar. Sizes run XS through large.",
     details: [
-      "GF Pet Reflective Collar (Doba D0102HXW846)",
-      "US warehouse. In stock. Doba example: up to $6.31 per sale (42% margin). Warehouse cost about $8.71",
+      "A red reflective dog collar.",
+      "Sizes run XS through large.",
     ],
     price: 13.99,
     category: "accessories",
@@ -63,8 +62,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Plaid bandana with velcro.",
     description: "A plaid velcro bandana for dogs. Sizes small, medium, and large.",
     details: [
-      "Plaid Velcro Bandana (Doba D0102HAXSRY)",
-      "US warehouse. In stock. Doba example: up to $4.88 per sale (29% margin). Warehouse cost about $11.95",
+      "A plaid velcro bandana for dogs.",
+      "Sizes small, medium, and large.",
     ],
     price: 18.99,
     category: "accessories",
@@ -81,8 +80,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Nylon harness with a matching leash.",
     description: "A nylon dog harness sold with its leash. Sizes small, medium, and large.",
     details: [
-      "Macaron Harness and Leash (Doba D0102HAXA8V)",
-      "US warehouse. In stock. Doba example: up to $6.99 per sale (26% margin). Warehouse cost about $19.89",
+      "A nylon dog harness sold with its leash.",
+      "Sizes small, medium, and large.",
     ],
     price: 31.99,
     category: "accessories",
@@ -99,8 +98,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Mesh harness, leash, and removable collar.",
     description: "A mesh harness and leash with a removable fur collar. Sizes XS through large.",
     details: [
-      "Furracious Harness and Leash (Doba D0102H70HFU)",
-      "US warehouse. In stock. Doba example: up to $12.88 per sale (37% margin). Warehouse cost about $21.93",
+      "A mesh harness and leash with a removable fur collar.",
+      "Sizes XS through large.",
     ],
     price: 34.99,
     category: "accessories",
@@ -117,8 +116,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Mesh harness and leash with a bow tie.",
     description: "A mesh harness and leash with a bow tie. Sizes XS through large.",
     details: [
-      "Dapperbone Harness and Leash (Doba D0102H70K57)",
-      "US warehouse. In stock. Doba example: up to $12.88 per sale (37% margin). Warehouse cost about $21.93",
+      "A mesh harness and leash with a bow tie.",
+      "Sizes XS through large.",
     ],
     price: 34.99,
     category: "accessories",
@@ -135,8 +134,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Reflective harness with a leash.",
     description: "A reflective adjustable harness sold with its leash. Sizes XS through large.",
     details: [
-      "Reflective-Max Harness and Leash (Doba D0102H7LW5Y)",
-      "US warehouse. In stock. Doba example: up to $14.41 per sale (28% margin). Warehouse cost about $37.05",
+      "A reflective adjustable harness sold with its leash.",
+      "Sizes XS through large.",
     ],
     price: 58.99,
     category: "accessories",
@@ -153,8 +152,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Fashion harness with a leash.",
     description: "An adjustable fashion harness sold with its leash. Sizes XS through large.",
     details: [
-      "Tough-Boutique Harness and Leash (Doba D0102H7L8K7)",
-      "US warehouse. In stock. Doba example: up to $18.09 per sale (39% margin). Warehouse cost about $28.29",
+      "An adjustable fashion harness sold with its leash.",
+      "Sizes XS through large.",
     ],
     price: 44.99,
     category: "accessories",
@@ -171,8 +170,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Sport harness for walks.",
     description: "A sport harness for dogs. Sizes small, medium, and large.",
     details: [
-      "Scorpion Sport Harness (Doba D0102HAXADU)",
-      "US warehouse. In stock. Doba example: up to $9.14 per sale (23% margin). Warehouse cost about $30.60",
+      "A sport harness for dogs.",
+      "Sizes small, medium, and large.",
     ],
     price: 48.99,
     category: "accessories",
@@ -189,8 +188,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Padded no-pull vest, large.",
     description: "A padded reflective harness with a control handle. This listing is the large size.",
     details: [
-      "No-Pull Padded Harness (Doba D0102H-NOPULL)",
-      "US warehouse. In stock. Doba example: up to $17.05 per sale (47% margin). Warehouse cost about $19.23",
+      "A padded reflective harness with a control handle.",
+      "This listing is the large size.",
     ],
     price: 30.99,
     category: "accessories",
@@ -207,8 +206,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Reflective vest with a leash.",
     description: "An adjustable reflective control vest with a leash for dogs and cats. Sizes S through XL.",
     details: [
-      "Reflective Control Vest (Doba D0102H-CVST)",
-      "US warehouse. In stock. Doba example: up to $2.99 per sale (26% margin). Warehouse cost about $8.51",
+      "An adjustable reflective control vest with a leash for dogs and cats.",
+      "Sizes S through XL.",
     ],
     price: 13.99,
     category: "accessories",
@@ -225,8 +224,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Harness backpack with pockets.",
     description: "A dog harness with large pockets. Sizes small and medium.",
     details: [
-      "Waggler Harness Backpack (Doba D0102H70XSG)",
-      "US warehouse. In stock. Doba example: up to $12.67 per sale (44% margin). Warehouse cost about $16.13",
+      "A dog harness with large pockets.",
+      "Sizes small and medium.",
     ],
     price: 25.99,
     category: "accessories",
@@ -243,8 +242,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Harness backpack with two pockets.",
     description: "A dog harness backpack with two pockets. Sizes small and medium.",
     details: [
-      "Teddy Tails Harness Backpack (Doba D0102H70KQY)",
-      "US warehouse. In stock. Doba example: up to $12.67 per sale (44% margin). Warehouse cost about $16.13",
+      "A dog harness backpack with two pockets.",
+      "Sizes small and medium.",
     ],
     price: 25.99,
     category: "accessories",
@@ -261,8 +260,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Braided rope walking leash.",
     description: "A braided rope leash for dogs.",
     details: [
-      "Braided Rope Leash (Doba D0102HIRLCU)",
-      "US warehouse. In stock. Doba example: up to $23.42 per sale (26% margin). Warehouse cost about $66.66",
+      "A braided rope leash for dogs.",
     ],
     price: 106.99,
     category: "accessories",
@@ -278,8 +276,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "A leash that lights up.",
     description: "A light-up leash for night walks.",
     details: [
-      "Light-Up Walking Leash (Doba D0102H7AWVP)",
-      "US warehouse. In stock. Doba example: up to $13.93 per sale (56% margin). Warehouse cost about $10.94",
+      "A light-up leash for night walks.",
     ],
     price: 17.99,
     category: "accessories",
@@ -295,8 +292,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Convertible leash and collar.",
     description: "A 2-in-1 leash and collar. Sizes small, medium, and large.",
     details: [
-      "Escapade Leash and Collar (Doba D0102HAXSWV)",
-      "US warehouse. In stock. Doba example: up to $13.41 per sale (36% margin). Warehouse cost about $23.84",
+      "A 2-in-1 leash and collar.",
+      "Sizes small, medium, and large.",
     ],
     price: 37.99,
     category: "accessories",
@@ -313,8 +310,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Embroidered harness with a leash.",
     description: "An embroidered harness sold with its leash. Sizes small, medium, and large.",
     details: [
-      "Caliber Harness and Leash (Doba D0102H-CALI)",
-      "US warehouse. In stock. Doba example: up to $10.25 per sale (35% margin). Warehouse cost about $19.04",
+      "An embroidered harness sold with its leash.",
+      "Sizes small, medium, and large.",
     ],
     price: 30.99,
     category: "accessories",
@@ -331,8 +328,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Reflective harness and leash.",
     description: "A reflective 2-in-1 harness and leash. Sizes small, medium, and large.",
     details: [
-      "Bark-Mudder Harness and Leash (Doba D0102H7-MUDD)",
-      "US warehouse. In stock. Doba example: up to $33.3 per sale (48% margin). Warehouse cost about $36.08",
+      "A reflective 2-in-1 harness and leash.",
+      "Sizes small, medium, and large.",
     ],
     price: 57.99,
     category: "accessories",
@@ -349,8 +346,8 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Waterproof collar and leash set.",
     description: "A printed waterproof collar and leash. Sizes small, medium, and large.",
     details: [
-      "Gradient Collar and Leash (Doba D0102H-GRAD)",
-      "US warehouse. In stock. Doba example: up to $4.27 per sale (21% margin). Warehouse cost about $16.06",
+      "A printed waterproof collar and leash.",
+      "Sizes small, medium, and large.",
     ],
     price: 25.99,
     category: "accessories",
@@ -367,8 +364,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Two tethers for the car.",
     description: "A pair of adjustable seat-belt tethers for a dog or cat harness.",
     details: [
-      "Car Seat Belt Tethers, 2 Pack (Doba D0102HP3M1Y)",
-      "US warehouse. In stock. Doba example: up to $16.37 per sale (61% margin). Warehouse cost about $10.47",
+      "A pair of adjustable seat-belt tethers for a dog or cat harness.",
     ],
     price: 16.99,
     category: "accessories",
@@ -384,8 +380,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "675 unscented bags and a dispenser.",
     description: "45 rolls, 675 unscented leakproof waste bags, with a clip-on dispenser.",
     details: [
-      "Waste Bags, 45 Rolls (Doba D0102HGKS4G)",
-      "US warehouse. In stock. Doba example: up to $28.29 per sale (61% margin). Warehouse cost about $18.09",
+      "45 rolls, 675 unscented leakproof waste bags, with a clip-on dispenser.",
     ],
     price: 28.99,
     category: "accessories",
@@ -401,8 +396,9 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "270 lavender-scented bags.",
     description: "270 lavender-scented leakproof waste bags. Refill rolls. Dispenser is not included.",
     details: [
-      "Lavender Waste Bags, 270 Count (Doba D0102752H86)",
-      "US warehouse. In stock. Doba example: up to $2.97 per sale (27% margin). Warehouse cost about $8.03",
+      "270 lavender-scented leakproof waste bags.",
+      "Refill rolls.",
+      "Dispenser is not included.",
     ],
     price: 12.99,
     category: "accessories",
@@ -418,8 +414,9 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "270 unscented bags.",
     description: "270 unscented leakproof waste bags. Refill rolls. Dispenser is not included.",
     details: [
-      "Unscented Waste Bags, 270 Count (Doba D010275EJS2)",
-      "US warehouse. In stock. Doba example: up to $7.49 per sale (27% margin). Warehouse cost about $20.25",
+      "270 unscented leakproof waste bags.",
+      "Refill rolls.",
+      "Dispenser is not included.",
     ],
     price: 31.99,
     category: "accessories",
@@ -435,8 +432,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "18 rolls with a dispenser.",
     description: "An 18-roll pack of waste bags with a dispenser.",
     details: [
-      "Waste Bags with Dispenser, 18 Rolls (Doba D01027RJTI8)",
-      "US warehouse. In stock. Doba example: up to $60.11 per sale (67% margin). Warehouse cost about $29.61",
+      "An 18-roll pack of waste bags with a dispenser.",
     ],
     price: 46.99,
     category: "accessories",
@@ -452,8 +448,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Bags, a dispenser, and a leash.",
     description: "Unscented leakproof waste bags with a dispenser and a leash.",
     details: [
-      "Waste Bags, Dispenser, and Leash (Doba D01027R9Z5J)",
-      "US warehouse. In stock. Doba example: up to $41.19 per sale (54% margin). Warehouse cost about $35.09",
+      "Unscented leakproof waste bags with a dispenser and a leash.",
     ],
     price: 55.99,
     category: "accessories",
@@ -469,8 +464,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "Waste bags for walks.",
     description: "Best Pet Supplies waste bags for dog cleanup.",
     details: [
-      "Best Pet Supplies Waste Bags (Doba D0102H-BEST)",
-      "US warehouse. In stock. Doba example: up to $59.57 per sale (68% margin). Warehouse cost about $28.03",
+      "Best Pet Supplies waste bags for dog cleanup.",
     ],
     price: 44.99,
     category: "accessories",
@@ -486,8 +480,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "One glove, two brushing sides.",
     description: "A single grooming glove with a brush side and a hair-remover side for dogs and cats.",
     details: [
-      "Double-Sided Deshed Glove (Doba D01027H1N1A)",
-      "US warehouse. In stock. Doba example: up to $9.51 per sale (47% margin). Warehouse cost about $10.72",
+      "A single grooming glove with a brush side and a hair-remover side for dogs and cats.",
     ],
     price: 16.99,
     category: "accessories",
@@ -503,8 +496,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "A rechargeable clipper for coats.",
     description: "A rechargeable pet clipper with guide combs for dogs and cats.",
     details: [
-      "Rechargeable Coat Clipper (Doba D0102H2LHDG)",
-      "US warehouse. In stock. Doba example: up to $35.17 per sale (64% margin). Warehouse cost about $19.78",
+      "A rechargeable pet clipper with guide combs for dogs and cats.",
     ],
     price: 31.99,
     category: "accessories",
@@ -520,8 +512,7 @@ const ACCESSORY_DRAFT: Product[] = [
     tagline: "A spray brush with a dryer.",
     description: "A 6-in-1 spray brush and dryer for dogs and cats.",
     details: [
-      "Steam Brush and Dryer (Doba D01027H8G6A)",
-      "US warehouse. In stock. Doba example: up to $57.36 per sale (64% margin). Warehouse cost about $32.27",
+      "A 6-in-1 spray brush and dryer for dogs and cats.",
     ],
     price: 51.99,
     category: "accessories",
@@ -577,4 +568,3 @@ export const ACCESSORY_HINTS = [
   { slug: "deshed-glove", perSale: 9.51, marginPct: 47 },
 ];
 
-export const PENDING_APPROVAL = new Set(ACCESSORY_PRODUCTS.map((product) => product.slug));

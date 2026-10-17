@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PENDING_APPROVAL } from "@/lib/catalog-accessories";
 import { previewCatalog } from "@/lib/catalog-preview";
 
 const SITE = "https://happybowlpets.com";
@@ -12,9 +11,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           "/",
           "/shop",
           "/about",
-          ...previewCatalog()
-            .filter((product) => !PENDING_APPROVAL.has(product.slug))
-            .map((product) => `/product/${product.slug}`),
+          ...previewCatalog().map((product) => `/product/${product.slug}`),
         ];
         const urls = paths
           .map(

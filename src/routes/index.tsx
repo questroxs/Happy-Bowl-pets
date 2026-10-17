@@ -193,32 +193,25 @@ function Home() {
         </div>
       </section>
 
-      {supplierNotes ? (
-        <section className="mx-auto w-[min(100%-2rem,70rem)] pb-14">
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <h2 className="font-display text-2xl font-medium tracking-tight">
-                For approval — not on the public shop
-              </h2>
-              <p className="mt-1 text-muted">
-                {ACCESSORY_PRODUCTS.length} accessories from the US warehouse. Prices are 35–40% and end in .99.
-                They stay on this preview until you approve them for happybowlpets.com.
-              </p>
-            </div>
-            <Button asChild variant="ghost">
-              <Link to="/shop" search={{ cat: "accessories" }}>
-                Review them
-              </Link>
-            </Button>
+      <section className="mx-auto w-[min(100%-2rem,70rem)] pb-14">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-medium tracking-tight">New accessories</h2>
+            <p className="mt-1 text-muted">Collars, harnesses, leashes, and a grooming glove.</p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {ACCESSORY_PRODUCTS.map((product) => {
-              const next = projectPreview(product, stock);
-              return next ? <ProductCard key={product.slug} product={next} /> : null;
-            })}
-          </div>
-        </section>
-      ) : null}
+          <Button asChild variant="ghost">
+            <Link to="/shop" search={{ cat: "accessories" }}>
+              Shop accessories
+            </Link>
+          </Button>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {ACCESSORY_PRODUCTS.map((product) => {
+            const next = projectPreview(product, stock);
+            return next ? <ProductCard key={product.slug} product={next} /> : null;
+          })}
+        </div>
+      </section>
 
       <section className="relative isolate pb-14">
         <img
