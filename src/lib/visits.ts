@@ -23,21 +23,17 @@ export function nextTotal(current: number | null, bump: boolean): number {
   return bump ? base + 1 : base;
 }
 
-/** The real total is the highest number already stored. Never an older or newer lower one. */
-export function highestVisit(values: Array<number | null | undefined>): number | null {
-  let best: number | null = null;
-  for (const value of values) {
-    if (typeof value !== "number" || !Number.isFinite(value)) continue;
-    const next = Math.floor(value);
-    if (best == null || next > best) best = next;
-  }
-  return best;
+/** Add every saved total that grew past the starting floor. Never drop one. */
+export function sumNewCounts(keeperVisits: number, extraVisits: number[]): number {
+  const keeper = Math.floor(keeperVisits);
+  const extras = extraVisits.filter((value) => Number.isFinite(value) && Math.floor(value) > START);
+  return extras.reduce((sum, value) => sum + Math.floor(value), keeper);
 }
 
 type CounterCustomer = {
   id: string;
   created?: number;
-  metadata?: { visits?: string; visitToken?: string };
+  metadata?: { visits?: string; visitToken?: string; folded?: string };
 };
 
 const memory = globalThis as typeof globalThis & { __hbVisits?: number };
@@ -54,16 +50,28 @@ function storedVisits(customer: CounterCustomer | null | undefined): number | nu
   return Number.isFinite(value) ? Math.floor(value) : null;
 }
 
-function pickCounter(customers: CounterCustomer[]): CounterCustomer | null {
-  const ranked = customers.filter((customer) => storedVisits(customer) != null);
-  ranked.sort((a, b) => {
-    const gap = (storedVisits(b) ?? 0) - (storedVisits(a) ?? 0);
-    if (gap !== 0) return gap;
-    return (a.created ?? 0) - (b.created ?? 0);
-  });
-  if (ranked[0]) return ranked[0];
-  const oldest = [...customers].sort((a, b) => (a.created ?? 0) - (b.created ?? 0));
-  return oldest[0] ?? null;
+function foldedIds(customer: CounterCustomer | null | undefined): Set<string> {
+  return new Set(
+    (customer?.metadata?.folded ?? "")
+      .split(",")
+      .map((id) => id.trim())
+      .filter(Boolean),
+  );
+}
+
+/** Oldest counter that has already grown. Extra totals are added onto it once. */
+function keeperAndExtras(customers: CounterCustomer[]): {
+  keeper: CounterCustomer | null;
+  extras: CounterCustomer[];
+} {
+  const grown = customers.filter((customer) => (storedVisits(customer) ?? 0) > START);
+  const pool = grown.length ? grown : customers;
+  const ordered = [...pool].sort((a, b) => (a.created ?? 0) - (b.created ?? 0));
+  const keeper = ordered[0] ?? null;
+  if (!keeper) return { keeper: null, extras: [] };
+  const already = foldedIds(keeper);
+  const extras = grown.filter((customer) => customer.id !== keeper.id && !already.has(customer.id));
+  return { keeper, extras };
 }
 
 async function stripeRequest(key: string, path: string, body?: URLSearchParams): Promise<Response> {
@@ -99,6 +107,29 @@ async function freshTotal(key: string, customer: CounterCustomer): Promise<numbe
   return storedVisits(live ?? customer);
 }
 
+async function foldCounts(key: string, customers: CounterCustomer[]): Promise<CounterCustomer | null> {
+  const { keeper, extras } = keeperAndExtras(customers);
+  if (!keeper) return null;
+  const liveKeeper = (await stripeCustomer(key, `/customers/${keeper.id}`)) ?? keeper;
+  const current = storedVisits(liveKeeper) ?? START;
+  const extraValues = extras.map((customer) => storedVisits(customer) ?? 0);
+  const combined = sumNewCounts(current, extraValues);
+  if (!extras.length || combined <= current) return liveKeeper;
+
+  const folded = new Set(foldedIds(liveKeeper));
+  for (const extra of extras) folded.add(extra.id);
+  const saved = await stripeRequest(
+    key,
+    `/customers/${liveKeeper.id}`,
+    new URLSearchParams({
+      "metadata[visits]": String(combined),
+      "metadata[folded]": [...folded].join(","),
+    }),
+  );
+  if (!saved.ok) return liveKeeper;
+  return (await stripeCustomer(key, `/customers/${liveKeeper.id}`)) ?? liveKeeper;
+}
+
 async function readTotal(bump: boolean): Promise<number> {
   const key = process.env.STRIPE_SECRET_KEY?.trim();
   if (!key) return memoryTotal(bump);
@@ -106,7 +137,7 @@ async function readTotal(bump: boolean): Promise<number> {
   const listed = await listCounters(key);
   if (!listed) return memory.__hbVisits ?? START;
 
-  let customer = pickCounter(listed);
+  let customer = (await foldCounts(key, listed)) ?? keeperAndExtras(listed).keeper;
   if (!customer) {
     const created = await fetch("https://api.stripe.com/v1/customers", {
       method: "POST",
