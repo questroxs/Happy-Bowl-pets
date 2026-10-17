@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /compare
+Disallow: /shopify
+Disallow: /api/
+Disallow: /order-confirmed
+
+Sitemap: https://happybowlpets.com/sitemap.xml

@@ -15,6 +15,7 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as OrderConfirmedRouteImport } from './routes/order-confirmed'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ShopifyRouteImport } from './routes/shopify'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe/webhook'
 
@@ -48,6 +49,11 @@ const ShopifyRoute = ShopifyRouteImport.update({
   path: '/shopify',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
   '/shopify': typeof ShopifyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
   '/shopify': typeof ShopifyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
   '/shopify': typeof ShopifyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/stripe/webhook': typeof ApiStripeWebhookRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/order-confirmed'
     | '/shop'
     | '/shopify'
+    | '/sitemap.xml'
     | '/product/$slug'
     | '/api/stripe/webhook'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/order-confirmed'
     | '/shop'
     | '/shopify'
+    | '/sitemap.xml'
     | '/product/$slug'
     | '/api/stripe/webhook'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/order-confirmed'
     | '/shop'
     | '/shopify'
+    | '/sitemap.xml'
     | '/product/$slug'
     | '/api/stripe/webhook'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   OrderConfirmedRoute: typeof OrderConfirmedRoute
   ShopRoute: typeof ShopRoute
   ShopifyRoute: typeof ShopifyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
 }
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopifyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$slug': {
       id: '/product/$slug'
       path: '/product/$slug'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrderConfirmedRoute: OrderConfirmedRoute,
   ShopRoute: ShopRoute,
   ShopifyRoute: ShopifyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProductSlugRoute: ProductSlugRoute,
   ApiStripeWebhookRoute: ApiStripeWebhookRoute,
 }
