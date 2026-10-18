@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { VisitorGate } from "@/components/visitor-gate";
+import { HalloweenHome } from "@/components/halloween-home";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/")({
       image: "/og.jpg",
       jsonLd: homeJsonLd(),
     }),
-  component: Home,
+  component: HomeEntry,
 });
 
 const COLLECTIONS = [
@@ -57,6 +58,12 @@ const COLLECTIONS = [
     image: "/products/creepy-webs-plain.jpg",
   },
 ];
+
+function HomeEntry() {
+  const previewHost = useSupplierNotes();
+  if (previewHost) return <HalloweenHome />;
+  return <Home />;
+}
 
 function Home() {
   const supplierNotes = useSupplierNotes();
