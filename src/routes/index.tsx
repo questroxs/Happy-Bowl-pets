@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { VisitorGate } from "@/components/visitor-gate";
-import { HalloweenHome } from "@/components/halloween-home";
+import { HeroTreats, InlineTreats } from "@/components/halloween-decor";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
       image: "/og.jpg",
       jsonLd: homeJsonLd(),
     }),
-  component: HomeEntry,
+  component: Home,
 });
 
 const COLLECTIONS = [
@@ -59,14 +59,9 @@ const COLLECTIONS = [
   },
 ];
 
-function HomeEntry() {
-  const previewHost = useSupplierNotes();
-  if (previewHost) return <HalloweenHome />;
-  return <Home />;
-}
-
 function Home() {
   const supplierNotes = useSupplierNotes();
+  const halloween = supplierNotes;
   const overrides = useStockOverrides();
   const stock = supplierNotes ? overrides : {};
   const gate = (product: NonNullable<ReturnType<typeof getProduct>>) => {
@@ -103,11 +98,16 @@ function Home() {
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
         <img
-          src="/products/home-pets.jpg"
-          alt="A golden retriever and a cream cat together with a fountain and bowls"
+          src={halloween ? "/products/home-pets-halloween.jpg" : "/products/home-pets.jpg"}
+          alt={
+            halloween
+              ? "A golden retriever in a pumpkin costume and a cream cat in a witch hat, with a fountain and bowls"
+              : "A golden retriever and a cream cat together with a fountain and bowls"
+          }
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="hero-scrim absolute inset-0" />
+        {halloween ? <HeroTreats /> : null}
         <div className="relative mx-auto flex min-h-[28rem] w-[min(100%-2rem,70rem)] flex-col justify-end pb-10 md:min-h-[36rem] md:pb-14">
           <p className="text-sm font-semibold tracking-widest text-terra-soft uppercase">
             For dogs and cats
@@ -117,7 +117,6 @@ function Home() {
           </h1>
           <p className="mt-3 max-w-lg text-base text-paper/90">
             Quiet stainless fountains, raised beds, treats, toys, and everyday care.
-            {supplierNotes ? " The photo is the warehouse item — the one that is actually in stock." : ""}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -163,7 +162,10 @@ function Home() {
       <section className="mx-auto w-[min(100%-2rem,70rem)] pb-6">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <h2 className="font-display text-2xl font-medium tracking-tight">Featured</h2>
+            <h2 className="font-display text-2xl font-medium tracking-tight">
+              Featured
+              {halloween ? <InlineTreats /> : null}
+            </h2>
             <p className="mt-1 text-muted">The three pieces we would start a home with.</p>
           </div>
           <Button asChild variant="ghost">
@@ -230,7 +232,10 @@ function Home() {
         />
         <div className="relative mx-auto -mt-4 w-[min(100%-2rem,40rem)] rounded-xl bg-paper px-6 py-8 shadow-[var(--shadow-card)] md:-mt-10 md:px-9 md:py-10">
           <p className="text-sm font-semibold tracking-widest text-terra uppercase">Miami, Florida</p>
-          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Our Story</h2>
+          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
+            Our Story
+            {halloween ? <InlineTreats /> : null}
+          </h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90 md:text-base">
             <p>
               Happy Bowl Pets Co started right here in Miami, Florida — born from something simple: a
@@ -265,7 +270,10 @@ function Home() {
       </section>
 
       <section className="mx-auto w-[min(100%-2rem,70rem)] py-14">
-        <h2 className="font-display text-2xl font-medium tracking-tight">Shop by ritual</h2>
+        <h2 className="font-display text-2xl font-medium tracking-tight">
+          Shop by ritual
+          {halloween ? <InlineTreats /> : null}
+        </h2>
         <p className="mt-1 mb-6 text-muted">Beds, treats, wellness, and care — plus the fountain aisle in Shop.</p>
         <div className="grid gap-4 sm:grid-cols-2">
           {COLLECTIONS.map((collection) => (
