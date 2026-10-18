@@ -61,7 +61,7 @@ const COLLECTIONS = [
 
 function Home() {
   const supplierNotes = useSupplierNotes();
-  const halloween = supplierNotes;
+  const halloween = true;
   const overrides = useStockOverrides();
   const stock = supplierNotes ? overrides : {};
   const gate = (product: NonNullable<ReturnType<typeof getProduct>>) => {
