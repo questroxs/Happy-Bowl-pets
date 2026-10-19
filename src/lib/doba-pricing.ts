@@ -36,7 +36,6 @@ export const DOBA_HINTS: DobaHint[] = [
   { slug: "pig-ears-25", perSale: 12, marginPct: 21 },
   { slug: "calm-powder", perSale: 20.34, marginPct: 55 },
   { slug: "calm-drops-60", perSale: 15.01, marginPct: 67 },
-  { slug: "detox-powder", perSale: 11.57, marginPct: 57 },
   { slug: "cbd2heal-dogs", perSale: 113.55, marginPct: 87, note: "Listing example is 'up to' across 150–4000 mg. Photo is the 1000 mg bottle." },
   { slug: "tartar-foam", perSale: 8.12, marginPct: 39 },
   { slug: "paw-balm-15", perSale: 6.37, marginPct: 64 },

@@ -16,11 +16,11 @@ describe("parseCheckoutLines", () => {
 
   it("caps quantity and drops junk rows", () => {
     const lines = parseCheckoutLines([
-      { slug: "slow-meal-mat", quantity: 40 },
+      { slug: "dog-water-bottle-food-container", quantity: 40 },
       { slug: "", quantity: 1 },
       { slug: "frog-dispenser", quantity: 0 },
     ]);
-    assert.deepEqual(lines, [{ slug: "slow-meal-mat", quantity: 9 }]);
+    assert.deepEqual(lines, [{ slug: "dog-water-bottle-food-container", quantity: 9 }]);
   });
 
   it("keeps a costume size and drops a size that is not offered", () => {

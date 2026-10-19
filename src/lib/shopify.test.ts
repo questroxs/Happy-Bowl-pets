@@ -42,7 +42,7 @@ describe("catalog matching", () => {
     const matches = matchCatalogToShopify(
       [
         { slug: "quiet-stainless-2l", sku: "HB-FNT-01" },
-        { slug: "slow-meal-mat", sku: "HB-LIC-AUTUMN" },
+        { slug: "dog-water-bottle-food-container", sku: "HB-LIC-AUTUMN" },
         { slug: "missing-piece", sku: "HB-NONE" },
       ],
       [
@@ -59,7 +59,7 @@ describe("catalog matching", () => {
           ],
         },
         {
-          handle: "slow-meal-mat",
+          handle: "dog-water-bottle-food-container",
           title: "Mat",
           variants: [
             {
@@ -75,7 +75,7 @@ describe("catalog matching", () => {
 
     assert.equal(matches["quiet-stainless-2l"]?.variantId, "gid://shopify/ProductVariant/1");
     assert.equal(matches["quiet-stainless-2l"]?.available, true);
-    assert.equal(matches["slow-meal-mat"]?.available, false);
+    assert.equal(matches["dog-water-bottle-food-container"]?.available, false);
     assert.equal(matches["missing-piece"], undefined);
   });
 });
