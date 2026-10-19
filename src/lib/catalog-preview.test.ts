@@ -19,12 +19,12 @@ describe("vercel preview catalog", () => {
     assert.match(chew?.description ?? "", /30 chews/);
   });
 
-  it("replaces the lick mat and keeps it featured", () => {
-    const bowl = previewOne("slow-meal-mat");
-    assert.equal(bowl?.name, "3-in-1 Travel Bowl");
+  it("swaps in the water bottle and keeps it featured", () => {
+    const bowl = previewOne("dog-water-bottle-food-container");
+    assert.equal(bowl?.name, "2-in-1 Dog Water Bottle & Food Container");
     assert.equal(bowl?.price, 18.99);
     assert.equal(bowl?.featured, true);
-    assert.equal(bowl?.image, "/products/preview/slow-meal-mat.jpg");
+    assert.equal(bowl?.image, "https://image.doba.com/dg7-BtgHrhAAYQJR/2-in-1-portable-dog-water-bottle-food-container-travel-dog-bowl-dispenser-for-hiking-walking.jpg");
   });
 
   it("renames the snowman listing to the hoodie that ships", () => {
