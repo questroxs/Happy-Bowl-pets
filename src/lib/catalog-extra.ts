@@ -482,7 +482,7 @@ export const EXTRA_PRODUCTS: Product[] = [
     category: "treats",
     species: "dogs",
     image: "/products/calming-chews.jpg",
-    related: ["cbd-calm", "hemp-oil-drops", "slow-meal-mat"],
+    related: ["cbd-calm", "hemp-oil-drops", "dog-water-bottle-food-container"],
     warehouseUrl:
       "https://www.doba.com/product/dCQHvbPEKFDW/dropshipping-natural-dog-calming-chews-for-anxiety-relief-behavior-support---tasty-safe.html",
   },

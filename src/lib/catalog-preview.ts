@@ -67,7 +67,6 @@ const PHOTOS = new Set([
   "dirty-doormat",
   "brown-bolster",
   "mesh-sling",
-  "slow-meal-mat",
   "puzzle-feeder",
 ]);
 
@@ -85,7 +84,7 @@ const FOR_SALE = new Set([
   "pig-ears-25",
   "calm-powder",
   "calm-drops-60",
-  "detox-powder",
+  "mobility-powder",
   "cbd2heal-dogs",
   "herbal-harmony",
   "immune-suspension",
@@ -226,24 +225,27 @@ const SALE: Record<string, Pick<Product, "name" | "tagline" | "description" | "d
       "Shared Household: For cats and dogs.",
       "Dropper Bottle: A measured liquid, not a chew.",
     ],
-    price: 23.99,
+    price: 25.99,
   },
-  "detox-powder": {
-    name: "Welsdom Detox Powder, 120 g",
-    tagline: "120 g bacon-flavored powder.",
+  "mobility-powder": {
+    name: "Welsdom Mobility Powder (30 servings, bacon flavor)",
+    tagline: "30 servings, bacon-flavored powder.",
     description:
-      "Welsdom Detox Powder (120 g) is a powdered supplement formulated to support liver and immune health in cats and dogs.",
+      "Welsdom Mobility Powder (30 servings) is a bacon-flavored powder supplement formulated to support healthy bones, joints, and cartilage in cats and dogs.",
     details: [
-      "Key Ingredients & Active Content (per pouch)",
-      "Detox powder blend: Included",
-      "Size: 120 g",
-      "Flavor: Bacon",
+      "Key Ingredients & Active Content (per serving)",
+      "Glucosamine: Included",
+      "MSM: Included",
+      "Chondroitin: Included",
+      "Turmeric: Included",
+      "Green Lipped Mussel: Included",
       "Benefits & Features",
-      "Liver Support: Labeled to support the liver.",
-      "Immune Support: Labeled to support immune health.",
-      "Meal Mix: Bacon-flavored powder for wet food.",
+      "Joint Support: Supports healthy joints and cartilage.",
+      "Bone Support: Promotes healthy bones.",
+      "Flexibility: Supports everyday mobility and flexibility.",
+      "Bacon Flavor: A palatable powder that is easy to give.",
     ],
-    price: 26.99,
+    price: 45.99,
   },
   "cbd2heal-dogs": {
     name: "CBD2HEAL Dog Tincture, 1000 mg",
@@ -277,7 +279,7 @@ const SALE: Record<string, Pick<Product, "name" | "tagline" | "description" | "d
       "Immune Support: Labeled to support immune health.",
       "Shared Household: For dogs and cats.",
     ],
-    price: 20.99,
+    price: 22.99,
   },
   "immune-suspension": {
     name: "Immune Suspension, 60 ml",
@@ -313,7 +315,7 @@ const REPLACEMENTS: Record<string, Replacement> = {
     description:
       "A soft warm fleece nest cushion in the large size, for a puppy, a cat, or a small dog.",
     details: ["Large fleece nest cushion", "For puppies, cats, and small dogs"],
-    price: 66.99,
+    price: 71.99,
     warehouseUrl:
       "https://www.doba.com/product/ASqwQCVOWYbM/dropshipping-pet-dog-bed-soft-warm-fleece-puppy-cat-bed-dog-cozy-nest-sofa-bed-cushion-l-size.html",
   },
@@ -378,16 +380,24 @@ const REPLACEMENTS: Record<string, Replacement> = {
     material: "Canvas",
     warehouseUrl: "https://www.doba.com/product/tovDqPGYeYbT/dropshipping-fashion-canvas-pet-carrier.html",
   },
-  "slow-meal-mat": {
-    name: "3-in-1 Travel Bowl",
-    tagline: "Collapsible silicone bowl with suction cups and a hook.",
+  "dog-water-bottle-food-container": {
+    name: "2-in-1 Dog Water Bottle & Food Container",
+    tagline: "550 ml water bottle with a 100 g food chamber.",
     description:
-      "A collapsible silicone travel bowl with suction cups and a hook, so it can hang from a collar or a backpack. It folds flat.",
-    details: ["Collapsible silicone", "Suction cups", "Hook for a collar or backpack"],
+      "A travel water bottle and food container in one, made for walks, hikes, and car trips with your dog. The bottle holds 550 ml of water and has a one-hand button. The top chamber holds about 100 g of kibble or treats, so water and a snack go out the door together. It has a carry strap and a leakproof seal, and it is dishwasher safe.",
+    details: [
+      "550 ml water bottle",
+      "100 g food chamber",
+      "One-hand button",
+      "Carry strap",
+      "Leakproof seal",
+      "Dishwasher safe",
+      "Color: Blue",
+    ],
     price: 18.99,
-    material: "Silicone",
+    capacity: "550 ml water / 100 g food",
     warehouseUrl:
-      "https://www.doba.com/product/yjCSKRQfOeVF/dropshipping-3-in-1-pet-travel-collapsible-bowl-foldable-slow-feeder-with-strong-suction-cups-portable-silicone-dog-bowl-with-hook-for-hanging-on-collarbackpack.html",
+      "https://www.doba.com/product/DaFBqctRUobu/dropshipping-2-in-1-portable-dog-water-bottle-food-container-travel-dog-bowl-dispenser-for-hiking-walking.html",
   },
   "puzzle-feeder": {
     name: "Sniffer Snack Mat",
@@ -409,7 +419,7 @@ const COMING_SOON_NAMES: Record<string, string> = {
   "pig-ears-25": "Bonez Pig Ears, 25 count",
   "calm-powder": "Dog Powder",
   "calm-drops-60": "Welsdom Drops, 60 ml",
-  "detox-powder": "Welsdom Powder, 120 g",
+  "mobility-powder": "Welsdom Mobility Powder",
   "cbd2heal-dogs": "CBD2HEAL Tincture, 1000 mg",
   "herbal-harmony": "Herbal Harmony Drops, 30 ml",
   "immune-suspension": "Welsdom Suspension, 60 ml",
@@ -468,7 +478,7 @@ export function projectPreview(
     next = {
       ...next,
       ...replacement,
-      featured: product.slug === "slow-meal-mat" ? true : next.featured,
+      featured: product.slug === "dog-water-bottle-food-container" ? true : next.featured,
     };
   }
 

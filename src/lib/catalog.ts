@@ -61,7 +61,7 @@ const CORE_PRODUCTS: Product[] = [
     species: "both",
     image: "/products/kit-starter.jpg",
     featured: true,
-    related: ["quiet-stainless-2l", "filter-8pack", "slow-meal-mat"],
+    related: ["quiet-stainless-2l", "filter-8pack", "dog-water-bottle-food-container"],
     warehouseUrl:
       "https://www.doba.com/product/PyqtQhNcWcve/dropshipping-2l676oz-automatic-electric-pet-water-fountain-stainless-steel-pet-drinking-fountain-cat-dog-water-dispenser.html",
   },
@@ -89,26 +89,23 @@ const CORE_PRODUCTS: Product[] = [
       "https://www.doba.com/product/PyqtQhNcWcve/dropshipping-2l676oz-automatic-electric-pet-water-fountain-stainless-steel-pet-drinking-fountain-cat-dog-water-dispenser.html",
   },
   {
-    slug: "slow-meal-mat",
-    sku: "HB-LIC-01",
-    name: "Slow Meal Lick Mat",
-    tagline: "Food-grade silicone, four textures, suction cups for floor or tub.",
+    slug: "dog-water-bottle-food-container",
+    sku: "HB-TRV-2IN1",
+    name: "2-in-1 Dog Water Bottle & Food Container",
+    tagline: "550 ml water bottle with a 100 g food chamber.",
     description:
-      "The warehouse lick mat: a ridged silicone pad with suction cups. Spread wet food, yogurt, or a smear of kibble mash. Color from the warehouse is blue, green, teal, or red — the mat you receive is this shape.",
-    details: [
-      "Food-grade silicone with four slow-feeder textures and suction cups",
-      "Use on tile, crate trays, or in the bath; dishwasher-safe",
-      "Warehouse color is blue, green, teal, or red — same mat, different color",
-    ],
-    price: 22.99,
+      "A travel water bottle and food container in one, made for walks, hikes, and car trips with your dog.",
+    details: ["550 ml water bottle", "100 g food chamber"],
+    price: 18.99,
     category: "mealtime",
-    species: "both",
-    image: "/products/lick-mat.jpg",
+    species: "dogs",
+    image:
+      "https://image.doba.com/dg7-BtgHrhAAYQJR/2-in-1-portable-dog-water-bottle-food-container-travel-dog-bowl-dispenser-for-hiking-walking.jpg",
     featured: true,
-    material: "Food-grade silicone",
+    capacity: "550 ml water / 100 g food",
     related: ["calm-mealtime-kit", "puzzle-feeder", "elevated-station"],
     warehouseUrl:
-      "https://www.doba.com/product/GuDZqBmFWoVz/dropshipping-lick-mat-for-dogs-slow-feeder-bowl-pet-lick-mat-for-anxiety-reduction-dog-lick-pad-for-treats-grooming-use-in-shower-bath-with-suction-cup.html",
+      "https://www.doba.com/product/DaFBqctRUobu/dropshipping-2-in-1-portable-dog-water-bottle-food-container-travel-dog-bowl-dispenser-for-hiking-walking.html",
   },
   {
     slug: "stainless-xl",
@@ -171,7 +168,7 @@ const CORE_PRODUCTS: Product[] = [
     category: "kits",
     species: "both",
     image: "/products/kit-calm.jpg",
-    related: ["slow-meal-mat", "quiet-stainless-2l", "puzzle-feeder"],
+    related: ["dog-water-bottle-food-container", "quiet-stainless-2l", "puzzle-feeder"],
     warehouseUrl:
       "https://www.doba.com/product/PyqtQhNcWcve/dropshipping-2l676oz-automatic-electric-pet-water-fountain-stainless-steel-pet-drinking-fountain-cat-dog-water-dispenser.html",
   },
@@ -211,7 +208,7 @@ const CORE_PRODUCTS: Product[] = [
     category: "mealtime",
     species: "both",
     image: "/products/feeder.jpg",
-    related: ["slow-meal-mat", "calm-mealtime-kit", "elevated-station"],
+    related: ["dog-water-bottle-food-container", "calm-mealtime-kit", "elevated-station"],
     warehouseUrl:
       "https://www.doba.com/product/BmDrFaVoKYvO/dropshipping-pet-life-roto-paw-iq-training-interactive-rotating-slow-dog-feeder.html",
   },
@@ -233,7 +230,7 @@ const CORE_PRODUCTS: Product[] = [
     image: "/products/elevated-plain.jpg",
     capacity: "0.5 gal × 2",
     material: "Oak particle board + stainless",
-    related: ["slow-meal-mat", "puzzle-feeder", "calm-mealtime-kit"],
+    related: ["dog-water-bottle-food-container", "puzzle-feeder", "calm-mealtime-kit"],
     warehouseUrl:
       "https://www.doba.com/product/lFCDvRuYJcbq/dropshipping-pawhut-elevated-dog-bowls-with-storage-cabinet-2-stainless-steel-bowls-slow-feeder-dog-feeding-station-for-large-dogs-oak.html",
   },
@@ -318,7 +315,7 @@ const CORE_PRODUCTS: Product[] = [
     image: "/products/travel.jpg",
     exploring: true,
     material: "ABS",
-    related: ["quiet-stainless-2l", "hydration-starter", "slow-meal-mat"],
+    related: ["quiet-stainless-2l", "hydration-starter", "dog-water-bottle-food-container"],
     warehouseUrl:
       "https://www.doba.com/product/eFCmVIrOaYDK/dropshipping-portable-4-in-1-pet-water-bottle-with-food-storage-poop-bag-dispenser-and-spoon-300ml-capacity-available-in-yellow-pink-green-and-other-colors.html",
   },
