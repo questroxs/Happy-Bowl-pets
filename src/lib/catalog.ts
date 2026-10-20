@@ -99,8 +99,7 @@ const CORE_PRODUCTS: Product[] = [
     price: 18.99,
     category: "mealtime",
     species: "dogs",
-    image:
-      "https://image.doba.com/dg7-BtgHrhAAYQJR/2-in-1-portable-dog-water-bottle-food-container-travel-dog-bowl-dispenser-for-hiking-walking.jpg",
+    image: "/products/dog-water-bottle.jpg",
     featured: true,
     capacity: "550 ml water / 100 g food",
     related: ["calm-mealtime-kit", "puzzle-feeder", "elevated-station"],

@@ -185,8 +185,7 @@ export const MORE_PRODUCTS: Product[] = [
     price: 45.99,
     category: "wellness",
     species: "both",
-    image:
-      "https://image.doba.com/dg9-nJDdyFCOqeos/welsdom-pets-mobility-powder-joint-support-supplement-for-cats-dogs-promotes-healthy-bones-cartilage-anti-inflammatory-benefits-bacon-flavored-for-easy-administration.webp",
+    image: "/products/mobility-powder.jpg",
     related: ["calm-powder", "skin-chews", "joint-liquid"],
     warehouseUrl:
       "https://www.doba.com/product/CfQvVKyQgFDm/dropshipping-welsdom-pets-mobility-powder-joint-support-supplement-for-cats-dogs-promotes-healthy-bones-cartilage-anti-inflammatory-benefits-bacon-flavored-for-easy-administration.html",

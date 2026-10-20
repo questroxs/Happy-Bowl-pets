@@ -24,7 +24,7 @@ describe("vercel preview catalog", () => {
     assert.equal(bowl?.name, "2-in-1 Dog Water Bottle & Food Container");
     assert.equal(bowl?.price, 18.99);
     assert.equal(bowl?.featured, true);
-    assert.equal(bowl?.image, "https://image.doba.com/dg7-BtgHrhAAYQJR/2-in-1-portable-dog-water-bottle-food-container-travel-dog-bowl-dispenser-for-hiking-walking.jpg");
+    assert.equal(bowl?.image, "/products/dog-water-bottle.jpg");
   });
 
   it("renames the snowman listing to the hoodie that ships", () => {

@@ -4,9 +4,15 @@ const REDIRECTS: Record<string, string> = {
   "/product/slow-meal-mat": "/product/dog-water-bottle-food-container",
 };
 
-export default (event: { url: URL }) => {
-  const path = event.url.pathname.replace(/\/+$/, "");
+export default function productRedirects(
+  event: { url: URL },
+  next: () => unknown,
+) {
+  const path = event.url.pathname.replace(/\/+$/, "") || "/";
   const target = REDIRECTS[path];
-  if (!target) return;
-  return new Response(null, { status: 301, headers: { Location: target + event.url.search } });
-};
+  if (!target) return next();
+  return new Response(null, {
+    status: 301,
+    headers: { Location: target + event.url.search },
+  });
+}
