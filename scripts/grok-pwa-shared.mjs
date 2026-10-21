@@ -157,7 +157,36 @@ export function renderInstallPageHtml(template, { host, url } = {}) {
     .replaceAll("{{APP_URL}}", escapeHtml(stripInstallParams(url)));
 }
 
+function isHappyBowlHost(hostHeader) {
+  const host = String(hostHeader ?? "")
+    .split(",")[0]
+    .trim()
+    .split(":")[0]
+    .toLowerCase();
+  return host === "happybowlpets.com" || host.endsWith(".happybowlpets.com");
+}
+
 export function renderWebManifest(hostHeader) {
+  if (isHappyBowlHost(hostHeader)) {
+    return JSON.stringify(
+      {
+        name: "Happy Bowl Pets Co.",
+        short_name: "Happy Bowl",
+        id: "/",
+        start_url: "/",
+        scope: "/",
+        display: "standalone",
+        background_color: "#f4efe6",
+        theme_color: "#f4efe6",
+        icons: [
+          { src: "/favicon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+          { src: "/logo-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+        ],
+      },
+      null,
+      2,
+    );
+  }
   const name = appNameFromHost(hostHeader);
   return JSON.stringify(
     {
