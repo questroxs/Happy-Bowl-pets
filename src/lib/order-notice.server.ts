@@ -136,6 +136,16 @@ async function sendSmtp(subject: string, text: string): Promise<void> {
   socket.end();
 }
 
+export async function sendShopNote(subject: string, text: string): Promise<boolean> {
+  if (!orderMailConfigured()) return false;
+  if (env("RESEND_API_KEY")) {
+    await sendResend(subject, text);
+    return true;
+  }
+  await sendSmtp(subject, text);
+  return true;
+}
+
 export function orderMailConfigured(): boolean {
   return Boolean(env("RESEND_API_KEY") || (env("ORDER_SMTP_USER") && env("ORDER_SMTP_PASS")));
 }

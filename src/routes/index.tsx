@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, Leaf, PawPrint } from "lucide-react";
+import { PromoPopup } from "@/components/promo-popup";
 import { VisitorGate } from "@/components/visitor-gate";
 import { HeroTreats, InlineTreats } from "@/components/halloween-decor";
 import { Button } from "@/components/ui/button";
@@ -309,6 +310,7 @@ function Home() {
           ))}
         </div>
       </section>
+      <PromoPopup />
       <div className="mx-auto flex w-[min(100%-2rem,70rem)] justify-end pb-8">
         <VisitorGate />
       </div>
