@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { PRODUCTS } from "@/lib/catalog";
 import { canPurchase, previewOne } from "@/lib/catalog-preview";
 import { createCheckoutSession } from "@/lib/create-checkout";
+import { trackCartAdd } from "@/lib/cart-events";
 import { isSupplierHost } from "@/lib/public-host";
 import { stockSnapshot } from "@/lib/stock-overrides";
 import {
@@ -141,6 +142,7 @@ export const useShopifyStore = create<ShopifyState>()(
             )
           : [...cart, { slug, quantity: 1, ...(picked ? { size: picked } : {}) }];
         set({ cart: next, cartOpen: true });
+        trackCartAdd(slug, picked);
         toast.success(picked ? `${product.name} (${picked}) added` : `${product.name} added`);
       },
       setQuantity: (slug, quantity, size) => {
