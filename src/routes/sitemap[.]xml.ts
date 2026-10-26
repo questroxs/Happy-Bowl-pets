@@ -14,10 +14,10 @@ export const Route = createFileRoute("/sitemap.xml")({
           ...previewCatalog().map((product) => `/product/${product.slug}`),
         ];
         const urls = paths
-          .map(
-            (path) =>
-              `  <url><loc>${SITE}${path}</loc><changefreq>weekly</changefreq></url>`,
-          )
+          .map((path) => {
+            const lastmod = path === "/" ? "<lastmod>2026-10-26</lastmod>" : "";
+            return `  <url><loc>${SITE}${path}</loc>${lastmod}<changefreq>weekly</changefreq></url>`;
+          })
           .join("\n");
         const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

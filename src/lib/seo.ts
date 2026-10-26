@@ -78,7 +78,12 @@ export function homeJsonLd() {
         "@type": "Organization",
         name: "Happy Bowl Pets Co.",
         url: SITE,
-        logo: "https://www.happybowlpets.com/logo-512.png",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.happybowlpets.com/logo-512.png",
+          width: 512,
+          height: 512,
+        },
       },
       {
         "@type": "WebSite",
