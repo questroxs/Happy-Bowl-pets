@@ -5,7 +5,15 @@ import { useSupplierNotes } from "@/lib/supplier-notes";
 export function SiteFooter() {
   const supplierNotes = useSupplierNotes();
   return (
-    <footer className="mt-16 border-t border-line bg-cream">
+    <footer className="mt-16 bg-cream">
+      <div className="flex justify-center overflow-hidden px-4" aria-hidden>
+        <img
+          src="/season/leaf-garland.png"
+          alt=""
+          className="h-14 w-[min(100%,70rem)] object-contain md:h-20"
+        />
+      </div>
+      <div className="border-t border-line">
       <div className="mx-auto grid w-[min(100%-2rem,70rem)] gap-8 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5">
@@ -79,6 +87,7 @@ export function SiteFooter() {
       <p className="border-t border-line py-5 text-center text-sm text-muted">
         Checkout on Stripe. You and Happy Bowl Pets Co. both receive the receipt.
       </p>
+      </div>
     </footer>
   );
 }

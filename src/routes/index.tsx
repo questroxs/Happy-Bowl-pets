@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { PromoPopup } from "@/components/promo-popup";
 import { VisitorGate } from "@/components/visitor-gate";
-import { FallMark } from "@/components/fall-frame";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
@@ -103,7 +102,7 @@ function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="hero-scrim absolute inset-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#6b3418]/40 via-transparent to-[#c4652f]/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#6b3418]/25 via-transparent to-transparent" />
         <div className="relative mx-auto flex min-h-[28rem] w-[min(100%-2rem,70rem)] flex-col justify-end pb-10 md:min-h-[36rem] md:pb-14">
           <p className="text-sm font-semibold tracking-widest text-[#f3d7b0] uppercase">
             Happy Thanksgiving
@@ -128,6 +127,14 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <div className="-mt-4 flex justify-center px-4" aria-hidden>
+        <img
+          src="/season/leaf-garland.png"
+          alt=""
+          className="h-16 w-[min(100%,68rem)] object-contain md:h-24"
+        />
+      </div>
 
       <section className="mx-auto w-[min(100%-2rem,70rem)] py-14">
         <div className="grid gap-6 md:grid-cols-3">
@@ -158,10 +165,7 @@ function Home() {
       <section className="mx-auto w-[min(100%-2rem,70rem)] pb-6">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <h2 className="font-display text-2xl font-medium tracking-tight">
-              Featured
-              <FallMark />
-            </h2>
+            <h2 className="font-display text-2xl font-medium tracking-tight">Featured</h2>
             <p className="mt-1 text-muted">The three pieces we would start a home with.</p>
           </div>
           <Button asChild variant="ghost">
@@ -220,6 +224,11 @@ function Home() {
         </div>
       </section>
 
+      <div className="mx-auto flex w-[min(100%-2rem,34rem)] items-end justify-center" aria-hidden>
+        <img src="/season/candle.png" alt="" className="h-32 w-auto sm:h-40" />
+        <img src="/season/pumpkins.png" alt="" className="-ml-6 h-36 w-auto sm:-ml-8 sm:h-44" />
+      </div>
+
       <section className="relative isolate pb-14">
         <img
           src="/products/story-banner.jpg"
@@ -228,10 +237,7 @@ function Home() {
         />
         <div className="relative mx-auto -mt-4 w-[min(100%-2rem,40rem)] rounded-xl bg-paper px-6 py-8 shadow-[var(--shadow-card)] md:-mt-10 md:px-9 md:py-10">
           <p className="text-sm font-semibold tracking-widest text-terra uppercase">Miami, Florida</p>
-          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
-            Our Story
-            <FallMark />
-          </h2>
+          <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">Our Story</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90 md:text-base">
             <p>
               Happy Bowl Pets Co started right here in Miami, Florida — born from something simple: a
@@ -266,10 +272,7 @@ function Home() {
       </section>
 
       <section className="mx-auto w-[min(100%-2rem,70rem)] py-14">
-        <h2 className="font-display text-2xl font-medium tracking-tight">
-          Shop by ritual
-          <FallMark />
-        </h2>
+        <h2 className="font-display text-2xl font-medium tracking-tight">Shop by ritual</h2>
         <p className="mt-1 mb-6 text-muted">Beds, treats, wellness, and care — plus the fountain aisle in Shop.</p>
         <div className="grid gap-4 sm:grid-cols-2">
           {COLLECTIONS.map((collection) => (
