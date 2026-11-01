@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, Leaf, PawPrint } from "lucide-react";
 import { PromoPopup } from "@/components/promo-popup";
 import { VisitorGate } from "@/components/visitor-gate";
-import { HeroTreats, InlineTreats } from "@/components/halloween-decor";
+import { FallMark } from "@/components/fall-frame";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { exploringProducts, featuredProducts, getProduct } from "@/lib/catalog";
@@ -62,7 +62,6 @@ const COLLECTIONS = [
 
 function Home() {
   const supplierNotes = useSupplierNotes();
-  const halloween = true;
   const overrides = useStockOverrides();
   const stock = supplierNotes ? overrides : {};
   const gate = (product: NonNullable<ReturnType<typeof getProduct>>) => {
@@ -99,19 +98,15 @@ function Home() {
 
       <section className="relative isolate min-h-[28rem] overflow-hidden md:min-h-[36rem]">
         <img
-          src={halloween ? "/products/home-pets-halloween.jpg" : "/products/home-pets.jpg"}
-          alt={
-            halloween
-              ? "A golden retriever in a pumpkin costume and a cream cat in a witch hat, with a fountain and bowls"
-              : "A golden retriever and a cream cat together with a fountain and bowls"
-          }
+          src="/products/home-pets.jpg"
+          alt="A golden retriever and a cream cat together with a fountain and bowls"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="hero-scrim absolute inset-0" />
-        {halloween ? <HeroTreats /> : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#6b3418]/40 via-transparent to-[#c4652f]/25" />
         <div className="relative mx-auto flex min-h-[28rem] w-[min(100%-2rem,70rem)] flex-col justify-end pb-10 md:min-h-[36rem] md:pb-14">
-          <p className="text-sm font-semibold tracking-widest text-terra-soft uppercase">
-            For dogs and cats
+          <p className="text-sm font-semibold tracking-widest text-[#f3d7b0] uppercase">
+            Happy Thanksgiving
           </p>
           <h1 className="mt-2 max-w-xl font-display text-4xl leading-tight font-medium tracking-tight text-paper md:text-5xl">
             Fresher water. Calmer days.
@@ -165,7 +160,7 @@ function Home() {
           <div>
             <h2 className="font-display text-2xl font-medium tracking-tight">
               Featured
-              {halloween ? <InlineTreats /> : null}
+              <FallMark />
             </h2>
             <p className="mt-1 text-muted">The three pieces we would start a home with.</p>
           </div>
@@ -235,7 +230,7 @@ function Home() {
           <p className="text-sm font-semibold tracking-widest text-terra uppercase">Miami, Florida</p>
           <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">
             Our Story
-            {halloween ? <InlineTreats /> : null}
+            <FallMark />
           </h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink/90 md:text-base">
             <p>
@@ -273,7 +268,7 @@ function Home() {
       <section className="mx-auto w-[min(100%-2rem,70rem)] py-14">
         <h2 className="font-display text-2xl font-medium tracking-tight">
           Shop by ritual
-          {halloween ? <InlineTreats /> : null}
+          <FallMark />
         </h2>
         <p className="mt-1 mb-6 text-muted">Beds, treats, wellness, and care — plus the fountain aisle in Shop.</p>
         <div className="grid gap-4 sm:grid-cols-2">

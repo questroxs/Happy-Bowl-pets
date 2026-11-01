@@ -9,6 +9,7 @@ import { CartSheet } from "@/components/cart-sheet";
 import { ShopifyBridge } from "@/components/shopify-bridge";
 import { isSupplierHost } from "@/lib/public-host";
 import { SupplierNotesProvider } from "@/lib/supplier-notes";
+import { FallFrame } from "@/components/fall-frame";
 import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 
@@ -71,6 +72,7 @@ function RootLayout() {
         <SupplierNotesProvider value={supplierNotes}>
           <AuthProvider>
             <SiteHeader />
+            <FallFrame />
             <Outlet />
             <SiteFooter />
             <WaitlistSheet />
