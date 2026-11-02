@@ -262,7 +262,7 @@ const ACCESSORY_DRAFT: Product[] = [
     details: [
       "A braided rope leash for dogs.",
     ],
-    price: 106.99,
+    price: 89.99,
     category: "accessories",
     species: "dogs",
     image: "/products/rope-leash.jpg",
