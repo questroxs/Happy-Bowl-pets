@@ -1,6 +1,7 @@
 import { ACCESSORY_PRODUCTS } from "./catalog-accessories";
 import { EXTRA_PRODUCTS } from "./catalog-extra";
 import { MORE_PRODUCTS } from "./catalog-more";
+import { SWAP_PRODUCTS } from "./catalog-swaps";
 import { WEAR_PRODUCTS } from "./catalog-wear";
 
 export const CATEGORIES = [
@@ -345,6 +346,14 @@ const UNAVAILABLE = new Set([
   "cat-fish-brush", // China
   "oral-foam",
   "cat-tree-60", // Canada
+  "bath-brush",
+  "corn-chew",
+  "mesh-sling",
+  "moo-cifier",
+  "giraffe-cow",
+  "rolling-carrier",
+  "crystal-shampoo",
+  "santa-coat",
 ]);
 
 export const PRODUCTS: Product[] = [
@@ -353,6 +362,7 @@ export const PRODUCTS: Product[] = [
   ...MORE_PRODUCTS,
   ...WEAR_PRODUCTS,
   ...ACCESSORY_PRODUCTS,
+  ...SWAP_PRODUCTS,
 ].filter((product) => !UNAVAILABLE.has(product.slug));
 
 export function getProduct(slug: string) {

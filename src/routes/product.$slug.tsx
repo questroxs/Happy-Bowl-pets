@@ -14,6 +14,33 @@ import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatMoney } from "@/lib/utils";
 import { productSeo } from "@/lib/seo";
 
+const RETIRED: Record<string, "/shop" | `/product/${string}`> = {
+  "dog-sofa-grey": "/product/pawhut-dog-sofa-bed-gray",
+  "paw-cream": "/product/yegbong-paw-care-balm-50g",
+  "triple-rawhide": "/product/yak-cheese-churpi-4ct",
+  "calcium-bones": "/product/water-buffalo-horn-2ct",
+  "hemp-oil-drops": "/product/welsdom-omega-oil-30ml",
+  "glucosamine-120": "/product/welsdom-digestive-powder-30",
+  "glucosamine-tabs": "/product/welsdom-weight-control-powder-30",
+  "corn-chew": "/product/pet-life-glow-stick-toy",
+  "mesh-sling": "/product/pet-life-canvas-carrier",
+  "scratch-post": "/product/modular-jute-scratching-post",
+  "oral-foam": "/product/yegbong-dental-pen-3ml",
+  "orthopedic-38": "/shop",
+  "bath-brush": "/shop",
+  "chicken-chips": "/shop",
+  "cat-chicken-treats": "/shop",
+  "hemp-joint-120": "/shop",
+  "soccer-ball": "/shop",
+  "sisal-scratcher": "/shop",
+  "cat-fish-brush": "/shop",
+  "moo-cifier": "/shop",
+  "giraffe-cow": "/shop",
+  "rolling-carrier": "/shop",
+  "crystal-shampoo": "/shop",
+  "santa-coat": "/shop",
+};
+
 export const Route = createFileRoute("/product/$slug")({
   head: ({ params }) => {
     if (isPreviewRemoved(params.slug)) {
@@ -34,8 +61,12 @@ function ProductPage() {
   const toggleSaved = useShopStore((s) => s.toggleSaved);
   const addToCart = useShopifyStore((s) => s.addToCart);
   const [size, setSize] = useState("M");
-  if (isPreviewRemoved(slug)) {
+  if (isPreviewRemoved(slug) || RETIRED[slug] === "/shop") {
     return <Navigate to="/shop" search={{}} />;
+  }
+  const retired = RETIRED[slug];
+  if (retired && retired.startsWith("/product/")) {
+    return <Navigate to="/product/$slug" params={{ slug: retired.slice("/product/".length) }} />;
   }
   const raw = previewOne(slug, supplierNotes ? overrides : {});
   const product = raw ? presentProduct(raw, supplierNotes) : undefined;

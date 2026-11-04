@@ -53,7 +53,7 @@ const COLLECTIONS = [
   },
   {
     title: "Costumes",
-    copy: "Spider, cowboy, snowman, inmate stripes, and a Santa coat.",
+    copy: "Spider, cowboy, snowman, and inmate stripes.",
     cat: "costumes" as const,
     image: "/products/creepy-webs-plain.jpg",
   },

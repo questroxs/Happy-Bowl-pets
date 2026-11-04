@@ -88,6 +88,11 @@ const FOR_SALE = new Set([
   "cbd2heal-dogs",
   "herbal-harmony",
   "immune-suspension",
+  "yak-cheese-churpi-4ct",
+  "water-buffalo-horn-2ct",
+  "welsdom-omega-oil-30ml",
+  "welsdom-digestive-powder-30",
+  "welsdom-weight-control-powder-30",
 ]);
 
 /** Prices clear $8 profit and 40% after Doba cost, shipping, and 2.9% + $0.30. */
@@ -300,6 +305,19 @@ const SALE: Record<string, Pick<Product, "name" | "tagline" | "description" | "d
     ],
     price: 32.99,
   },
+  "yegbong-dental-pen-3ml": {
+    name: "YEGBONG Pet Dental Cleaning Pen (3 mL)",
+    tagline: "A 3 mL brush-tip pen for routine oral care.",
+    description:
+      "YEGBONG Pet Dental Cleaning Pen (3 mL) is a brush-tip dental pen formulated to support routine oral care for dogs and cats.",
+    details: [
+      "3 mL liquid in one brush-tip pen",
+      "Brush-tip applicator for wiping accessible tooth surfaces",
+      "Use only with pets that calmly tolerate oral handling; never force the mouth",
+      "Stop use if irritation occurs and consult your veterinarian",
+    ],
+    price: 18.99,
+  },
 };
 
 
@@ -330,27 +348,6 @@ const REPLACEMENTS: Record<string, Replacement> = {
     warehouseUrl:
       "https://www.doba.com/product/PfCGVNtjToqY/dropshipping-house-shaped-felt-cat-house-for-indoor-cats18x15x17-foldable-cat-bed-cavebreathable-hollow-window-cat-hideaway-with-wide-arched-entrance-for-kittens-multi-cats.html",
   },
-  "bath-brush": {
-    name: "Steam Spray Grooming Brush",
-    tagline: "Silicone grooming brush with a spray.",
-    description:
-      "A reusable silicone grooming brush for dogs and cats, with a spray to lift loose hair.",
-    details: ["Silicone bristles", "Spray grooming brush", "For dogs and cats"],
-    price: 22.99,
-    material: "Silicone",
-    warehouseUrl:
-      "https://www.doba.com/product/FfQPKcnylCDY/dropshipping-steam-spray-pet-grooming-brush-silicone-massage-shedding-hair-remover-comb-reusable-pet-cleaning-grooming-tool-for-dogs-and-cats.html",
-  },
-  "corn-chew": {
-    name: "Glow-Stick Squeak Toy",
-    tagline: "Pet Life TPR toy with an LED glow stick.",
-    description: "A Pet Life TPR dog toy with LED lighting and a squeaker.",
-    details: ["TPR rubber", "LED lighting and a squeaker", "For dogs"],
-    price: 21.99,
-    material: "TPR",
-    warehouseUrl:
-      "https://www.doba.com/product/WBDtefqBVPbv/dropshipping-pet-life-glow-stick-tpr-and-led-lighting-squeak-and-chew-dog-toy.html",
-  },
   "dirty-doormat": {
     name: "Washable Dog Mat",
     tagline: "Quilted plush mat with a carry handle.",
@@ -370,15 +367,6 @@ const REPLACEMENTS: Record<string, Replacement> = {
     price: 48.99,
     warehouseUrl:
       "https://www.doba.com/product/gZVkFQqtWobP/dropshipping-pet-dog-bed-soft-warm-fleece-puppy-cat-bed-dog-cozy-nest-sofa-bed-cushion-mat-s-size.html",
-  },
-  "mesh-sling": {
-    name: "Canvas Pet Carrier",
-    tagline: "Canvas carrier for a small dog or cat.",
-    description: "A canvas pet carrier for a small dog or cat.",
-    details: ["Canvas carrier", "For a small dog or cat"],
-    price: 57.99,
-    material: "Canvas",
-    warehouseUrl: "https://www.doba.com/product/tovDqPGYeYbT/dropshipping-fashion-canvas-pet-carrier.html",
   },
   "dog-water-bottle-food-container": {
     name: "2-in-1 Dog Water Bottle & Food Container",
