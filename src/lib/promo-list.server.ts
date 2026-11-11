@@ -1,7 +1,17 @@
+import { randomBytes } from "node:crypto";
 import { env } from "./env.server";
 import { sendShopNote } from "./order-notice.server";
 
-export async function savePromoEmail(email: string): Promise<{ ok: boolean }> {
+function welcomeCode(): string {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = randomBytes(6);
+  let tail = "";
+  for (let i = 0; i < 6; i += 1) tail += alphabet[bytes[i]! % alphabet.length];
+  return `HB40-${tail}`;
+}
+
+export async function savePromoEmail(email: string): Promise<{ ok: true; code: string } | { ok: false }> {
+  const code = welcomeCode();
   let stored = false;
   if (env("DATABASE_URL")) {
     try {
@@ -18,7 +28,8 @@ export async function savePromoEmail(email: string): Promise<{ ok: boolean }> {
 
   const sent = await sendShopNote(
     "New promo list signup",
-    `Someone asked for Happy Bowl Pets discount codes.\n\nEmail: ${email}\n`,
+    `40% off code for a first order.\n\nEmail: ${email}\nCode: ${code}\n`,
   );
-  return { ok: sent || stored };
+  if (!sent && !stored) return { ok: false };
+  return { ok: true, code };
 }
