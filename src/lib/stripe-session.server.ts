@@ -80,6 +80,7 @@ function checkoutPayload(
   return {
     mode: "payment",
     submit_type: "pay",
+    allow_promotion_codes: true,
     success_url: `${origin}/order-confirmed?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/shop`,
     customer_creation: "always",
