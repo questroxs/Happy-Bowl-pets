@@ -29,10 +29,10 @@ export function PromoPopup() {
           <>
             <p className="text-sm font-semibold tracking-widest text-terra uppercase">Happy Bowl Pets Co.</p>
             <DialogTitle className="mt-2 font-display text-3xl font-medium tracking-tight">
-              Your 40% code
+              Your 25% code
             </DialogTitle>
             <DialogDescription className="mt-2 text-base text-ink/80">
-              Save this. It’s 40% off your first order.
+              Save this. It’s 25% off your first order.
             </DialogDescription>
             <p className="mt-5 rounded-lg bg-cream px-4 py-3 text-center font-display text-3xl font-medium tracking-wide text-ink">
               {code}
@@ -45,10 +45,10 @@ export function PromoPopup() {
           <>
             <p className="text-sm font-semibold tracking-widest text-terra uppercase">Happy Bowl Pets Co.</p>
             <DialogTitle className="mt-2 font-display text-3xl font-medium tracking-tight">
-              Unlock 40% OFF 🐾
+              Unlock 25% OFF 🐾
             </DialogTitle>
             <DialogDescription className="mt-2 text-base text-ink/80">
-              Join the Happy Bowl Pets Co. pack and get 40% off your first order. Treats, toys and cozy
+              Join the Happy Bowl Pets Co. pack and get 25% off your first order. Treats, toys and cozy
               gear your crew will go wild for.
             </DialogDescription>
             <form
@@ -88,7 +88,7 @@ export function PromoPopup() {
                 />
               </div>
               <Button type="submit" className="mt-1" disabled={sending}>
-                {sending ? "Saving…" : "Get My 40% Off"}
+                {sending ? "Saving…" : "Get My 25% Off"}
               </Button>
               <p className="text-xs leading-relaxed text-muted">
                 One code for your first order. Close this if you’d rather not.
