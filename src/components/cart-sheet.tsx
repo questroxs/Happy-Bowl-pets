@@ -1,12 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Minus, Plus } from "lucide-react";
+import { useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { canPurchase, previewOne } from "@/lib/catalog-preview";
 import { presentProduct } from "@/lib/customer-copy";
 import { remainingToFreeShipping, shippingOptions } from "@/lib/shipping";
-import { cartCount, cartSubtotal, useShopifyStore } from "@/lib/shopify-store";
+import { useShopifyStore } from "@/lib/shopify-store";
 import { useSupplierNotes } from "@/lib/supplier-notes";
 import { formatMoney } from "@/lib/utils";
 
@@ -28,7 +29,13 @@ export function CartSheet() {
     })
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-  const subtotal = cartSubtotal(cart);
+  useEffect(() => {
+    if (items.length === cart.length) return;
+    useShopifyStore.setState({ cart: items.map(({ slug, quantity, size }) => ({ slug, quantity, size })) });
+  }, [cart, items]);
+
+  const count = items.reduce((sum, item) => sum + item.quantity, 0);
+  const subtotal = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   const [standard, expedited] = shippingOptions(subtotal);
   const remaining = remainingToFreeShipping(subtotal);
 
@@ -96,10 +103,11 @@ export function CartSheet() {
             ))
           )}
         </div>
+        {items.length === 0 ? null : (
         <div className="mt-4 border-t border-line pt-4">
           <dl className="space-y-1.5 text-sm">
             <div className="flex items-center justify-between">
-              <dt className="text-muted">{cartCount(cart)} in cart</dt>
+              <dt className="text-muted">{count} in cart</dt>
               <dd className="font-medium">{formatMoney(subtotal)}</dd>
             </div>
             <div className="flex items-center justify-between">
@@ -148,6 +156,7 @@ export function CartSheet() {
             {checkingOut ? "Opening Stripe…" : "Checkout with Stripe"}
           </Button>
         </div>
+        )}
       </SheetContent>
     </Sheet>
   );
